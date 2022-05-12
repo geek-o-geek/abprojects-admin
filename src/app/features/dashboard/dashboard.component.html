@@ -1,0 +1,328 @@
+
+<!--Container -->
+<div class="mx-auto bg-grey-400">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <!--Header Section Starts Here-->
+        <header class="bg-nav">
+            <div class="flex justify-between">
+                <div class="p-1 mx-3 inline-flex items-center">
+                    <i class="fas fa-bars pr-2 text-white" ></i>
+                    <h1 class="text-white p-2"><img src="dist/images/Logomain.png" height="60" width="180"></h1>
+                </div>
+                <div class="p-1 flex flex-row items-center">
+                   
+                    <!--<a href="https://github.com/tailwindadmin/admin" class="text-white p-2 mr-2 no-underline hidden md:block lg:block">Github</a> -->
+                    <img src="dist/images/ABProjectsLogo.png" height="60" width="180">
+
+
+                    <img src="dist/images/Logo-1.jpg" alt="" height="60" width="180">
+                                                                                                                                 
+                   <!-- <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">Adam Wathan</a> -->
+
+                    <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
+                        <ul class="list-reset">
+                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
+                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
+                          <li><hr class="border-t mx-2 border-grey-ligght"></li>
+                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--/Header-->
+
+        <div class="flex flex-1">
+            <!--Sidebar-->
+            <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+
+                <ul class="list-reset flex flex-col">
+                    <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                        <a href="index.html"
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                            Dashboard
+                            <span><i class="fas fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+                   
+                </ul>
+
+            </aside>
+            <!--/Sidebar-->
+            <!--Main-->
+            <main class="bg-white-300 flex-1 p-3 overflow-hidden">
+
+                <div class="flex flex-col">
+                    <!-- Stats Row Starts Here -->
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
+                            <div class="p-4 flex flex-col">
+                                <a href="#" class="no-underline text-white text-2xl">
+                                    Master Sheet
+                                </a>
+                                <a href="#" class="no-underline text-white text-lg">
+                                    +
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
+                            <div class="p-4 flex flex-col">
+                                <a href="#" class="no-underline text-white text-2xl">
+                                    Beneficiaries
+                                </a>
+                                <a href="#" class="no-underline text-white text-lg">
+                                    15000
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="shadow bg-warning border-l-8 hover:bg-warning-dark border-warning-dark mb-2 p-2 md:w-1/4 mx-2">
+                            <div class="p-4 flex flex-col">
+                                <a href="#" class="no-underline text-white text-2xl">
+                                    Overseer
+                                </a>
+                                <a href="#" class="no-underline text-white text-lg">
+                                100
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2">
+                            <div class="p-4 flex flex-col">
+                                <a href="#" class="no-underline text-white text-2xl">
+                                    Wards
+                                </a>
+                                <a href="#" class="no-underline text-white text-lg">
+                                    20
+                                </a>
+                            </div>
+                        </div>
+                         <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2" style="background-color: #4299e1">
+                            <div class="p-4 flex flex-col">
+                                <a href="livemap.html" class="no-underline text-white text-2xl">
+                                    live on Map
+                                </a>
+                                <a href="livemap.html" class="no-underline text-white text-lg">
+                                    250
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /Stats Row Ends Here -->
+
+                    <!-- Card Sextion Starts Here -->
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+
+                        <!-- card -->
+
+                        <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+                            <div class="px-6 py-2 border-b border-light-grey">
+                                <div class="font-bold text-xl">Beneficiaries</div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-grey-darkest">
+                                    <thead class="bg-grey-dark text-white text-normal">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Ward</th>
+                                        <th scope="col">Region</th>
+                            
+                                        <th scope="col">Age</th>
+                                         <th scope="col">Overseer</th>
+                                         <th scope="col">Attendance</th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>
+                                            <a href="profile.html"
+                                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                                                
+                                            <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full" >
+                                                PINKIE NTOMBIKAYISE MKHIZE
+                                            </button>
+                                            </a>
+                                        </td>
+                                        <td>EW103</td>
+                                        <td>OUTER WEST</td>
+                                        <td>45</td>
+                                        <td>SUPERVISOR</td>
+                                        
+                                        <td>
+                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
+                                        </td>
+                                         <td class="border px-4 py-2">
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-edit"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                                        <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>
+                                            <a href="profile.html"
+                                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                                            <button class="bg-primary hover:bg-primary-dark text-white font-light py-1 px-2 rounded-full">
+                                                SIBONGILE DOVO DLOMO
+                                            </button>
+                                            </a>
+                                        </td>
+                                        <td>EW103</td>
+                                        <td>OUTER WEST</td>
+                                        <td>45</td>
+                                        <td>SUPERVISOR</td>
+                                        <td>
+                                            <span class="text-red-500"><i class="fas fa-arrow-down"></i>65%</span>
+                                        </td>
+                                         <td class="border px-4 py-2">
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-edit"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                                        <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>
+                                            <a href="profile.html"
+                                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                                            <button class="bg-success hover:bg-success-dark text-white font-light py-1 px-2 rounded-full">
+                                                BALUNGISILE CHRISTINA BHENGU
+                                            </button>
+                                            </a>    
+                                        </td>
+                                        <td>EW103</td>
+                                        <td>OUTER WEST</td>
+                                        <td>50</td>
+                                        <td>SUPERVISOR</td>
+                                        <td>
+                                            <span class="text-red-500"><i class="fas fa-arrow-down"></i>65%</span>
+                                        </td>
+                                         <td class="border px-4 py-2">
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-edit"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                                        <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>
+                                            <a href="profile.html"
+                                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                                            <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
+                                                GOODNESS BHENGU
+                                            </button>
+                                            </a>
+                                        </td>
+                                        <td>EW01</td>
+                                        <td>OUTER WEST</td>
+                                        <td>45</td>
+                                        <td>NELISIWE KNOWLEDGE MGWENGWE</td>
+                                        <td>
+                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>65%</span>
+                                        </td>
+                                         <td class="border px-4 py-2">
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-edit"></i></a>
+                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                                        <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /card -->
+
+                    </div>
+                    <!-- /Cards Section Ends Here -->
+
+                    
+                    <!-- Progress Bar -->
+                    <!--
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 mt-2">
+                        <div class="rounded overflow-hidden shadow bg-white mx-2 w-full pt-2">
+                            <div class="px-6 py-2 border-b border-light-grey">
+                                <div class="font-bold text-xl">Progress Among Projects</div>
+                            </div>
+                            <div class="">
+                                <div class="w-full">
+
+                                    <div class="shadow w-full bg-grey-light">
+                                        <div class="bg-blue-500 text-xs leading-none py-1 text-center text-white"
+                                             style="width: 45%">45%
+                                        </div>
+                                    </div>
+
+
+                                    <div class="shadow w-full bg-grey-light mt-2">
+                                        <div class="bg-teal-500 text-xs leading-none py-1 text-center text-white"
+                                             style="width: 55%">55%
+                                        </div>
+                                    </div>
+
+
+                                    <div class="shadow w-full bg-grey-light mt-2">
+                                        <div class="bg-orange-500 text-xs leading-none py-1 text-center text-white"
+                                             style="width: 65%">65%
+                                        </div>
+                                    </div>
+
+
+                                    <div class="shadow w-full bg-grey-300 mt-2">
+                                        <div class="bg-red-800 text-xs leading-none py-1 text-center text-white"
+                                             style="width: 75%">75%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <!--Profile Tabs-->
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between">
+                        <!--Top user 1-->
+                       
+                        <!--Top user 2-->
+                       
+                        <!--Top user 3-->
+                       
+                    </div>
+                    <!--/Profile Tabs-->
+                </div>
+            </main>
+            <!--/Main-->
+        </div>
+        <!--Footer-->
+      
+        <!--/footer-->
+
+    </div>
+
+</div>
