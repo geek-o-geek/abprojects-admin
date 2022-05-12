@@ -1,0 +1,24 @@
+<nav>
+    <label for="toggleMainNav" class="hamburger-menu"> <i class="fas fa-bars"></i></label>
+    <input type="checkbox" id="toggleMainNav" class="check-toggle" />
+    <label for="toggleMainNav" class="menu-overlay"></label>
+    <div class="main-nav-holder">
+       <ul class="main-nav">
+          <li class="close-nav">
+             <a [routerLink]="['/home']" class="mobilelogo"> Geek <span>Outt</span></a>
+             <label for="toggleMainNav"></label>
+          </li>
+          <li><a [routerLink]="['/home']" class="logowrap"> Geek <span>Outt</span></a></li>
+          <li class="hidedesk">
+             <a [routerLink]="['/contact']"><img src="assets/images/contsctus.svg" alt=""> Contact us</a>
+          </li>
+       </ul>
+    </div>
+    <ul class="right-nav nevmenus">
+       <li class="hidedeskmob"> <a [routerLink]="['/contact']"><img src="assets/images/contsctus.svg" alt=""> Contact us</a></li>
+       <li>
+         <app-mini-cart></app-mini-cart>
+       </li>
+    </ul>
+ </nav>
+ 

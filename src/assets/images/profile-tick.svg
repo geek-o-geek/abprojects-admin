@@ -1,0 +1,6 @@
+<svg id="profile-tick" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <path id="Vector" d="M0,1.9,1.9,3.8,5.7,0" transform="translate(18.05 21.912)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Vector-2" data-name="Vector" d="M5.75,11.087a2.272,2.272,0,0,0-.412,0,5.544,5.544,0,1,1,.412,0Z" transform="translate(9.45 2.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Vector-3" data-name="Vector" d="M8.531,10.787A11.437,11.437,0,0,1,2.269,9.063c-3.025-2.025-3.025-5.325,0-7.337a12.208,12.208,0,0,1,12.512,0" transform="translate(6.456 16.475)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Vector-4" data-name="Vector" d="M0,0H30V30H0Z" transform="translate(30 30) rotate(180)" fill="none" opacity="0"/>
+</svg>
