@@ -57,6 +57,11 @@ export class AddMasterComponent implements OnInit {
   goto(route: string = '') {
     this.router.navigateByUrl(route)
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
   
 
 }
