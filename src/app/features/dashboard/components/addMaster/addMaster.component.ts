@@ -68,7 +68,7 @@ export class AddMasterComponent implements OnInit {
         filename,
       }, headers)
       .subscribe((response) => {
-      this.uploadS3(response);
+        
     })
       alert('Successfully uploaded Master Data');
     } catch (error) {
