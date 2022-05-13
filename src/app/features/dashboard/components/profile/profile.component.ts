@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}')
   }
 
-  fileChange(element: any) {
+  thisFileUpload(element: any) {
     this.uploadedFiles = element.target.files[0];
   }
   
@@ -62,12 +62,13 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/master`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/profile`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     try {
       this.http.post(endpoint, {
         filename,
+        id: this.profiledata?.id
       }, headers)
       .subscribe((response) => {
         
