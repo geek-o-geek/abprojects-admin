@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   uploadedFiles: any;
+  profiledata: any = {}
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}')
   }
 
   fileChange(element: any) {

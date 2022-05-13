@@ -23,8 +23,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  goto(route: string = '') {
-    this.router.navigateByUrl(route)
+  goto(route: string = '', item: any = {}) {
+    if(route === "/dashboard/profile") {
+      localStorage.setItem('profileabworker', JSON.stringify(item));
+    }
+    this.router.navigateByUrl(route);
   }
 
   logout() {
