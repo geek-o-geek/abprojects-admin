@@ -130,8 +130,10 @@
 
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
-                                <div class="font-bold text-xl">Beneficiaries</div>
-                            </div>
+                                <div class="font-bold text-xl">Beneficiaries
+                                    <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
+                                </div>
+                            </div> 
                             <div class="table-responsive">
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
@@ -147,9 +149,9 @@
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let item of data?.worker; index as i">
-                                        <th scope="row">{{ i+1 }} </th>
+                                        <th scope="row">{{ item.id }} </th>
                                         <td>
-                                            <a href="profile.html"
+                                            <a (click)="goto('/dashboard/profile')"
                                             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                                                 
                                             <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full" >
@@ -165,7 +167,7 @@
                                             <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
                                         </td>
                                          <td class="border px-4 py-2">
-                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                <a (click)="goto('/dashboard/profile')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                         <i class="fas fa-eye"></i></a>
                                                 <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                         <i class="fas fa-edit"></i></a>

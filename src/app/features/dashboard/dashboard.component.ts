@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   data: any = {}
+  databackup: any = {}
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
     this.http.get(endpoint, headers)
     .subscribe((res: any): void => {
      this.data = res.data
+     this.databackup = res.data
     })
   }
 
@@ -28,6 +30,16 @@ export class DashboardComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login');
+  }
+
+  search(e: any) {
+    if(e.target.value === '') {
+      return this.data = { ...this.databackup }
+    }
+    console.log(e.target.value)
+    const worker = this.databackup?.worker.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || (obj.id) == e.target.value );
+   
+    this.data = { ...this.data, worker }
   }
 
 }

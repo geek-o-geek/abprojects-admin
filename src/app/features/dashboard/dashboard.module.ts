@@ -6,12 +6,14 @@ import { DashboardComponent } from './dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddMasterComponent } from './components/addMaster/addMaster.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    AddMasterComponent
+    AddMasterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
