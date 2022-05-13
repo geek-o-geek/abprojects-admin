@@ -5,7 +5,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
-import { MiniCartComponent } from '../features/components/mini-cart/mini-cart.component';
 
 
 @NgModule({
@@ -13,8 +12,7 @@ import { MiniCartComponent } from '../features/components/mini-cart/mini-cart.co
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
-    NavigationComponent,
-    MiniCartComponent
+    NavigationComponent
   ],
   exports: [
     LayoutComponent
