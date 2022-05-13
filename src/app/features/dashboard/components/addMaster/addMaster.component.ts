@@ -15,12 +15,17 @@ export class AddMasterComponent implements OnInit {
   }
 
   fileChange(element: any) {
-    this.uploadedFiles = element.target.files;
-    this.upload();
+    this.uploadedFiles = element.target.files[0];
   }
   
   upload() {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=master&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    if (!this.uploadedFiles) {
+      alert('file is mandatory');
+      return;
+    }
+    const filename = this.uploadedFiles.name.split('.xlsx')[0];
+
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
@@ -45,7 +50,7 @@ export class AddMasterComponent implements OnInit {
 
     xhr.onload = () => {
       if (xhr.status === 200) {
-        //nav
+        this.uploadMasterApi(data?.filePath)
       }
     };
     xhr.onerror = () => {
@@ -53,6 +58,23 @@ export class AddMasterComponent implements OnInit {
     };
     xhr.send(this.uploadedFiles);
   }
+
+  uploadMasterApi(filename: string = '') {
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/master`;
+    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+
+    try {
+      this.http.post(endpoint, {
+        filename,
+      }, headers)
+      .subscribe((response) => {
+      this.uploadS3(response);
+    })
+      alert('Successfully uploaded Master Data');
+    } catch (error) {
+      alert('Something went wrong');
+    }
+  };
 
   goto(route: string = '') {
     this.router.navigateByUrl(route)
