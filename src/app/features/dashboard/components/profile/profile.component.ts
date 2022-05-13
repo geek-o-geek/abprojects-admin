@@ -16,8 +16,9 @@ export class ProfileComponent implements OnInit {
     this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}')
   }
 
-  thisFileUpload(element: any) {
+  thisFileUploadchange(element: any) {
     this.uploadedFiles = element.target.files[0];
+    this.upload()
   }
   
   upload() {
@@ -73,10 +74,14 @@ export class ProfileComponent implements OnInit {
       .subscribe((response) => {
         
     })
-      alert('Successfully uploaded Master Data');
+      alert('Successfully uploaded');
     } catch (error) {
       alert('Something went wrong');
     }
+  };
+
+  thisFileUpload() {
+    document.getElementById("file")?.click();
   };
 
   goto(route: string = '') {

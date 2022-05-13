@@ -81,8 +81,8 @@
                             <div class="flex justify-center">
                                 <img [src]="profiledata?.profileImage || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
                                      class="rounded-full border-solid border-white border-2 ">
-                                     <input type="file" id="file" style="display:none;" />
-                                     <button id="button" name="button" value="Upload" click="thisFileUpload($event)">Upload</button>
+                                     <input type="file" id="file" style="display:none;" (change)="thisFileUploadchange($event)" />
+                                     <button id="button" name="button" value="Upload" (click)="thisFileUpload()">Upload</button>
                             </div>
                             <div class="text-center px-3 pb-6 pt-2">
                                 <h3 class="text-black text-sm bold font-sans">{{ profiledata?.fullname }} </h3><h3>{{ profiledata?.id }}</h3>
