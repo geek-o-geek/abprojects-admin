@@ -71,6 +71,10 @@
             <!--/Sidebar-->
             <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
+                
+                 <div class="bg-gray-200 px-2 py-3 border-solid border-gray-300 border-b">
+                    EPWP Participants -> {{ profiledata?.fullname }} | <a href="">Export Participant info in pdf form.</a>
+                </div>
 
                 <div class="flex flex-col">
                     <!-- Stats Row Starts Here -->
@@ -85,9 +89,6 @@
                     <!--Profile Tabs-->
                     <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between">
                         <!--Top user 1-->
-                        <div class="bg-gray-200 px-2 py-3 border-solid border-gray-300 border-b">
-                                EPWP Participants -> {{ profiledata?.fullname }}
-                        </div>
                         
                         <div class="rounded rounded-t-lg overflow-hidden shadow my-3">
                             <div class="flex justify-center">
@@ -106,21 +107,38 @@
                                 <table class="table-fixed">
                                     
                                     <tbody>
+                                        
+                                      <tr>
+                                        <td class="border px-4 py-2">Initial</td>
+                                        <td class="border px-4 py-2"> </td>
+                                       
+                                      </tr>
                                       <tr>
                                         <td class="border px-4 py-2">Attendance</td>
                                         <td class="border px-4 py-2">0</td>
                                        
                                       </tr>
-                                      <tr class="bg-gray-100">
-                                        <td class="border px-4 py-2">Payable Days</td>
-                                        <td class="border px-4 py-2">{{ profiledata?.payableDays }}</td>
-                                        
-                                      </tr>
                                       <tr>
-                                        <td class="border px-4 py-2">Overseer</td>
+                                        <td class="border px-4 py-2">Job Title</td>
+                                        <td class="border px-4 py-2"> </td>
+                                       
+                                      </tr>
+                                       <tr>
+                                        <td class="border px-4 py-2">Reporting to</td>
                                         <td class="border px-4 py-2">{{ profiledata?.supervisor }}</td>
                                        
                                       </tr>
+                                      <tr class="bg-gray-100">
+                                        <td class="border px-4 py-2">No of days worked in current month</td>
+                                        <td class="border px-4 py-2">{{ profiledata?.payableDays }}</td>
+                                        
+                                      </tr>
+                                      <tr class="bg-gray-100">
+                                        <td class="border px-4 py-2">Amount to be paid in current month</td>
+                                        <td class="border px-4 py-2">{{ profiledata?.payableDays }}</td>
+                                        
+                                      </tr>
+                                      
                                         <tr>
                                         <td class="border px-4 py-2">Out of Service</td>
                                         <td class="border px-4 py-2">{{ profiledata?.outOfService }}</td>
@@ -131,24 +149,47 @@
                                         <td class="border px-4 py-2">Edu</td>
                                         <td class="border px-4 py-2">{{ profiledata?.education }}</td>
                                        
-                                      </tr>
+                                        </tr>
                                 
-                                        <!-- <tr>
-                                        <td class="border px-4 py-2">Address</td>
-                                        <td class="border px-4 py-2">street no.1, church gate, South west 4545</td>
+                                        <tr>
+                                        <td class="border px-4 py-2">Bank Name</td>
+                                        <td class="border px-4 py-2"></td>
                                        
-                                      </tr> -->
+                                       </tr> 
+                                        
+                                        <tr>
+                                        <td class="border px-4 py-2">Account Number</td>
+                                        <td class="border px-4 py-2"></td>
+                                       
+                                       </tr> 
+                                        
+                                        <tr>
+                                        <td class="border px-4 py-2">Branch Code</td>
+                                        <td class="border px-4 py-2"></td>
+                                       
+                                       </tr> 
+                                        
+                                        <tr>
+                                        <td class="border px-4 py-2">Branch Name</td>
+                                        <td class="border px-4 py-2"></td>
+                                       
+                                       </tr> 
                           
                                         <tr>
                                         <td class="border px-4 py-2">Contact</td>
                                         <td class="border px-4 py-2">{{ profiledata?.cellNo }}</td>
                                        
-                                      </tr>
+                                       </tr>
+                                        
                                         <tr>
-                                        <td class="border px-4 py-2">Bank Details</td>
-                                        <td class="border px-4 py-2">To be filled by supervisor</td>
+                                            <td class="border px-4 py-2">Upload Contract (pdf/image)</td>
+                                            <td class="border px-4 py-2">
+                                                 <button id="button" name="button" value="Upload" (click)="thisFileUpload()">Upload</button>
+                                            </td>
                                        
-                                      </tr>
+                                       </tr>
+                                       
+                                       
                                     </tbody>
                                 </table>
                             </div>
