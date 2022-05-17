@@ -85,6 +85,10 @@
                     <!--Profile Tabs-->
                     <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between">
                         <!--Top user 1-->
+                        <div class="bg-gray-200 px-2 py-3 border-solid border-gray-300 border-b">
+                                EPWP Participants -> {{ profiledata?.fullname }}
+                        </div>
+                        
                         <div class="rounded rounded-t-lg overflow-hidden shadow my-3">
                             <div class="flex justify-center">
                                 <img [src]="profiledata?.profileImage || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
@@ -97,7 +101,7 @@
                                 <p class="mt-2 font-sans font-light text-grey-700">Outer West, {{ profiledata?.gender }}, {{ profiledata?.age }}</p>
                                 
                             </div>
-                            
+                              
                             <div class="p-3">
                                 <table class="table-fixed">
                                     
