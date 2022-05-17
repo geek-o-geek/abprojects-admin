@@ -110,7 +110,7 @@
                                         
                                       <tr>
                                         <td class="border px-4 py-2">Initial</td>
-                                        <td class="border px-4 py-2"> </td>
+                                        <td class="border px-4 py-2">{{ profiledata?.initials }} </td>
                                        
                                       </tr>
                                       <tr>
@@ -120,7 +120,7 @@
                                       </tr>
                                       <tr>
                                         <td class="border px-4 py-2">Job Title</td>
-                                        <td class="border px-4 py-2"> </td>
+                                        <td class="border px-4 py-2">{{ profiledata?.jobTitle }} </td>
                                        
                                       </tr>
                                        <tr>
@@ -135,7 +135,7 @@
                                       </tr>
                                       <tr class="bg-gray-100">
                                         <td class="border px-4 py-2">Amount to be paid in current month</td>
-                                        <td class="border px-4 py-2">{{ profiledata?.payableDays }}</td>
+                                        <td class="border px-4 py-2">{{ profiledata?.amountPaid }}</td>
                                         
                                       </tr>
                                       
@@ -153,25 +153,25 @@
                                 
                                         <tr>
                                         <td class="border px-4 py-2">Bank Name</td>
-                                        <td class="border px-4 py-2"></td>
+                                        <td class="border px-4 py-2">{{ profiledata?.bankName }}</td>
                                        
                                        </tr> 
                                         
                                         <tr>
                                         <td class="border px-4 py-2">Account Number</td>
-                                        <td class="border px-4 py-2"></td>
+                                        <td class="border px-4 py-2">{{ profiledata?.accountNumber }}</td>
                                        
                                        </tr> 
                                         
                                         <tr>
                                         <td class="border px-4 py-2">Branch Code</td>
-                                        <td class="border px-4 py-2"></td>
+                                        <td class="border px-4 py-2">{{ profiledata?.branchCode }}</td>
                                        
                                        </tr> 
                                         
                                         <tr>
                                         <td class="border px-4 py-2">Branch Name</td>
-                                        <td class="border px-4 py-2"></td>
+                                        <td class="border px-4 py-2">{{ profiledata?.branchName }}</td>
                                        
                                        </tr> 
                           
