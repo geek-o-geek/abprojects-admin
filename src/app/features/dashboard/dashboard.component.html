@@ -46,6 +46,14 @@
                             <span><i class="fas fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+                    <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/addmaster')">
+                        <a 
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                            Settings
+                            <span><i class="fas fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
 
                     <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="logout()">
                         <a 
@@ -66,6 +74,8 @@
                 <div class="flex flex-col">
                     <!-- Stats Row Starts Here -->
                     <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+                       
+                        <!--
                         <div (click)="goto('/dashboard/addmaster')" class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a  class="no-underline text-white text-2xl">
@@ -76,6 +86,7 @@
                                 </a>
                             </div>
                         </div>
+                        -->
 
                         <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
