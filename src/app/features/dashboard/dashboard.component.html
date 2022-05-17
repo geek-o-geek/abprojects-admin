@@ -154,28 +154,29 @@
                                         <th scope="col">Surname</th>
                                         <th scope="col">Ward</th>
                                         <th scope="col">Job Title</th>
-                                         <th scope="col">Supervisors</th>
-                                         <th scope="col">No. of Days worked</th>
+                                        <th scope="col">Supervisors</th>
+                                        <th scope="col">No. of Days worked</th>
                                         <th scope="col">Amt to be paid</th>
-                                        
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let item of data?.worker; index as i">
-                                        <th scope="row">{{ item.id }} </th>
+                                        <th scope="row">{{ item.said }} </th>
                                         <th scope="row">{{ item.initials }} </th>
                                         <td>
                                             <a (click)="goto('/dashboard/profile', item)"
                                             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                                                 
                                             <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full" >
-                                                {{ item.fullname | titlecase }}
+                                                {{ item.lastname | titlecase }}
                                             </button>
                                             </a>
                                         </td>
                                         <td>{{ item.ward | titlecase }}</td>
-                                        <td>{{ item.region | titlecase }}</td>
+                                        <td>{{ item.jobTitle | titlecase }}</td>
                                         <td>{{ item.supervisor | titlecase }}</td>
+                                        <td>{{ item.payableDays }}</td>
+                                        <td>{{ item.amountPaid }}</td>
                                         <td> </td>
                                         <td> </td>
                                         
