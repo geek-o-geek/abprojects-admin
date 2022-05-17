@@ -149,18 +149,21 @@
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Name</th>
+                                        <th scope="col">SA ID</th>
+                                        <th scope="col">Initials</th>
+                                        <th scope="col">Surname</th>
                                         <th scope="col">Ward</th>
-                                        <th scope="col">Region</th>
+                                        <th scope="col">Job Title</th>
                                          <th scope="col">Supervisors</th>
-                                         <th scope="col">Attendance</th>
+                                         <th scope="col">No. of Days worked</th>
+                                        <th scope="col">Amt to be paid</th>
                                         
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let item of data?.worker; index as i">
                                         <th scope="row">{{ item.id }} </th>
+                                        <th scope="row">{{ item.initials }} </th>
                                         <td>
                                             <a (click)="goto('/dashboard/profile', item)"
                                             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
@@ -173,10 +176,16 @@
                                         <td>{{ item.ward | titlecase }}</td>
                                         <td>{{ item.region | titlecase }}</td>
                                         <td>{{ item.supervisor | titlecase }}</td>
+                                        <td> </td>
+                                        <td> </td>
                                         
+                                        <!--
                                         <td>
                                             <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
                                         </td>
+                                        -->
+                                        
+                                        
                                          <td class="border px-4 py-2">
                                                 <a (click)="goto('/dashboard/profile', item)" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                         <i class="fas fa-eye"></i></a>
