@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   uploadedFiles: any;
-  profiledata: any = {}
+  profiledata: any = {};
+  profileImage: string = '';
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}')
+    this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
+    this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
   }
 
   thisFileUploadchange(element: any) {
@@ -26,7 +28,7 @@ export class ProfileComponent implements OnInit {
       alert('file is mandatory');
       return;
     }
-    const filename = this.uploadedFiles.name.split('.xlsx')[0];
+    const filename = this.uploadedFiles.name;
 
     const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
@@ -47,7 +49,7 @@ export class ProfileComponent implements OnInit {
     });
 
     xhr.open("PUT", data?.uploadUrl);
-    xhr.setRequestHeader("content-type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    xhr.setRequestHeader("content-type", "image/jpeg");
     xhr.setRequestHeader("key", data?.filePath);
     xhr.setRequestHeader("cache-control", "no-cache");
 

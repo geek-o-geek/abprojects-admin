@@ -92,14 +92,14 @@
                         
                         <div class="rounded rounded-t-lg overflow-hidden shadow my-3">
                             <div class="flex justify-center">
-                                <img [src]="profiledata?.profileImage || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
+                                <img width="80" height="80" [src]="profileImage || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
                                      class="rounded-full border-solid border-white border-2 ">
                                      <input type="file" id="file" style="display:none;" (change)="thisFileUploadchange($event)" />
                                      <button id="button" name="button" value="Upload" (click)="thisFileUpload()">Upload</button>
                             </div>
                             <div class="text-center px-3 pb-6 pt-2">
                                 <h3 class="text-black text-sm bold font-sans">{{ profiledata?.fullname }} </h3><h3>{{ profiledata?.id }}</h3>
-                                <p class="mt-2 font-sans font-light text-grey-700">Outer West, {{ profiledata?.gender }}, {{ profiledata?.age }}</p>
+                                <p class="mt-2 font-sans font-light text-grey-700">{{ profiledata?.ward }}, {{ profiledata?.gender }}, {{ profiledata?.age }}</p>
                                 
                             </div>
                               
