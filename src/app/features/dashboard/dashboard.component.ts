@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit {
     if(e.target.value === '') {
       return this.data = { ...this.databackup }
     }
-    const worker = this.databackup?.worker.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || (obj.said) == e.target.value );
+    console.log(this.databackup)
+    const worker = this.databackup?.worker.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || obj.said.indexOf(e.target.value) >= 0 );
    
     this.data = { ...this.data, worker }
   }
