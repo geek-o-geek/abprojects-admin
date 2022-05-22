@@ -4,11 +4,13 @@ import { AddMasterComponent } from './components/addMaster/addMaster.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
 import { SupervisorComponent } from './components/supervisor/supervisor.component';
+import { WardComponent } from './components/ward/ward.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
 { path: 'profile', component: ProfileComponent },
-{ path: 'supervisor', component: SupervisorComponent }
+{ path: 'supervisor', component: SupervisorComponent },
+{ path: 'ward', component: WardComponent }
 ];
 
 @NgModule({
