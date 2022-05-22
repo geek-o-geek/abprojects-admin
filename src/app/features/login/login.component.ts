@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  isLogging: boolean = false;
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin() {
+    this.isLogging = true;
     const { phone, password } = this.form.value;
 
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/login";
@@ -29,9 +31,10 @@ export class LoginComponent implements OnInit {
       password
     })
     .subscribe((res: any): void => {
+      this.isLogging = false;
       localStorage.setItem("abprojectsToken", res?.token || '')
       this.router.navigateByUrl("/dashboard");
-    })
+    }, err => this.isLogging = false)
   }
 
 }
