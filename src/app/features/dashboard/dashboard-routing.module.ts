@@ -5,12 +5,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
 import { SupervisorComponent } from './components/supervisor/supervisor.component';
 import { WardComponent } from './components/ward/ward.component';
+import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
 { path: 'profile', component: ProfileComponent },
 { path: 'supervisor', component: SupervisorComponent },
-{ path: 'ward', component: WardComponent }
+{ path: 'ward', component: WardComponent },
+{ path: 'map', component: MapComponent }
 ];
 
 @NgModule({
