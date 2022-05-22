@@ -90,53 +90,23 @@
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
-                                        <th scope="col">SA ID</th>
-                                        <th scope="col">Initials</th>
-                                        <th scope="col">Surname</th>
-                                        <th scope="col">Ward</th>
-                                        <th scope="col">Job Title</th>
-                                        <th scope="col">Supervisors</th>
-                                        <th scope="col">No. of Days worked</th>
-                                        <th scope="col">Amt to be paid</th>
+                                        
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Region</th>
+                                        
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let item of data?.worker; index as i">
-                                        <th scope="row">{{ item.said }} </th>
-                                        <th scope="row">{{ item.initials }} </th>
-                                        <td>
-                                            <a (click)="goto('/dashboard/profile', item)"
-                                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                                
-                                            <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full" >
-                                                {{ item.lastname | titlecase }}
-                                            </button>
-                                            </a>
-                                        </td>
-                                        <td>{{ item.ward | titlecase }}</td>
-                                        <td>{{ item.jobTitle | titlecase }}</td>
-                                        <td>{{ item.supervisor | titlecase }}</td>
-                                        <td>{{ item.payableDays }}</td>
-                                        <td>{{ item.amountPaid }}</td>
-                                        <td> </td>
-                                        <td> </td>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <th scope="row"></th>
                                         
                                         <!--
                                         <td>
                                             <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
                                         </td>
                                         -->
-                                        
-                                        
-                                         <td class="border px-4 py-2">
-                                                <a (click)="goto('/dashboard/profile', item)" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                        <i class="fas fa-eye"></i></a>
-                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                        <i class="fas fa-edit"></i></a>
-                                                <a class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
-                                                        <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
+                                       
                                     </tr>
                                   
                                     </tbody>
