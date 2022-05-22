@@ -11,16 +11,28 @@ export class SupervisorComponent implements OnInit {
   uploadedFiles: any;
   profiledata: any = {};
   profileImage: string = '';
+  data: any = {}
+  databackup: any = {}
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
-    this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get";
+    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+
+    this.http.get(endpoint, headers)
+    .subscribe((res: any): void => {
+     this.data = res.data
+     this.databackup = res.data
+    })
   }
 
   thisFileUploadchange(element: any) {
     this.uploadedFiles = element.target.files[0];
     this.upload()
+  }
+
+  search(e: any) {
+
   }
   
   upload() {
@@ -86,7 +98,7 @@ export class SupervisorComponent implements OnInit {
     document.getElementById("file")?.click();
   };
 
-  goto(route: string = '') {
+  goto(route: string = '', item: any = {}) {
     this.router.navigateByUrl(route)
   }
 

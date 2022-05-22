@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddMasterComponent } from './components/addMaster/addMaster.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
-import { SupervisorComponent } from './supervisor.component';
+import { SupervisorComponent } from './components/supervisor/supervisor.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
