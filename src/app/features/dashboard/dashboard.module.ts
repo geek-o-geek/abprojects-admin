@@ -9,6 +9,8 @@ import { AddMasterComponent } from './components/addMaster/addMaster.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SupervisorComponent } from './components/supervisor/supervisor.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
+import { MapComponent } from './components/map/map.component';
+import { WardComponent } from './components/ward/ward.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -20,7 +22,9 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AddMasterComponent,
     ProfileComponent,
     SupervisorComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    MapComponent,
+    WardComponent
   ],
   imports: [
     CommonModule,

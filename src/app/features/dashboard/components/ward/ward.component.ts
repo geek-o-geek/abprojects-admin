@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-supervisor',
-  templateUrl: './supervisor.component.html',
-  styleUrls: ['./supervisor.component.scss']
+  selector: 'app-ward',
+  templateUrl: './ward.component.html',
+  styleUrls: ['./ward.component.scss']
 })
-export class SupervisorComponent implements OnInit {
+export class WardComponent implements OnInit {
   uploadedFiles: any;
   profiledata: any = {};
   profileImage: string = '';

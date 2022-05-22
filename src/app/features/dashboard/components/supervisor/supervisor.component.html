@@ -97,9 +97,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <th scope="row"></th>
+                                    <tr *ngFor="let item of data.supervisor">
+                                        <th scope="row">{{ item?.fullname }}</th>
+                                        <th scope="row">{{ item?.region }}</th>
                                         
                                         <!--
                                         <td>

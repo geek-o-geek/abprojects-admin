@@ -32,7 +32,12 @@ export class SupervisorComponent implements OnInit {
   }
 
   search(e: any) {
-
+    if(e.target.value === '') {
+      return this.data = { ...this.databackup }
+    }
+    const supervisor = this.databackup?.supervisor.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
+   
+    this.data = { ...this.data, supervisor }
   }
   
   upload() {
