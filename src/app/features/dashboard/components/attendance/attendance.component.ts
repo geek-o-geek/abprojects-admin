@@ -4,8 +4,8 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-attendance',
-  templateUrl: './Attendance.component.html',
-  styleUrls: ['./Attendance.component.scss'],
+  templateUrl: './attendance.component.html',
+  styleUrls: ['./attendance.component.scss'],
 })
 export class AttendanceComponent {
   Events: any[] = [];
