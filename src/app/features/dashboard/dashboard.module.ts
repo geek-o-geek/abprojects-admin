@@ -14,6 +14,8 @@ import { WardComponent } from './components/ward/ward.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { AgmCoreModule } from '@agm/core';
+import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
 @NgModule({
@@ -24,7 +26,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     SupervisorComponent,
     AttendanceComponent,
     MapComponent,
-    WardComponent
+    WardComponent,
+    AttendanceDetailComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,10 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyATXgsxkCRPyJHS5KdkIRGVJiKy7aiTRfA'
+    })
   ]
 })
 export class DashboardModule { }

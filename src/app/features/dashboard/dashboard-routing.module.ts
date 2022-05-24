@@ -7,6 +7,7 @@ import { SupervisorComponent } from './components/supervisor/supervisor.componen
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { WardComponent } from './components/ward/ward.component';
 import { MapComponent } from './components/map/map.component';
+import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'supervisor', component: SupervisorComponent },
 { path: 'attendance', component: AttendanceComponent },
 { path: 'ward', component: WardComponent },
-{ path: 'map', component: MapComponent }
+{ path: 'map', component: MapComponent },
+{ path: 'attendanceDetail', component: AttendanceDetailComponent }
 ];
 
 @NgModule({
