@@ -27,18 +27,15 @@ export class AttendanceComponent {
 
   constructor( private http: HttpClient, private router: Router, private httpClient: HttpClient) {}
   onDateClick(res: any) {
-    console.log('Clicked on date : ' + res.dateStr);
+    console.log('Clicked on date : ' + res);
   }
   ngOnInit() {
     this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
+  }
+
+
+  ngAfterViewInit(){
     this.attendanceListByWorker(this.profiledata?.id)
-    setTimeout(() => {
-      this.calendarOptions = {
-        initialView: 'dayGridMonth',
-        dateClick: this.onDateClick.bind(this),
-        events: this.Events,
-      };
-    }, 2500);
   }
 
   attendanceListByWorker(workerId: any = '') {
@@ -49,10 +46,20 @@ export class AttendanceComponent {
     this.http.get(endpoint, headers)
     .subscribe((res: any): void => {
       setTimeout(() => {
+        const arr: any = []
         res.result.forEach((obj: any) => {
-          this.Events.push({ start: obj.attendanceDate ? obj.attendanceDate.split("T")[0]: '', title: obj.title })
+          arr.push({ start: obj.attendanceDate ? obj.attendanceDate.split("T")[0]: '', title: obj.title })
         });
-        console.log(this.Events, "his.Events")
+
+        this.Events = [...arr]
+        console.log(this.Events, "this.Events")
+        setTimeout(() => {
+          this.calendarOptions = {
+            initialView: 'dayGridMonth',
+            dateClick: this.onDateClick.bind(this),
+            events: this.Events,
+          };
+        }, 2500);
       }, 2200);
     })
   }
