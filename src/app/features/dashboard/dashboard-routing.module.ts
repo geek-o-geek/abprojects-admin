@@ -8,6 +8,8 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { WardComponent } from './components/ward/ward.component';
 import { MapComponent } from './components/map/map.component';
 import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
+import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
+
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -16,7 +18,8 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'attendance', component: AttendanceComponent },
 { path: 'ward', component: WardComponent },
 { path: 'map', component: MapComponent },
-{ path: 'attendanceDetail', component: AttendanceDetailComponent }
+{ path: 'attendanceDetail', component: AttendanceDetailComponent },
+{ path: 'allAttendance', component: AllAttendanceComponent }
 ];
 
 @NgModule({
