@@ -40,12 +40,14 @@ export class AllAttendanceComponent implements OnInit {
   }
 
   goto(route: string = '', item: any = {}) {
-    if(!this.dt) {
-      alert("Please select date")
+    if (route === '/dashboard/attendanceDetail') {
+      if(!this.dt) {
+        alert("Please select date")
+      }
+      const dt = new Date(this.dt)
+      dt.setDate(dt.getDate() + 1)
+      item['dt'] = dt.toISOString().split("T")[0];
     }
-    const dt = new Date(this.dt)
-    dt.setDate(dt.getDate() + 1)
-    item['dt'] = dt.toISOString().split("T")[0];
     this.router.navigateByUrl(route, { state: item })
   }
 

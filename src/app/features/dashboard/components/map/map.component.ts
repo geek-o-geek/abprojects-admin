@@ -8,97 +8,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  uploadedFiles: any;
-  profiledata: any = {};
-  profileImage: string = '';
-  data: any = {}
-  databackup: any = {}
-  constructor(private http: HttpClient, private router: Router) { }
+  lat!: number;
+  lng!: number;
+  Events: any[] = [];
+  attendanceDetailData: any = [];
+  myDetails: any = [];
+  dt: string = '';
 
-  ngOnInit(): void {
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get";
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
-
-    this.http.get(endpoint, headers)
-    .subscribe((res: any): void => {
-     this.data = res.data
-     this.databackup = res.data
-    })
-  }
-
-  thisFileUploadchange(element: any) {
-    this.uploadedFiles = element.target.files[0];
-    this.upload()
-  }
-
-  search(e: any) {
-
-  }
+  constructor(private http: HttpClient, private router: Router) {}
   
-  upload() {
-    if (!this.uploadedFiles) {
-      alert('file is mandatory');
-      return;
-    }
-    const filename = this.uploadedFiles.name;
+  ngOnInit() {}
+  ngAfterViewInit() {
+    this.dt = new Date().toISOString().split("T")[0];
+  
+      const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendanceByDate?dt=${new Date().toISOString().split("T")[0]}`;
+      const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
-
-    this.http.get(endpoint, headers)
-      .subscribe((response) => {
-      this.uploadS3(response);
-    })
+      this.http.get(endpoint, headers)
+      .subscribe((res: any): void => {
+        this.attendanceDetailData = res?.result || [];
+        this.updateLocation();
+      });
   }
 
-  uploadS3(data: any) {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-      }
-    });
-
-    xhr.open("PUT", data?.uploadUrl);
-    xhr.setRequestHeader("content-type", "image/jpeg");
-    xhr.setRequestHeader("key", data?.filePath);
-    xhr.setRequestHeader("cache-control", "no-cache");
-
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        this.uploadMasterApi(data?.filePath)
-      }
-    };
-    xhr.onerror = () => {
-      alert('some error while uploading')
-    };
-    xhr.send(this.uploadedFiles);
+  updateLocation() {
+    this.lat = +this.attendanceDetailData[0]?.startLocation;
+    this.lng = +this.attendanceDetailData[0]?.endLocation;
   }
 
-  uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/profile`;
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
-
-    try {
-      this.http.post(endpoint, {
-        filename,
-        id: this.profiledata?.id
-      }, headers)
-      .subscribe((response) => {
-        
-    })
-      alert('Successfully uploaded');
-    } catch (error) {
-      alert('Something went wrong');
-    }
-  };
-
-  thisFileUpload() {
-    document.getElementById("file")?.click();
-  };
-
-  goto(route: string = '', item: any = {}) {
+  goto(route: string = '') {
     this.router.navigateByUrl(route)
   }
 
@@ -106,6 +44,4 @@ export class MapComponent implements OnInit {
     localStorage.clear();
     this.router.navigateByUrl('/login');
   }
-  
-
 }

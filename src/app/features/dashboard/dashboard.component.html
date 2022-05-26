@@ -134,10 +134,10 @@
                         
                          <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2" style="background-color: #4299e1">
                             <div class="p-4 flex flex-col">
-                                <a href="livemap.html" class="no-underline text-white text-2xl">
-                                    live on Map
+                                <a style="cursor: pointer;" (click)="goto('/dashboard/map')" class="no-underline text-white text-2xl">
+                                    Map
                                 </a>
-                                <a href="livemap.html" class="no-underline text-white text-lg">
+                                <a style="cursor: pointer;" (click)="goto('/dashboard/map')" class="no-underline text-white text-lg">
                                     {{ data?.supervisor?.length }}
                                 </a>
                             </div>
