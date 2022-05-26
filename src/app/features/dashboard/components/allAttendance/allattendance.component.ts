@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-supervisor',
-  templateUrl: './supervisor.component.html',
-  styleUrls: ['./supervisor.component.scss']
+  templateUrl: './allattendance.component.html',
+  styleUrls: ['./allattendance.component.scss']
 })
 export class SupervisorComponent implements OnInit {
   uploadedFiles: any;
