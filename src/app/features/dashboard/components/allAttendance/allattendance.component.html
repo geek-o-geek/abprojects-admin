@@ -105,16 +105,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let item of data?.worker">
-                                        <th scope="row">{{ item?.fullname }} </th>
-                                        <th scope="row">
-                                            <a style="cursor: pointer;" (click)="goto('/dashboard/attendanceDetail', item)"
-                                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                                 
-                                               view location / image
-                                           
-                                            </a>
-                                        </th>
+                                    <tr *ngFor="let item of data">
+                                        <ng-container *ngIf="item?.fullname">
+                                            <th scope="row">{{ item?.fullname }} </th>
+                                            <th scope="row">
+                                                <a style="cursor: pointer;" (click)="goto('/dashboard/attendanceDetail', item)"
+                                                class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                                                    
+                                                view location / image
+                                            
+                                                </a>
+                                            </th>
+                                        </ng-container>
                                       
                                     </tr>
                                   

@@ -19,12 +19,12 @@ export class AttendanceDetailComponent {
   constructor(private http: HttpClient, private location:Location, private router: Router) {}
  
   ngOnInit() {
-    const { id = 0, dt }: any = this.location.getState() || {};
+    const { workerId = 0, dt }: any = this.location.getState() || {};
 
     this.dt = dt || new Date().toISOString().split("T")[0];
   
-    if(id) {
-      const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendanceByUserDate?userId=${id}&dt=${this.dt}`;
+    if(workerId) {
+      const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendanceByUserDate?userId=${workerId}&dt=${this.dt}`;
       const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
       this.http.get(endpoint, headers)

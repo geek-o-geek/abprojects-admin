@@ -16,13 +16,13 @@ export class AllAttendanceComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get";
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendancenWorkerByDate?dt=${new Date().toISOString().split("T")[0]}`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
     .subscribe((res: any): void => {
-     this.data = res.data;
-     this.databackup = res.data;
+     this.data = res.result;
+     this.databackup = res.result;
     })
   }
 
@@ -34,7 +34,7 @@ export class AllAttendanceComponent implements OnInit {
     if(e.target.value === '') {
       return this.data = { ...this.databackup }
     }
-    const worker = this.databackup?.worker.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
+    const worker = this.databackup?.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
    
     this.data = { ...this.data, worker }
   }
