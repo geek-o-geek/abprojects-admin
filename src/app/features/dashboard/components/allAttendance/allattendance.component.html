@@ -83,7 +83,16 @@
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
                                 <div class="font-bold text-xl">EPWP Attendance
-                                    <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
+                                    <span style="margin-right: auto;">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dt">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker [(ngModel)]="dt" ngDefaultControl (selectedChanged)="onDate($event)"></mat-datepicker>
+                                          </mat-form-field>
+                                        </span>
+                                    <span style="float: right; border: 2px solid #e2e8f0;">
+                                        
+                                        <input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
                                 </div>
                             </div> 
                             <div class="table-responsive">
@@ -96,10 +105,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let item of data.supervisor">
-                                        <th scope="row"> </th>
+                                    <tr *ngFor="let item of data?.worker">
+                                        <th scope="row">{{ item?.fullname }} </th>
                                         <th scope="row">
-                                            <a (click)="goto('/dashboard/attendanceDetail', item)"
+                                            <a style="cursor: pointer;" (click)="goto('/dashboard/attendanceDetail', item)"
                                                class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                                                  
                                                view location / image

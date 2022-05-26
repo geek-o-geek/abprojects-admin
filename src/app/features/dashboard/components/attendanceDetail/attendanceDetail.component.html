@@ -79,9 +79,11 @@
                 <agm-map [latitude]="lat" [longitude]="lng">
                     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                   </agm-map>
-                  <div style="margin-top: 20px; position: absolute; left: 50%; transform: translateX(-30%);" >
-                    <img height="300px" width="600px" [src]="'https://abprojects-bucket1.s3.amazonaws.com/'+attendanceDetailData?.photo" alt="attendance pic" />
+                  <ng-container *ngIf="attendanceDetailData?.photo">
+                    <div style="margin-top: 20px; position: absolute; left: 50%; transform: translateX(-30%);" >
+                        <img height="300px" width="600px" [src]="'https://abprojects-bucket1.s3.amazonaws.com/'+attendanceDetailData?.photo" alt="attendance pic" />
                     </div>
+                </ng-container>
               </div>
               
           </main>

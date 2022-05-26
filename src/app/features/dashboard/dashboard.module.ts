@@ -16,6 +16,12 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { AgmCoreModule } from '@agm/core';
 import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
+import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
 @NgModule({
@@ -27,7 +33,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AttendanceComponent,
     MapComponent,
     WardComponent,
-    AttendanceDetailComponent
+    AttendanceDetailComponent,
+    AllAttendanceComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +43,10 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     ReactiveFormsModule,
     FormsModule,
     FullCalendarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyATXgsxkCRPyJHS5KdkIRGVJiKy7aiTRfA'
     })
