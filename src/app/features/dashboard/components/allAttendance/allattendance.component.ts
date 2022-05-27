@@ -16,7 +16,11 @@ export class AllAttendanceComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendancenWorkerByDate?dt=${new Date().toISOString().split("T")[0]}`;
+    this.hitApi()
+  }
+
+  hitApi() {
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendancenWorkerByDate?dt=${this.dt || new Date().toISOString().split("T")[0]}`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
@@ -26,8 +30,11 @@ export class AllAttendanceComponent implements OnInit {
     })
   }
 
-  public onDate(event: any): void {
-    this.dt = event;
+  public onDate(e: any): void {
+    const dt = new Date(e.value)
+    dt.setDate(dt.getDate() + 1)
+    this.dt = dt.toISOString().split("T")[0];
+    this.hitApi()
   }
 
   search(e: any) {

@@ -85,7 +85,7 @@
                                 <div class="font-bold text-xl">EPWP Attendance
                                     <span style="margin-right: auto;">
                                         <mat-form-field>
-                                            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dt">
+                                            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="dt" (dateChange)="onDate($event)">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker [(ngModel)]="dt" ngDefaultControl (selectedChanged)="onDate($event)"></mat-datepicker>
                                           </mat-form-field>

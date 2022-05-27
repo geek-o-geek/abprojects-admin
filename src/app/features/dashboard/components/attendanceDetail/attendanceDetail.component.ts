@@ -16,7 +16,7 @@ export class AttendanceDetailComponent {
   myDetails: any = [];
   dt: string = '';
 
-  constructor(private http: HttpClient, private location:Location, private router: Router) {}
+  constructor(private http: HttpClient, private location: Location, private router: Router) {}
  
   ngOnInit() {
     const { workerId = 0, dt }: any = this.location.getState() || {};

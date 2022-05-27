@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./ward.component.scss']
 })
 export class WardComponent implements OnInit {
-  uploadedFiles: any;
   profiledata: any = {};
   profileImage: string = '';
   data: any = {}
@@ -26,80 +25,17 @@ export class WardComponent implements OnInit {
     })
   }
 
-  thisFileUploadchange(element: any) {
-    this.uploadedFiles = element.target.files[0];
-    this.upload()
-  }
-
   search(e: any) {
-
-  }
-  
-  upload() {
-    if (!this.uploadedFiles) {
-      alert('file is mandatory');
-      return;
+    if(e.target.value === '') {
+      return this.data = { ...this.databackup }
     }
-    const filename = this.uploadedFiles.name;
-
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
-
-    this.http.get(endpoint, headers)
-      .subscribe((response) => {
-      this.uploadS3(response);
-    })
+    const wards = this.databackup?.wards.filter((obj: any, index: number) => obj.ward?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || obj.region?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
+   
+    this.data = { ...this.data, wards }
   }
-
-  uploadS3(data: any) {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-      }
-    });
-
-    xhr.open("PUT", data?.uploadUrl);
-    xhr.setRequestHeader("content-type", "image/jpeg");
-    xhr.setRequestHeader("key", data?.filePath);
-    xhr.setRequestHeader("cache-control", "no-cache");
-
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        this.uploadMasterApi(data?.filePath)
-      }
-    };
-    xhr.onerror = () => {
-      alert('some error while uploading')
-    };
-    xhr.send(this.uploadedFiles);
-  }
-
-  uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/profile`;
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
-
-    try {
-      this.http.post(endpoint, {
-        filename,
-        id: this.profiledata?.id
-      }, headers)
-      .subscribe((response) => {
-        
-    })
-      alert('Successfully uploaded');
-    } catch (error) {
-      alert('Something went wrong');
-    }
-  };
-
-  thisFileUpload() {
-    document.getElementById("file")?.click();
-  };
 
   goto(route: string = '', item: any = {}) {
-    this.router.navigateByUrl(route)
+    this.router.navigateByUrl(route, { state: item });
   }
 
   logout() {

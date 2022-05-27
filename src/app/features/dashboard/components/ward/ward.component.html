@@ -82,12 +82,35 @@
 
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
-                                <div class="font-bold text-xl">Current Location on Map
+                                <div class="font-bold text-xl">Wards
                                     <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
                                 </div>
                             </div> 
                             <div class="table-responsive">
-                                
+                                <table class="table text-grey-darkest">
+                                    <thead class="bg-grey-dark text-white text-normal">
+                                    <tr>
+                                        
+                                        <th scope="col">Ward</th>
+                                        <th scope="col">Region</th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let item of data.wards" (click)="goto('/dashboard/supervisor', item)">
+                                        <th scope="row">{{ item?.ward }}</th>
+                                        <th scope="row">{{ item?.region }}</th>
+                                        
+                                        <!--
+                                        <td>
+                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
+                                        </td>
+                                        -->
+                                       
+                                    </tr>
+                                  
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <!-- /card -->
