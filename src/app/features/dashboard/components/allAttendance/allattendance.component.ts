@@ -52,7 +52,7 @@ export class AllAttendanceComponent implements OnInit {
         alert("Please select date")
       }
       const dt = new Date(this.dt)
-      dt.setDate(dt.getDate() + 1)
+      dt.setDate(dt.getDate())
       item['dt'] = dt.toISOString().split("T")[0];
     }
     this.router.navigateByUrl(route, { state: item })
