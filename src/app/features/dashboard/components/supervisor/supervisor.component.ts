@@ -26,10 +26,13 @@ export class SupervisorComponent implements OnInit {
      let data = res.data || {};
 
      if(id) {
-       data = data?.supervisor?.filter((item: any) => item?.wardId===id);
+       const dataFiltered: any = data?.supervisor?.filter((item: any) => item?.wardId===id);
+       this.data = dataFiltered; 
+       this.databackup = dataFiltered;
+      } else {
+      this.data = data?.supervisor
+      this.databackup = data?.supervisor
      }
-     this.data = data
-     this.databackup = data
     })
   }
 
