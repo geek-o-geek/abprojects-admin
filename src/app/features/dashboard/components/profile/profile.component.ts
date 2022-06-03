@@ -11,11 +11,13 @@ export class ProfileComponent implements OnInit {
   uploadedFiles: any;
   profiledata: any = {};
   profileImage: string = '';
+  idCard: string = '';
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
     this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
+    this.idCard = this.profiledata?.idCard ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`: ''
   }
 
   thisFileUploadchange(element: any) {
