@@ -213,34 +213,18 @@
                                 <!--
                                 <img src="https://i.imgur.com/8Km9tLL.jpg" alt=""
                                      class="rounded-full border-solid border-white border-2 "> -->
-                                Work Location
+                                Documents
                             </div>
                             <div class="text-center px-3 pb-6 pt-2">
-                                
-                                
-                                <div id="googleMap" style="width:100%;height:400px;"></div>
-
-                                <script>
-                                function myMap() {
-                                var mapProp= {
-                                  center:new google.maps.LatLng(19.0154,29.1549),
-                                  zoom:5,
-                                };
-                                var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-                
-                                }
-                                </script>
-
-
-                                <script
-                                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh85Vgsr23Wt0Z7o0SQJgTe8HYKYgvxGY&callback=myMap&v=weekly"
-                                  defer
-                                ></script>
-                              
+                                <h>ID Card</h>
+                                <img width="80" height="80" [src]="idCard || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
+                                     class="rounded-full border-solid border-white border-2 ">
                             </div>
                             
                             <div class="p-3">
-                                
+                                <h>Contract</h>
+                                <img width="80" height="80" [src]="contract || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
+                                     class="rounded-full border-solid border-white border-2 ">
                             </div>
                             
                         
@@ -253,6 +237,7 @@
                     <!--/Profile Tabs-->
                     
                      <!-- Progress Bar -->
+                    <!--
                     
                     <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 mt-2">
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full pt-2">
@@ -293,7 +278,7 @@
                         </div>
                     </div>
                     
-                    
+                    -->
                     
                     
                     
