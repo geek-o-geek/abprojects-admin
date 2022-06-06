@@ -90,7 +90,7 @@
 
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
-                                <div class="font-bold text-xl">EPWP Supervisors
+                                <div class="font-bold text-xl">Road Inspection
                                     <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
                                 </div>
                             </div> 
@@ -99,26 +99,52 @@
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
                                         
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Region</th>
+                                        <th scope="col">Inspection Time</th>
+                                        <th scope="col">Litter</th>
+                                        <th scope="col">Road</th>
+                                        <th scope="col">Safety</th>
+                                        <th scope="col">Verge</th>
+                                        <th scope="col">Drain</th>
+                                        <th scope="col">Erosion</th>
+                                        <th scope="col">Comment</th>
+
+                                        <!-- comment: "ereree"
+                                        created_at: "2022-06-06T04:31:04.000Z"
+                                        drain: "ere"
+                                        erosion: "ere"
+                                        id: 1
+                                        inspectionImage1: "2b780045-242b-4e97-b15f-7fd8eb27d4fd.JPG"
+                                        inspectionImage2: ""
+                                        inspectionImage3: ""
+                                        inspectionImage4: ""
+                                        inspectionTime: "1:0"
+                                        litter: "ee"
+                                        location: "37.4220936,-122.083922"
+                                        rating: 1
+                                        road: "ere"
+                                        safety: 0
+                                        supervisorId: 2422
+                                        updated_at: "2022-06-06T04:31:04.000Z"
+                                        verge: "eer"
+                                        workerId: 30011 -->
                                         
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr *ngFor="let item of data">
-                                        <th scope="row">{{ item?.fullname }}</th>
-                                        <th scope="row">{{ item?.region }}</th>
-                                        
-                                        <!--
-                                        <td>
-                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
-                                        </td>
-                                        -->
-                                       
-                                    </tr>
+                                    <tbody>  
+                                        <tr *ngFor="let item of tableContent;">
+                                            <th scope="row">{{ item?.inspectionTime }}</th>
+                                            <th scope="row">{{ item?.litter }}</th>
+                                            <th scope="row">{{ item?.road }}</th>
+                                            <th scope="row">{{ item?.safety === 0 ? 'No': 'yes' }}</th>
+                                            <th scope="row">{{ item?.verge }}</th>
+                                            <th scope="row">{{ item?.drain }}</th>
+                                            <th scope="row">{{ item?.erosion }}</th>
+                                            <th scope="row">{{ item?.comment }}</th>
+                                        </tr>
                                   
                                     </tbody>
                                 </table>
+                               
                             </div>
                         </div>
                         <!-- /card -->

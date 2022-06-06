@@ -9,6 +9,7 @@ import { WardComponent } from './components/ward/ward.component';
 import { MapComponent } from './components/map/map.component';
 import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
 import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
+import { RoadInspectionComponent } from './components/roadInspection/roadInspection.component';
 
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'ward', component: WardComponent },
 { path: 'map', component: MapComponent },
 { path: 'attendanceDetail', component: AttendanceDetailComponent },
-{ path: 'allAttendance', component: AllAttendanceComponent }
+{ path: 'allAttendance', component: AllAttendanceComponent },
+{ path: 'roadInspection', component: RoadInspectionComponent },
 ];
 
 @NgModule({
