@@ -99,6 +99,11 @@
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
                                 <div class="font-bold text-xl">EPWP Supervisors
+                                    <button data-modal='toppedModal' (click)="goto('/dashboard/managesupervisor')" 
+                                    class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Add Supervisor
+                                    </button>
+                                    
                                     <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
                                 </div>
                             </div> 
