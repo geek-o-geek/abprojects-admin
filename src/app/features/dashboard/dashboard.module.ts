@@ -18,6 +18,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
 import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
 import { RoadInspectionComponent } from './components/roadInspection/roadInspection.component';
+import { ManageSupervisorComponent } from './components/manageSupervisor/manageSupervisor.component'; 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +37,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     WardComponent,
     AttendanceDetailComponent,
     AllAttendanceComponent,
-    RoadInspectionComponent
+    RoadInspectionComponent,
+    ManageSupervisorComponent
   ],
   imports: [
     CommonModule,
