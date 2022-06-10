@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,30 +9,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./manageSupervisor.component.scss']
 })
 export class ManageSupervisorComponent implements OnInit {
-  profiledata: any = {};
-  profileImage: string = '';
-  data: any = {}
-  databackup: any = {}
-  constructor(private http: HttpClient, private router: Router) { }
+  form!: FormGroup;
+  constructor(private http: HttpClient,
+    private fb: FormBuilder,
+    private router: Router) {
+      this.createForm();
+    }
 
   ngOnInit(): void {
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get";
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+      
+  }
 
-    this.http.get(endpoint, headers)
-    .subscribe((res: any): void => {
-     this.data = res.data
-     this.databackup = res.data
+  createForm() {
+    this.form = this.fb.group({
+      member_no: ['', Validators.compose([Validators.required])],
+      surname: ['', Validators.compose([Validators.required])],
+      first_name: ['', Validators.compose([Validators.required])],
+      initials: ['', Validators.compose([Validators.required])],
+      area: ['', Validators.compose([Validators.required])],
+      phone_no: ['', Validators.compose([Validators.required])],
+      safety_boots: ['', Validators.compose([Validators.required])],
+      education: ['', Validators.compose([Validators.required])],
+      dependants: ['', Validators.compose([Validators.required])],
+      overseer_verified: false,
+      date_verified: [null, Validators.compose([Validators.required])],
+      bank_name: ['', Validators.compose([Validators.required])],
+      account_no: ['', Validators.compose([Validators.required])],
+      branch_code: ['', Validators.compose([Validators.required])],
+      branch_name: ['', Validators.compose([Validators.required])]
     })
   }
 
-  search(e: any) {
-    if(e.target.value === '') {
-      return this.data = { ...this.databackup }
-    }
-    const wards = this.databackup?.wards.filter((obj: any, index: number) => obj.ward?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || obj.region?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
-   
-    this.data = { ...this.data, wards }
+  submitForm() {
+    const formValues: any = this.form.value;
+
+    
   }
 
   goto(route: string = '', item: any = {}) {

@@ -91,49 +91,207 @@
 
                 <div class="flex flex-col">
                    
-                    <!-- Card Sextion Starts Here -->
-                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-
-                        <!-- card -->
-
-                        <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
-                            <div class="px-6 py-2 border-b border-light-grey">
-                                <div class="font-bold text-xl">Wards
-                                    <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
-                                </div>
-                            </div> 
-                            <div class="table-responsive">
-                                <table class="table text-grey-darkest">
-                                    <thead class="bg-grey-dark text-white text-normal">
-                                    <tr>
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+                                Add Supervisor
+                            </div>
+                            <div class="p-3">
+                                <form class="w-full" [formGroup]="form" (ngSubmit)="submitForm()">
+                                    
+                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-first-name">
+                                                Member No.
+                                            </label>
+                                            <input formControlName="member_no" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                                   id="grid-first-name" type="text" placeholder="Jane">
+                                            <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Surname
+                                            </label>
+                                            <input formControlName="surname" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-first-name">
+                                                First Name
+                                            </label>
+                                            <input formControlName="first_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                                   id="grid-first-name" type="text" placeholder="Jane">
+                                            <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Initials
+                                            </label>
+                                            <input formControlName="initials" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="Doe">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full px-3">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                   for="grid-password">
+                                                Area
+                                            </label>
+                                            <input formControlName="area" class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                   id="grid-area" type="text" placeholder="sun city">
+                                           <!-- <p class="text-grey-dark text-xs italic">Make it as long and as crazy as
+                                                you'd like</p>-->
+                                        </div>
+                                        <div class="w-full px-3">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                   for="grid-password">
+                                                Phone No.
+                                            </label>
+                                            <input formControlName="phone_no" class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                   id="grid-area" type="text" placeholder="5456767676">
+                                           <!-- <p class="text-grey-dark text-xs italic">Make it as long and as crazy as
+                                                you'd like</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap -mx-3 mb-2">
+                                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                   for="grid-city">
+                                                Safety Boots Size
+                                            </label>
+                                            <input formControlName="safety_boots" class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                   id="grid-city" type="text" placeholder="Albuquerque">
+                                        </div>
+                                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                   for="grid-state">
+                                                Education
+                                            </label>
+                                            <div class="relative">
+                                                <select formControlName="education" class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                        id="grid-state">
+                                                    <option>Primary</option>
+                                                    <option>High School</option>
+                                                    <option>Graduate</option>
+                                                    <option>None</option>
+                                                </select>
+                                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
+                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                         viewBox="0 0 20 20">
+                                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                   for="grid-zip">
+                                                Dependants
+                                            </label>
+                                            <input formControlName="dependants" class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                   id="grid-zip" type="text" placeholder="no">
+                                        </div>
                                         
-                                        <th scope="col">Ward</th>
-                                        <th scope="col">Region</th>
-                                        
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr *ngFor="let item of data.wards" (click)="goto('/dashboard/supervisor', item)">
-                                        <th scope="row">{{ item?.ward }}</th>
-                                        <th scope="row">{{ item?.region }}</th>
-                                        
-                                        <!--
-                                        <td>
-                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
-                                        </td>
-                                        -->
                                        
-                                    </tr>
-                                  
-                                    </tbody>
-                                </table>
+                                        
+                                    </div>
+                                    
+                                     <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-first-name">
+                                                Overseer Verified?
+                                            </label>
+                                            
+                                            <input type="radio" id="huey" name="drone" value="huey"
+                                                 checked>
+                                          
+                                            <input formControlName="overseer_verified" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                                   id="grid-first-name" type="radio" placeholder="Jane" value="Yes" name="overseer_verified">
+                                            <p class="text-red-500 text-xs italic">Yes</p>
+                                            
+                                            <input formControlName="overseer_verified" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                                   id="grid-first-name1" type="radio" placeholder="Jane" value="No" name="overseer_verified">
+                                             <p class="text-red-500 text-xs italic">No</p>
+                                            
+                                        </div>
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Date Verified?
+                                            </label>
+                                            <input formControlName="date_verified" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="yyyy-mm-dd">
+                                        </div>
+                                         
+                                         
+                                    </div>
+                                    
+                                    
+                                        <div class="flex flex-wrap -mx-3 mb-6">
+                                            <div class="w-full px-3">
+                                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                                       for="grid-password">
+                                                    Bank Details
+                                                </label>
+                                                
+                                            </div>
+                                         </div>
+                                    
+                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-first-name">
+                                                Bank Name
+                                            </label>
+                                            
+                                            <input formControlName="bank_name" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="Axis bank">
+                                          
+                                            
+                                        </div>
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Account No.
+                                            </label>
+                                            <input formControlName="account_no" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="76545676560000">
+                                        </div>
+                                         
+                                          <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Branch Code
+                                            </label>
+                                            <input formControlName="branch_code" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="BB676">
+                                        </div>
+                                         <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                Branch Name
+                                            </label>
+                                            <input formControlName="branch_name" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="Sun city">
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Submit
+                                     </button>
+                                    
+                                </form>
                             </div>
                         </div>
-                        <!-- /card -->
-
                     </div>
-                    <!-- /Cards Section Ends Here -->
-
                 </div>
             </main>
           
