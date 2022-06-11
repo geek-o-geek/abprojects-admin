@@ -276,6 +276,20 @@
                                                     <div *ngIf="f.date_verified.errors.required">Please fill out this field.</div>
                                                 </div>
                                         </div>
+
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                password
+                                            </label>
+                                            <input
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                            formControlName="password" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" type="text" placeholder="yyyy-mm-dd">
+                                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.password.errors.required">Please fill out this field.</div>
+                                                </div>
+                                        </div>
                                     </div>
                                     
                                     

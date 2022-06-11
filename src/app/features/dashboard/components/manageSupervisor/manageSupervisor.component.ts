@@ -38,8 +38,18 @@ export class ManageSupervisorComponent implements OnInit {
       bank_name: ['', Validators.compose([Validators.required])],
       account_no: ['', Validators.compose([Validators.required])],
       branch_code: ['', Validators.compose([Validators.required])],
-      branch_name: ['', Validators.compose([Validators.required])]
+      branch_name: ['', Validators.compose([Validators.required])],
+      password: [this.autoPassword, Validators.compose([Validators.required])]
     })
+  }
+
+  get autoPassword() {
+    var digits = '0123456789';
+    let password = '';
+    for (let i = 0; i < 4; i++ ) {
+      password += digits[Math.floor(Math.random() * 10)];
+    }
+    return password; 
   }
 
   submitForm() {
@@ -62,6 +72,7 @@ export class ManageSupervisorComponent implements OnInit {
     this.http.post(endpoint, payload, headers)
     .subscribe((res: any): void => {
       this.submitted = false;
+      alert("Supervisor added successfully")
     }, err => this.submitted = false)
   }
 
