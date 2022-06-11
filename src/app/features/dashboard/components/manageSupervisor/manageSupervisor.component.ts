@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ManageSupervisorComponent implements OnInit {
   form!: FormGroup;
+  submitted: boolean = false;
+
   constructor(private http: HttpClient,
     private fb: FormBuilder,
     private router: Router) {
@@ -41,9 +43,35 @@ export class ManageSupervisorComponent implements OnInit {
   }
 
   submitForm() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+
     const formValues: any = this.form.value;
 
-    
+    const payload = {
+      mobile: formValues.phone_no,
+      password: formValues.password,
+      username: formValues.first_name
+    }
+
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/add/supervisor";
+    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+
+    this.http.post(endpoint, payload, headers)
+    .subscribe((res: any): void => {
+      this.submitted = false;
+    }, err => this.submitted = false)
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
   }
 
   goto(route: string = '', item: any = {}) {
