@@ -120,7 +120,7 @@
                                         <div class="w-full md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
-                                                Surname {{f.surname.errors?.required }} {{ submitted }}
+                                                Surname
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.surname.errors }"
@@ -358,6 +358,19 @@
                                                 <div *ngIf="submitted && f.branch_name.errors" class="invalid-feedback">
                                                     <div *ngIf="f.branch_name.errors.required">Please fill out this field.</div>
                                                 </div>
+                                        </div>
+
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <mat-form-field>
+                                                <mat-select formControlName="wardCntrl" placeholder="Wards" #singleSelect>
+                                                <mat-option>
+                                                    <ngx-mat-select-search formControlName="wardFilter"></ngx-mat-select-search>
+                                                </mat-option>
+                                                <mat-option *ngFor="let item of wards" [value]="item?.ward">
+                                                    {{item?.ward}}
+                                                </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
                                         </div>
                                         
                                     </div>

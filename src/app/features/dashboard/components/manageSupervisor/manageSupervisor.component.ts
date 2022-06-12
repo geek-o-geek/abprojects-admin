@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ManageSupervisorComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
+  wards: any[] = []
 
   constructor(private http: HttpClient,
     private fb: FormBuilder,
@@ -19,7 +20,13 @@ export class ManageSupervisorComponent implements OnInit {
     }
 
   ngOnInit(): void {
-      
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/get/wards";
+    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+
+    this.http.get(endpoint, headers)
+    .subscribe((res: any) => {
+      this.wards = res?.data || []
+    })
   }
 
   createForm() {
@@ -39,7 +46,9 @@ export class ManageSupervisorComponent implements OnInit {
       account_no: ['', Validators.compose([Validators.required])],
       branch_code: ['', Validators.compose([Validators.required])],
       branch_name: ['', Validators.compose([Validators.required])],
-      password: [this.autoPassword, Validators.compose([Validators.required])]
+      password: [this.autoPassword, Validators.compose([Validators.required])],
+      wardCntrl: [''],
+      wardFilter: ['']
     })
   }
 
