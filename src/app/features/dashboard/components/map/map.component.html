@@ -91,7 +91,20 @@
                     EPWP Participants Attendance Map for today
                 </div>
   
-                <div class="container">
+                <div class="container" [formGroup]="form">
+                    <div class="filters">
+                        <mat-form-field>
+                            <mat-select formControlName="wardId" placeholder="Wards" #singleSelect>
+                            <mat-option>
+                                <ngx-mat-select-search formControlName="wardFilter"></ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option *ngFor="let item of wards" [value]="item?.id">
+                                {{item?.ward}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <input formControlName="dt" type="date" value="" name="dt" />
+                    </div>
                     <agm-map [latitude]="lat" [longitude]="lng">
                         <agm-marker  *ngFor="let data of attendanceDetailData; let i = index" [latitude]="+data?.startLocation" [longitude]="+data?.endLocation">
                         </agm-marker>
