@@ -18,7 +18,7 @@ export class SupervisorComponent implements OnInit {
   ngOnInit(): void {
     const { id = 0 }: any = this.location.getState() || {};
 
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get";
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get?type=all";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
@@ -42,7 +42,7 @@ export class SupervisorComponent implements OnInit {
     }
     const supervisor = this.databackup?.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
    
-    this.data = { ...this.data, supervisor }
+    this.data = supervisor;
   }
 
   goto(route: string = '', item: any = {}) {

@@ -37,17 +37,17 @@ export class ManageSupervisorComponent implements OnInit {
       initials: ['', Validators.compose([Validators.required])],
       area: ['', Validators.compose([Validators.required])],
       phone_no: ['', Validators.compose([Validators.required])],
-      safety_boots: ['', Validators.compose([Validators.required])],
-      education: ['', Validators.compose([Validators.required])],
+      safety_boots: [''],
+      education: [''],
       dependants: ['', Validators.compose([Validators.required])],
-      overseer_verified: false,
+      overseer_verified: [false],
       date_verified: [null, Validators.compose([Validators.required])],
-      bank_name: ['', Validators.compose([Validators.required])],
-      account_no: ['', Validators.compose([Validators.required])],
-      branch_code: ['', Validators.compose([Validators.required])],
-      branch_name: ['', Validators.compose([Validators.required])],
+      bank_name: [''],
+      account_no: [''],
+      branch_code: [''],
+      branch_name: [''],
       password: [this.autoPassword, Validators.compose([Validators.required])],
-      wardCntrl: [''],
+      wardId: [''],
       wardFilter: ['']
     })
   }
@@ -72,7 +72,8 @@ export class ManageSupervisorComponent implements OnInit {
     const payload = {
       mobile: formValues.phone_no,
       password: formValues.password,
-      username: formValues.first_name
+      username: formValues.first_name,
+      wardId: formValues.wardId
     }
 
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/add/supervisor";

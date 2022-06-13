@@ -179,7 +179,7 @@
                                                    for="grid-password">
                                                 Phone No.
                                             </label>
-                                            <input
+                                            <input maxlength="15"
                                             [ngClass]="{ 'is-invalid': submitted && f.phone_no.errors }"
                                             formControlName="phone_no" class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                    id="grid-area" type="text" placeholder="5456767676">
@@ -245,23 +245,20 @@
                                     </div>
                                     
                                      <div class="flex flex-wrap -mx-3 mb-6">
-                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0"> 
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-first-name">
                                                 Overseer Verified?
                                             </label>
-                                            
-                                            <input type="radio" id="huey" name="drone" value="huey"
-                                                 checked>
-                                          
-                                            <input formControlName="overseer_verified" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                          <div style="display: flex; gap: 10px;">
+                                            <input formControlName="overseer_verified"
                                                    id="grid-first-name" type="radio" placeholder="Jane" value="Yes" name="overseer_verified">
                                             <p class="text-red-500 text-xs italic">Yes</p>
                                             
-                                            <input formControlName="overseer_verified" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                            <input formControlName="overseer_verified" 
                                                    id="grid-first-name1" type="radio" placeholder="Jane" value="No" name="overseer_verified">
                                              <p class="text-red-500 text-xs italic">No</p>
-                                            
+                                          </div>  
                                         </div>
                                         <div class="w-full md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
@@ -271,7 +268,7 @@
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.date_verified.errors }"
                                             formControlName="date_verified" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="yyyy-mm-dd">
+                                                   id="grid-last-name" type="date" placeholder="yyyy-mm-dd">
                                                 <div *ngIf="submitted && f.date_verified.errors" class="invalid-feedback">
                                                     <div *ngIf="f.date_verified.errors.required">Please fill out this field.</div>
                                                 </div>
@@ -362,11 +359,11 @@
 
                                         <div class="w-full md:w-1/2 px-3">
                                             <mat-form-field>
-                                                <mat-select formControlName="wardCntrl" placeholder="Wards" #singleSelect>
+                                                <mat-select formControlName="wardId" placeholder="Wards" #singleSelect>
                                                 <mat-option>
                                                     <ngx-mat-select-search formControlName="wardFilter"></ngx-mat-select-search>
                                                 </mat-option>
-                                                <mat-option *ngFor="let item of wards" [value]="item?.ward">
+                                                <mat-option *ngFor="let item of wards" [value]="item?.id">
                                                     {{item?.ward}}
                                                 </mat-option>
                                                 </mat-select>
