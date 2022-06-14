@@ -30,15 +30,18 @@ export class MapComponent implements OnInit {
     .subscribe((item: any) => {
       const { wardId, dt } = item;
 
+      if (wardId === 'all') {
+        this.attendanceDetailData = [...this.attendanceDetailDataBackup]
+        return;
+      }
+
       this.attendanceDetailData = this.attendanceDetailDataBackup.filter((item: any): any => {
         const attendDate = item?.attendanceDate.split("T")[0]
-     
-        if(dt === attendDate){ 
+
+        if ((dt === attendDate) && (item?.wardId === wardId)) {
           return item;
         }
       })
-
-      console.log(this.attendanceDetailData, "this.attendanceDetailData")
     })
 
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/get/wards";
@@ -46,7 +49,7 @@ export class MapComponent implements OnInit {
 
     this.http.get(endpoint, headers)
     .subscribe((res: any) => {
-      this.wards = res?.data || []
+      this.wards = [ { id: 'all', ward: 'All' }, ...(res?.data || []) ]
     })
   }
 
@@ -77,7 +80,7 @@ export class MapComponent implements OnInit {
     this.form = this.fb.group({
       wardId: [''],
       wardFilter: [''],
-      dt: ['']
+      dt: [new Date().toISOString().split("T")[0]]
     })
   }
 

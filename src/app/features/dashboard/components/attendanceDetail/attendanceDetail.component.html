@@ -92,8 +92,23 @@
               </div>
 
               <div class="container">
-                <agm-map [latitude]="lat" [longitude]="lng">
+                  <agm-map [latitude]="lat" [longitude]="lng">
                     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                    <agm-marker [latitude]="latEnd" [longitude]="lngEnd"></agm-marker>
+                    <agm-polyline
+                        [visible]="true"
+                        [strokeWeight]="3">
+                        <agm-polyline-point
+                        [latitude]="lat"
+                        [longitude]="lng">
+
+                        </agm-polyline-point>
+                        <agm-polyline-point
+                        [latitude]="latEnd"
+                        [longitude]="lngEnd">
+
+                        </agm-polyline-point>
+                    </agm-polyline>
                   </agm-map>
                   <ng-container *ngIf="attendanceDetailData?.photo">
                     <div style="margin-top: 20px; position: absolute; left: 50%; transform: translateX(-30%);" >

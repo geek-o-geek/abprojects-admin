@@ -15,6 +15,8 @@ export class AttendanceDetailComponent {
   attendanceDetailData!: any;
   myDetails: any = [];
   dt: string = '';
+  latEnd!: number;
+  lngEnd!: number;
 
   constructor(private http: HttpClient, private location: Location, private router: Router) {}
  
@@ -32,8 +34,9 @@ export class AttendanceDetailComponent {
         this.attendanceDetailData = res?.result[0] || {};
         this.updateLocation();
       })
-    } else
-    this.attendanceDetailData = JSON.parse(localStorage.getItem("resAttendanceDetail") || '{}');
+    } else {
+      this.attendanceDetailData = JSON.parse(localStorage.getItem("resAttendanceDetail") || '{}');
+    }
   }
 
   ngAfterViewInit(){
@@ -43,6 +46,10 @@ export class AttendanceDetailComponent {
   updateLocation() {
     this.lat = +this.attendanceDetailData?.startLocation;
     this.lng = +this.attendanceDetailData?.endLocation;
+
+    const [lat, lng] = this.attendanceDetailData?.location.split(",");
+    this.latEnd = +lat;
+    this.lngEnd = +lng;
   }
 
   goto(route: string = '') {

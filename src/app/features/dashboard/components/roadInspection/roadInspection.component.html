@@ -106,15 +106,18 @@
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
-                                        
-                                        <th scope="col">Inspection Time</th>
-                                        <th scope="col">Litter</th>
-                                        <th scope="col">Road</th>
-                                        <th scope="col">Safety</th>
-                                        <th scope="col">Verge</th>
-                                        <th scope="col">Drain</th>
-                                        <th scope="col">Erosion</th>
-                                        <th scope="col">Comment</th>
+                                        <td scope="col">Supervisor Name</td>
+                                        <td scope="col">Worker Name</td>
+                                        <td scope="col">Worker ID</td>
+                                        <td scope="col">Inspection Time</td>
+                                        <td scope="col">Litter</td>
+                                        <td scope="col">Road</td>
+                                        <td scope="col">Safety</td>
+                                        <td scope="col">Verge</td>
+                                        <td scope="col">Drain</td>
+                                        <td scope="col">Erosion</td>
+                                        <td scope="col">Comment</td>
+                                        <td scope="col">Created At</td>
 
                                         <!-- comment: "ereree"
                                         created_at: "2022-06-06T04:31:04.000Z"
@@ -140,14 +143,18 @@
                                     </thead>
                                     <tbody>  
                                         <tr *ngFor="let item of tableContent;">
-                                            <th scope="row">{{ item?.inspectionTime }}</th>
-                                            <th scope="row">{{ item?.litter }}</th>
-                                            <th scope="row">{{ item?.road }}</th>
-                                            <th scope="row">{{ item?.safety === 0 ? 'No': 'yes' }}</th>
-                                            <th scope="row">{{ item?.verge }}</th>
-                                            <th scope="row">{{ item?.drain }}</th>
-                                            <th scope="row">{{ item?.erosion }}</th>
-                                            <th scope="row">{{ item?.comment }}</th>
+                                            <td scope="row">{{ item?.supervisorName }}</td>
+                                            <td scope="row">{{ item?.workerName }}</td>
+                                            <td scope="row">{{ item?.said }}</td>
+                                            <td scope="row">{{ item?.inspectionTime }}</td>
+                                            <td scope="row">{{ item?.litter }}</td>
+                                            <td scope="row">{{ item?.road }}</td>
+                                            <td scope="row">{{ item?.safety === 0 ? 'No': 'yes' }}</td>
+                                            <td scope="row">{{ item?.verge }}</td>
+                                            <td scope="row">{{ item?.drain }}</td>
+                                            <td scope="row">{{ item?.erosion }}</td>
+                                            <td scope="row">{{ item?.comment }}</td>
+                                            <td scope="row">{{ item?.created_at | date: 'yyyy-mm-dd' }}</td>
                                         </tr>
                                   
                                     </tbody>

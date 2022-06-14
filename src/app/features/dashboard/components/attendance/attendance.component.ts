@@ -28,7 +28,6 @@ export class AttendanceComponent {
 
   constructor( private http: HttpClient, private router: Router, private httpClient: HttpClient) {}
   onDateClick(res: any) {
-    console.log('Clicked on date : ' + res.dateStr, this.data);
     const dt = this.data.filter((obj: any) => obj.attendanceDate.split("T")[0] === res.dateStr)
     localStorage.setItem("resAttendanceDetail", JSON.stringify(dt[0]));
     this.router.navigateByUrl("/dashboard/attendanceDetail")
@@ -56,7 +55,6 @@ export class AttendanceComponent {
         });
 
         this.Events = [...arr];
-        console.log(this.Events, "this.Events")
         
           this.calendarOptions = {
             initialView: 'dayGridMonth',

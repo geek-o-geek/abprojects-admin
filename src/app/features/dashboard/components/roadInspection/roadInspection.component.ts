@@ -39,9 +39,9 @@ export class RoadInspectionComponent implements OnInit {
     if(e.target.value === '') {
       return this.tableContent = { ...this.databackup }
     }
-    const roadInspection = this.databackup?.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
+    const roadInspection = this.databackup?.filter((obj: any, index: number) => obj.workerName?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 );
    
-    this.tableContent = { ...this.data, roadInspection }
+    this.tableContent = [...roadInspection ]
   }
 
   goto(route: string = '', item: any = {}) {
