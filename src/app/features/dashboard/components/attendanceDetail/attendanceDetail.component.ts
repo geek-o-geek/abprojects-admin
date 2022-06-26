@@ -18,6 +18,8 @@ export class AttendanceDetailComponent {
   dt: string = '';
   latEnd!: number;
   lngEnd!: number;
+  origin!: any;
+  destination!: any;
 
   constructor(private http: HttpClient, private location: Location, private router: Router) {}
  
@@ -42,19 +44,8 @@ export class AttendanceDetailComponent {
   }
 
   getPolygonMapPoints() {
-    const origin = `${this.lat}, ${this.lng}`;
-    const destination = `${this.latEnd}, ${this.lngEnd}`;
-    const API_KEY = 'AIzaSyATXgsxkCRPyJHS5KdkIRGVJiKy7aiTRfA';
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json" })}
-
-    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${API_KEY}
-    `
-
-    this.http.get(url, headers)
-      .pipe(take(1))
-      .subscribe((res: any): void => {
-        console.log(res);
-      })
+    this.origin = { lat: this.lat, lng: this.lng };
+    this.destination = { lat: this.latEnd, lng: this.lngEnd };
   }
 
   ngAfterViewInit(){

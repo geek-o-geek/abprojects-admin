@@ -1,0 +1,52 @@
+<!--Sidebar-->
+<aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+
+    <ul class="list-reset flex flex-col">
+        <ul class="list-reset flex flex-col">
+            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard')">
+                <a 
+                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                    Dashboard
+                    <span><i class="fas fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+            <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/roadInspection')">
+                <a 
+                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                    Road Inspection
+                    <span><i class="fas fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+            <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/manageSupervisor')">
+                <a 
+                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                    Manage Supervisor
+                    <span><i class="fas fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard/addmaster')">
+                <a 
+                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                    Settings
+                    <span><i class="fas fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+
+            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="logout()">
+                <a 
+                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                    Logout
+                    <span><i class="fas fa-angle-right float-right"></i></span>
+                </a>
+            </li>
+          
+        </ul>
+    </ul>
+
+</aside>
+<!--/Sidebar-->

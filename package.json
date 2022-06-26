@@ -27,6 +27,7 @@
     "@fullcalendar/interaction": "^5.11.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.5",
+    "agm-direction": "^0.8.10",
     "angular-calendar": "^0.29.0",
     "angularx-flatpickr": "^6.6.0",
     "bootstrap": "^4.5.3",

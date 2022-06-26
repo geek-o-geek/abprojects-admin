@@ -15,6 +15,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 import { AttendanceDetailComponent } from './components/attendanceDetail/attendanceDetail.component';
 import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
 import { RoadInspectionComponent } from './components/roadInspection/roadInspection.component';
@@ -56,6 +57,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyATXgsxkCRPyJHS5KdkIRGVJiKy7aiTRfA'
     }),
+    AgmDirectionModule,
     MatSelectModule,
     NgxMatSelectSearchModule
   ]
