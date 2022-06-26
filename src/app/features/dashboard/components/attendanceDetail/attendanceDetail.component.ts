@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-attendance-detail',
@@ -30,6 +31,7 @@ export class AttendanceDetailComponent {
       const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
       this.http.get(endpoint, headers)
+      .pipe(take(1))
       .subscribe((res: any): void => {
         this.attendanceDetailData = res?.result[0] || {};
         this.updateLocation();
@@ -37,6 +39,22 @@ export class AttendanceDetailComponent {
     } else {
       this.attendanceDetailData = JSON.parse(localStorage.getItem("resAttendanceDetail") || '{}');
     }
+  }
+
+  getPolygonMapPoints() {
+    const origin = `${this.lat}, ${this.lng}`;
+    const destination = `${this.latEnd}, ${this.lngEnd}`;
+    const API_KEY = 'AIzaSyATXgsxkCRPyJHS5KdkIRGVJiKy7aiTRfA';
+    const headers = {headers: new HttpHeaders({ "Content-type": "application/json" })}
+
+    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${API_KEY}
+    `
+
+    this.http.get(url, headers)
+      .pipe(take(1))
+      .subscribe((res: any): void => {
+        console.log(res);
+      })
   }
 
   ngAfterViewInit(){
@@ -50,6 +68,7 @@ export class AttendanceDetailComponent {
     const [lat, lng] = this.attendanceDetailData?.location.split(",");
     this.latEnd = +lat;
     this.lngEnd = +lng;
+    this.getPolygonMapPoints();
   }
 
   goto(route: string = '') {
