@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 
+var google: any;
+
 @Component({
   selector: 'app-attendance-detail',
   templateUrl: './attendanceDetail.component.html',
@@ -20,6 +22,7 @@ export class AttendanceDetailComponent {
   lngEnd!: number;
   origin!: any;
   destination!: any;
+  travelMode: any = 'WALKING';
 
   constructor(private http: HttpClient, private location: Location, private router: Router) {}
  
