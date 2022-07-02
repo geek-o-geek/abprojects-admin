@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSchedule.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -41,7 +42,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AttendanceDetailComponent,
     AllAttendanceComponent,
     RoadInspectionComponent,
-    ManageSupervisorComponent
+    ManageSupervisorComponent,
+    PaymentScheduleComponent
   ],
   imports: [
     CommonModule,

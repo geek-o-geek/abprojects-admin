@@ -62,6 +62,7 @@
                                 <span><i class="fas fa-angle-right float-right"></i></span>
                             </a>
                         </li>
+
                         <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/paymentSchedule')">
                             <a 
                                class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
@@ -70,6 +71,7 @@
                                 <span><i class="fas fa-angle-right float-right"></i></span>
                             </a>
                         </li>
+
                         <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard/addmaster')">
                             <a 
                                class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
@@ -105,36 +107,51 @@
                         <!-- card -->
 
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
-                            <div class="px-6 py-2 border-b border-light-grey">
-                                <div class="font-bold text-xl">Wards
-                                    <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
+                            <div class="px-6 py-2 border-b border-light-grey" style="display: flex; justify-content: space-between;">
+                                <div class="font-bold text-xl">Payment Schedule</div>
+                                <div class="font-bold text-xl" style="display: flex; gap: 1.9rem;">
+                                    <span style="border: 2px solid grey;">
+                                        <input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" >
+                                    </span>
+                                    <select name="setMonth" [ngModel]="selectedMonth" (ngModelChange)="setMonth($event)">
+                                        <option value=1>Jan</option>
+                                        <option value=2>Feb</option>
+                                        <option value=3>Mar</option>
+                                        <option value=4>Apr</option>
+                                        <option value=5>May</option>
+                                        <option value=6>June</option>
+                                        <option value=7>July</option>
+                                        <option value=8>Aug</option>
+                                        <option value=9>Sep</option>
+                                        <option value=10>Oct</option>
+                                        <option value=11>Nov</option>
+                                        <option value=12>Dec</option>
+                                    </select>
                                 </div>
                             </div> 
                             <div class="table-responsive">
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
-                                        
-                                        <th scope="col">Ward</th>
-                                        <th scope="col">Region</th>
-                                        
+                                        <td scope="col">Worker Name</td>
+                                        <td scope="col">Worker ID</td>
+                                        <td scope="col">Amount</td>
+
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr *ngFor="let item of data.wards" (click)="goto('/dashboard/supervisor', item)">
-                                        <th scope="row">{{ item?.ward }}</th>
-                                        <th scope="row">{{ item?.region }}</th>
-                                        
-                                        <!--
-                                        <td>
-                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
-                                        </td>
-                                        -->
-                                       
-                                    </tr>
-                                  
+                                    <tbody>  
+                                        <tr *ngFor="let item of tableContent;">
+                                            <td scope="row" (click)="goto('/dashboard/profile', item)">
+                                                
+                                                    {{ item?.fullname | titlecase }}
+                                                
+                                            </td>
+                                            <td scope="row">{{ item?.said }}</td>
+                                            <td scope="row">{{ item?.cnt * 400 }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
+                               
                             </div>
                         </div>
                         <!-- /card -->
@@ -144,12 +161,6 @@
 
                 </div>
             </main>
-          
-                
-                 
-
-                
-           
             <!--/Main-->
         </div>
     </div>

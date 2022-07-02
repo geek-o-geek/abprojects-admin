@@ -11,7 +11,7 @@ import { AttendanceDetailComponent } from './components/attendanceDetail/attenda
 import { AllAttendanceComponent } from './components/allAttendance/allattendance.component';
 import { RoadInspectionComponent } from './components/roadInspection/roadInspection.component';
 import { ManageSupervisorComponent } from './components/manageSupervisor/manageSupervisor.component';
-
+import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSchedule.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -23,7 +23,8 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'attendanceDetail', component: AttendanceDetailComponent },
 { path: 'allAttendance', component: AllAttendanceComponent },
 { path: 'roadInspection', component: RoadInspectionComponent },
-{ path: 'manageSupervisor', component: ManageSupervisorComponent }
+{ path: 'manageSupervisor', component: ManageSupervisorComponent },
+{ path: 'paymentSchedule', component: PaymentScheduleComponent },
 ];
 
 @NgModule({
