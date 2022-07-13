@@ -14,6 +14,7 @@ export class RoadInspectionComponent implements OnInit {
   tableContent: any = []
   openModal: boolean = false;
   modalBodyData: any = []
+  exportData: any = []
   constructor(private http: HttpClient, private location: Location, private router: Router) { }
 
   ngOnInit(): void {

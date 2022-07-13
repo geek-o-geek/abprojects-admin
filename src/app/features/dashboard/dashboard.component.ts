@@ -10,9 +10,22 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   data: any = {}
   databackup: any = {}
+  openModal: boolean = false;
+  modalBodyData: any = []
+  exportData: any = []
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.modalBodyData = [
+      { 'columnName': 'SA ID' },
+      { 'columnName': 'Initials' },
+      { 'columnName': 'Surname' },
+      { 'columnName': 'Ward' },
+      { 'columnName': 'Job Title' },
+      { 'columnName': 'Supervisors' },
+      { 'columnName': 'No. of Days worked' },
+      { 'columnName': 'Amount to be ' }
+    ]
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get?type=all";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
@@ -21,6 +34,10 @@ export class DashboardComponent implements OnInit {
      this.data = res.data
      this.databackup = res.data
     })
+  }
+
+  toggleModal() {
+    this.openModal = !this.openModal;
   }
 
   goto(route: string = '', item: any = {}) {

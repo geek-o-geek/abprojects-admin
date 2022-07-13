@@ -185,4 +185,9 @@
     </div>
 
 </div>
-<app-export-modal [openModal]="openModal" [modalBodyData]="modalBodyData" (onCloseEvent)="toggleModal()"></app-export-modal>
+<app-export-modal
+[openModal]="openModal"
+[exportData]="tableContent"
+[modalBodyData]="modalBodyData"
+(onCloseEvent)="toggleModal()">
+</app-export-modal>
