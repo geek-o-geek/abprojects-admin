@@ -107,6 +107,9 @@
                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                             <div class="px-6 py-2 border-b border-light-grey">
                                 <div class="font-bold text-xl">Road Inspection
+                                    <span style="float: right; border: 2px solid #e2e8f0; margin: 0 0 20px 10px">
+                                        <button (click)="toggleModal()" style="padding: 5px; font-size: 16px">Export</button>
+                                    </span>
                                     <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
                                 </div>
                             </div> 
@@ -177,14 +180,9 @@
 
                 </div>
             </main>
-          
-                
-                 
-
-                
-           
             <!--/Main-->
         </div>
     </div>
 
 </div>
+<app-export-modal [openModal]="openModal" [modalBodyData]="modalBodyData" (onCloseEvent)="toggleModal()"></app-export-modal>

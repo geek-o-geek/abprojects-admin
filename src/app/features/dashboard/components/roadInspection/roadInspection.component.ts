@@ -12,9 +12,24 @@ export class RoadInspectionComponent implements OnInit {
   data: any = []
   databackup: any = []
   tableContent: any = []
+  openModal: boolean = false;
+  modalBodyData: any = []
   constructor(private http: HttpClient, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
+    this.modalBodyData = [
+      { 'columnName': 'Supervisor Name' },
+      { 'columnName': 'Worker Name' },
+      { 'columnName': 'Worker ID' },
+      { 'columnName': 'Inspection Time' },
+      { 'columnName': 'Litter' },
+      { 'columnName': 'Road' },
+      { 'columnName': 'Safety' },
+      { 'columnName': 'Verge' },
+      { 'columnName': 'Drain' },
+      { 'columnName': 'Erosion' },
+      { 'columnName': 'Comment' }
+    ]
     const { id = 0 }: any = this.location.getState() || {};
 
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/roadInspection";
@@ -51,6 +66,10 @@ export class RoadInspectionComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login');
+  }
+
+  toggleModal() {
+    this.openModal = !this.openModal;
   }
   
 
