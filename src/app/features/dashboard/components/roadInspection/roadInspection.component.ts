@@ -19,18 +19,20 @@ export class RoadInspectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.modalBodyData = [
-      { 'columnName': 'Supervisor Name' },
-      { 'columnName': 'Worker Name' },
-      { 'columnName': 'Worker ID' },
-      { 'columnName': 'Inspection Time' },
-      { 'columnName': 'Litter' },
-      { 'columnName': 'Road' },
-      { 'columnName': 'Safety' },
-      { 'columnName': 'Verge' },
-      { 'columnName': 'Drain' },
-      { 'columnName': 'Erosion' },
-      { 'columnName': 'Comment' }
+      { 'columnName': 'Supervisor Name', field: 'supervisorName', 'selected': true },
+      { 'columnName': 'Worker Name', field: 'workerName', 'selected': true },
+      { 'columnName': 'Worker ID', field: 'said', 'selected': true },
+      { 'columnName': 'Inspection Time', field: 'inspectionTime', 'selected': true },
+      { 'columnName': 'Litter', field: 'litter', 'selected': true },
+      { 'columnName': 'Road', field: 'road', 'selected': true },
+      { 'columnName': 'Safety', field: 'safety', 'selected': true },
+      { 'columnName': 'Verge', field: 'verge', 'selected': true },
+      { 'columnName': 'Drain', field: 'drain', 'selected': true },
+      { 'columnName': 'Erosion', field: 'erosion', 'selected': true },
+      { 'columnName': 'Comment', field: 'comment', 'selected': true },
+      { 'columnName': 'Created At', field: 'created_at', 'selected': true }
     ]
+    
     const { id = 0 }: any = this.location.getState() || {};
 
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/roadInspection";

@@ -30,10 +30,30 @@ export class ExportModalComponent implements AfterViewInit, OnChanges {
     this.onCloseEvent.emit();
   }
 
+  onColumnSelect(columnName: string = '') {
+    this.modalBodyData = this.modalBodyData.map((item: any): {[key: string]: string } => { 
+      if (columnName === item?.columnName) {
+        item.selected = !item.selected;
+      }
+      return item;
+     })
+  }
+
   onExport() {
-    this.onClose();
+    const filteredData: any = [];
+    this.exportData.filter((item) => {
+      const object: any = {}
+      Object.keys(item || {}).forEach(fieldKey => {
+        const ob: any = this.modalBodyData.find(obj => obj.field === fieldKey) || {};
+        if (ob.selected) {
+          object[fieldKey] = item[fieldKey];
+        }
+      });
+      filteredData.push(object);
+    });
+    
     import("xlsx").then(xlsx => {
-        const worksheet = xlsx.utils.json_to_sheet(this.exportData);
+        const worksheet = xlsx.utils.json_to_sheet(filteredData);
         const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
         const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
         this.saveAsExcelFile(excelBuffer, "excel");
@@ -52,7 +72,10 @@ export class ExportModalComponent implements AfterViewInit, OnChanges {
         data,
         fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION
       );
+
     });
+
+    this.onClose();
   }
 
 }

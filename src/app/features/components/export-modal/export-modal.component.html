@@ -9,9 +9,9 @@
         </div>
         <div class="modal-body">
           <div class="col-options" *ngFor="let item of modalBodyData;">
-            <input type="checkbox" id="columns" name="columns"
-                   checked>
-            <label for="columns">{{ item?.columnName }}</label>
+            <input type="checkbox" name="columns" [id]="item?.field"
+                   [checked]="item?.selected" (change)="onColumnSelect(item?.columnName)">
+            <label [for]="item?.field">{{ item?.columnName }}</label>
           </div>
         </div>
         <div class="modal-footer">

@@ -17,14 +17,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.modalBodyData = [
-      { 'columnName': 'SA ID' },
-      { 'columnName': 'Initials' },
-      { 'columnName': 'Surname' },
-      { 'columnName': 'Ward' },
-      { 'columnName': 'Job Title' },
-      { 'columnName': 'Supervisors' },
-      { 'columnName': 'No. of Days worked' },
-      { 'columnName': 'Amount to be ' }
+      { 'columnName': 'SA ID', field: 'said', 'selected': true },
+      { 'columnName': 'Initials', field: 'initials', 'selected': true },
+      { 'columnName': 'Surname', field: 'lastname', 'selected': true },
+      { 'columnName': 'Ward', field: 'ward', 'selected': true },
+      { 'columnName': 'Job Title', field: 'jobTitle', 'selected': true },
+      { 'columnName': 'Supervisors', field: 'supervisor', 'selected': true },
+      { 'columnName': 'No. of Days worked', field: 'payableDays', 'selected': true },
+      { 'columnName': 'Amount to be paid', field: 'amountPaid', 'selected': true }
     ]
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get?type=all";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     if(e.target.value === '') {
       return this.data = { ...this.databackup }
     }
-    console.log(this.databackup)
+    
     const worker = this.databackup?.worker.filter((obj: any, index: number) => obj.fullname?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0 || obj.said.indexOf(e.target.value) >= 0 );
    
     this.data = { ...this.data, worker }
