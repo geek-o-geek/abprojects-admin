@@ -1,21 +1,253 @@
 input[type=text] {
-    width: 230px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    padding-left: 10px;
-  }
-  
-  input[type=text]:focus {
-    width: 280px;
-  }
+  width: 230px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  padding-left: 10px;
+}
+input[type=text]:focus {
+  width: 280px;
+}
 
-  .pagination {
-    display: inline-block;
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+// Header CSS Start Here
+.bg-nav.header-wrap-div{
+  position: fixed;
+  background: rgb(0,127,234);
+  background: linear-gradient(90deg, rgba(0,127,234,1) 0%, rgba(0,211,197,1) 100%);
+  padding:10px 50px;
+  z-index: 1;
+  width: 100%;
+}
+.header-banner-img{
+  img{
+    width: auto;
+    height: 50px;
+    margin: 0 20px;
   }
-  
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
+}
+.user-login-icons{
+  position: relative;
+  top: 15px;
+  ul{
+    display: flex;
+    li{
+      display: inline-block;
+      margin-left: 50px;
+      a{
+        font-size: 20px;
+        color: #fff;
+        -webkit-transition: all 400ms linear;
+        transition: all 400ms linear;
+      }
+      &:hover a{
+        color: rgb(0,127,234);
+      }
+    }
+ 
   }
+}
+.user-name-div{
+  position: relative;
+  top: 7px;
+  .dropdown{
+    button{
+      position: relative;
+      img{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+      span{
+        position: relative;
+        top: 7px;
+        color: #fff;
+        font-size: 16px;
+        display: inline-block;
+        max-width: 150px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .dropdown-toggle::after {
+      position: absolute;
+      top: 18px;
+      border-top: 0.3em solid #fff;
+      display: none;
+  }
+  .dropdown-menu{
+    position: relative;
+    border-radius: 5px;
+    top: 15px !important;
+    border: 0;
+    box-shadow: 2px 4px 10px rgba(0,0,0,.2); 
+    .dropdown-item{
+      position: relative;
+      padding-left: 40px;
+      font-size: 16px;
+      span{
+        position: absolute;
+        left: 10px;
+        display: inline-block;
+        color: #007fea;
+      }
+    }
+  }
+}
+}
+// Header CSS End Here
+
+// Sidebar CSS Start Here
+.bg-side-nav.side-bar-wrap{
+  position: fixed;
+  background-color: #e9f3f5;
+  height: 100vh;
+  padding-left: 80px;
+  padding-top: 70px;
+  top: 65px;
+  bottom: 0;
+  left: 0;
+
+
+  .side-strip-bar{
+     position: absolute;
+     left: 0;
+     top: 0;
+     bottom: 0;
+    width : 80px;
+    background: rgb(0,59,109);
+    background: linear-gradient(180deg, rgba(0,59,109,1) 0%, rgba(0,154,182,1) 100%);
+  }
+  .list-reset{
+   
+    li{
+      position: relative;
+      height: 50px;
+      padding: 15px 20px;
+      cursor: pointer;
+      -webkit-transition: all 400ms linear;
+      transition: all 400ms linear;
+      span{
+       position: absolute;
+        left: -80px;
+        top: 8px;
+        display: block;
+        height: 50px;
+        width: 80px;
+        line-height: 50px;
+        text-align: center;
+        -webkit-transition: all 400ms linear;
+        transition: all 400ms linear;
+        i{
+          color: #fff;
+          font-size: 25px;
+        }
+      }
+      a{
+        position: relative;
+        top: 0px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #646e84;
+        text-decoration: none;
+        -webkit-transition: all 400ms linear;
+        transition: all 400ms linear;
+      }
+    }
+    li.active, li:hover{
+      background-color: #d2e0e3 !important;
+      span{
+        i{
+          color: #02cec6;
+        }
+      }
+      &::after{
+        content: "";
+        width: 0px;
+        height: 0px;
+        display: block;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid #d2e0e3;
+        position: absolute;
+        bottom: 0;
+        left: -20px;
+        z-index: 2;
+        transform: rotate(90deg);
+        top: 15px;
+      }
+    }
+  }
+}
+
+// Sidebar CSS End Here
+
+// Dashboard CSS Start Here
+.dashboard-data{
+  position: relative;
+  padding-left: 70px;
+  .dashboard-card{
+    margin-bottom: 20px;
+    p{
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    h2{
+      font-size: 40px;
+      color: #f0c513;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    span{
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+}
+.google-map-wrap{
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 2px 4px 10px rgba(0,0,0,.2); 
+  margin-bottom: 20px;
+}
+.chart-filter-heading{
+  .dropdown{
+
+  }
+}
+.graph-card-wrap{
+background-color: #fff;
+border-radius: 4px;
+overflow: hidden;
+box-shadow: 2px 4px 10px rgba(0,0,0,.2); 
+text-align: center;
+
+img{
+margin: 0 auto;
+width: 100%;
+}
+}
+.calender-wrap{
+margin-top: 20px;
+img{
+  margin: 0 auto;
+}
+}
+// Dashboard CSS End Here

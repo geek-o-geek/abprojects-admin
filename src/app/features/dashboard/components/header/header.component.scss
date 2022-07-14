@@ -1,0 +1,92 @@
+
+// Header CSS Start Here
+.bg-nav.header-wrap-div{
+    position: fixed;
+    background: rgb(0,127,234);
+    background: linear-gradient(90deg, rgba(0,127,234,1) 0%, rgba(0,211,197,1) 100%);
+    padding:10px 50px;
+    z-index: 1;
+    width: 100%;
+  }
+  .header-banner-img{
+    img{
+      width: auto;
+      height: 50px;
+      margin: 0 20px;
+    }
+  }
+  .user-login-icons{
+    position: relative;
+    top: 15px;
+    ul{
+      display: flex;
+      li{
+        display: inline-block;
+        margin-left: 50px;
+        a{
+          font-size: 20px;
+          color: #fff;
+          -webkit-transition: all 400ms linear;
+          transition: all 400ms linear;
+        }
+        &:hover a{
+          color: rgb(0,127,234);
+        }
+      }
+   
+    }
+  }
+  .user-name-div{
+    position: relative;
+    top: 7px;
+    .dropdown{
+      button{
+        position: relative;
+        img{
+          display: inline-block;
+          width: 35px;
+          height: 35px;
+          border-radius: 100%;
+          overflow: hidden;
+          margin-right: 10px;
+          object-fit: cover;
+        }
+        span{
+          position: relative;
+          top: 7px;
+          color: #fff;
+          font-size: 16px;
+          display: inline-block;
+          max-width: 150px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .dropdown-toggle::after {
+        position: absolute;
+        top: 18px;
+        border-top: 0.3em solid #fff;
+        display: none;
+    }
+    .dropdown-menu{
+      position: relative;
+      border-radius: 5px;
+      top: 15px !important;
+      border: 0;
+      box-shadow: 2px 4px 10px rgba(0,0,0,.2); 
+      .dropdown-item{
+        position: relative;
+        padding-left: 40px;
+        font-size: 16px;
+        span{
+          position: absolute;
+          left: 10px;
+          display: inline-block;
+          color: #007fea;
+        }
+      }
+    }
+  }
+  }
+  // Header CSS End Here

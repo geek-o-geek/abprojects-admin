@@ -28,6 +28,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSchedule.component';
 import { ExportModalComponent } from '../components/export-modal/export.modal.component';
+import { AsideNavComponent } from './components/asideNav/asideNav.component';
+import { HeaderComponent } from './components/header/header.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -45,7 +47,9 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     RoadInspectionComponent,
     ManageSupervisorComponent,
     PaymentScheduleComponent,
-    ExportModalComponent
+    ExportModalComponent,
+    AsideNavComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

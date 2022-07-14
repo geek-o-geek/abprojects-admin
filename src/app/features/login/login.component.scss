@@ -1,3 +1,31 @@
-.login{
-    background: url('./assets/login-new.jpeg')
+// .login{
+//     background: url('./assets/login-new.jpeg')
+//   }
+  .login-wrap{
+     background: url('./assets/login-new.jpeg');
+    background-size: cover;
+    height: 100vh;
+    .login-form{
+    background: #007fea;
+    background: linear-gradient(180deg, #007fea 0%, #00d3c5 100%);
+    p{
+      color : #fff;
+      font-size: 22px;
+    }
+    label{
+      color : #fff;
+      font-size: 16px;
+    }
+    .form-control{
+      padding: 5px 20px !important;
+    }
+    .common-btn{
+      button{
+        width: 150px;
+        height: 40px;
+        margin: 0 auto;
+        display: table;
+      }
+    }
+    }
   }

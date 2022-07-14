@@ -1,61 +1,41 @@
 <!--Sidebar-->
-<aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+<aside id="sidebar" class="bg-side-nav side-bar-wrap">
+    <div class="side-strip-bar">
 
+    </div>
     <ul class="list-reset flex flex-col">
-        <ul class="list-reset flex flex-col">
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard')">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Dashboard
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/roadInspection')">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Road Inspection
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/manageSupervisor')">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Manage Supervisor
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
+        <li [class.active]="(activeMenuItem == 'dashboard')" (click)="goto('/dashboard', 'dashboard')">
+            <span><i class="fas fa-home"></i></span>
+            <a href="javascript:void(0);">
+                Dashboard
+            </a>
+        </li>
+        <li [class.active]="(activeMenuItem == 'roadInspection')" (click)="goto('/dashboard/roadInspection', 'roadInspection')">
+            <span><i class="fas fa-envelope"></i></span>
+            <a href="javascript:void(0);">
+                Road Inspection
+            </a>
+        </li>
+        <li [class.active]="(activeMenuItem == 'manageSupervisor')" (click)="goto('/dashboard/manageSupervisor', 'manageSupervisor')">
+            <span><i class="fas fa-user"></i></span>
+            <a href="javascript:void(0);">
+                Manage Supervisor
+            </a>
+        </li>
+        <li [class.active]="(activeMenuItem == 'addmaster')" (click)="goto('/dashboard/addmaster', 'addmaster')">
+            <span><i class="fas fa-dollar-sign"></i></span>
+            <a href="javascript:void(0);">
+                Settings
+            </a>
+        </li>
 
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/paymentSchedule')">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Payment Schedule
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
-            
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard/addmaster')">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Settings
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
+        <li (click)="logout()">
+            <span><i class="fas fa-sign-out-alt"></i></span>
+            <a href="javascript:void(0);">
+                Logout
+            </a>
+        </li>
 
-            <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="logout()">
-                <a 
-                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                    Logout
-                    <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-            </li>
-          
-        </ul>
     </ul>
 
 </aside>

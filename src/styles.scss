@@ -59983,3 +59983,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  .w-full {
     cursor: pointer;
   }
+
+  .middle-content-wrapper {
+    margin-left: 290px;
+    margin-top: 80px;
+  }
+
+    // NEW CSS Start Here
+  .table-heading-wrap{
+    padding: 15px 10px;
+  }
+  .table{
+    margin-top: 10px;
+  }
+  .table thead th, .table tbody td{
+    vertical-align: inherit !important;
+    font-size: 14px;
+    font-weight: 300;
+    text-align : center;
+    padding: 10px 10px !important;
+}
+.action-btn-wrap{
+    width: 120px;
+    .delete-btn{
+      i{
+        color: red;
+      }
+    }
+}
+ // NEW CSS End Here

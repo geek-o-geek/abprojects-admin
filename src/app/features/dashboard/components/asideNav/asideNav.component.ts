@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AsideNavComponent implements OnInit {
   data: any = {}
   databackup: any = {};
+  activeMenuItem: string = 'dashboard';
   constructor(private router: Router) { }
 
   ngOnInit(): void {}
@@ -22,7 +23,8 @@ export class AsideNavComponent implements OnInit {
     this.data = { ...this.data, worker }
   }
 
-  goto(route: string = '') {
+  goto(route: string = '', activeMenuItem: string = '') {
+    this.activeMenuItem = activeMenuItem;
     this.router.navigateByUrl(route)
   }
 

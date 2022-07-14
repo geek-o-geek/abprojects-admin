@@ -2,99 +2,12 @@
 <div class="mx-auto bg-grey-400">
     <!--Screen-->
     <div class="min-h-screen flex flex-col">
-        <!--Header Section Starts Here-->
-        <header class="bg-nav">
-            <div class="flex justify-between">
-                <div class="p-1 mx-3 inline-flex items-center">
-                    <i class="fas fa-bars pr-2 text-white" ></i>
-                    <h1 class="text-white p-2"><img src="assets/images/Logomain.png" height="60" width="180"></h1>
-                </div>
-                <div class="p-1 flex flex-row items-center">
-                   
-                    <!--<a href="https://github.com/tailwindadmin/admin" class="text-white p-2 mr-2 no-underline hidden md:block lg:block">Github</a> -->
-                    <img src="assets/images/ABProjectsLogo.png" height="60" width="180">
-
-
-                    <img src="assets/images/logo.jpeg" alt="" height="60" width="180">
-                                                                                                                                 
-                   <!-- <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">Adam Wathan</a> -->
-
-                    <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
-                        <ul class="list-reset">
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
-                          <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!--/Header-->
+        <app-header></app-header>
 
         <div class="flex flex-1">
-            <!--Sidebar-->
-            <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
-
-                <ul class="list-reset flex flex-col">
-                    <ul class="list-reset flex flex-col">
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard')">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Dashboard
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/roadInspection')">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Road Inspection
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/manageSupervisor')">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Manage Supervisor
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white" (click)="goto('/dashboard/paymentSchedule')">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Payment Schedule
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="goto('/dashboard/addmaster')">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Settings
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-    
-                        <li class=" w-full h-full py-3 px-2 border-b border-light-border " (click)="logout()">
-                            <a 
-                               class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-                                <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                Logout
-                                <span><i class="fas fa-angle-right float-right"></i></span>
-                            </a>
-                        </li>
-                      
-                    </ul>
-                </ul>
-
-            </aside>
-            <!--/Sidebar-->
+            <app-aside-nav></app-aside-nav>
             <!--Main-->
-            <main class="bg-white-300 flex-1 p-3 overflow-hidden">
+            <main class="middle-content-wrapper bg-white-300 flex-1 p-3 overflow-hidden">
                 
                  <div class="bg-gray-200 px-2 py-3 border-solid border-gray-300 border-b">
                     EPWP Participants -> {{ profiledata?.fullname }} | <a href="">Export Participant info in pdf form.</a>
