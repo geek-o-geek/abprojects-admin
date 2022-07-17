@@ -3,18 +3,18 @@
     .modal-title {
         font-size: 20px;
     }
-    .col-options {
-        display: flex;
-        gap: 5px;
-    }
-    .modal-body {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        min-width: 15%;
-    }
     label {
         margin-top: 10px;
         cursor: pointer;
     }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+
+.grid-item {
+  display: flex;
+  gap: 5px;
 }

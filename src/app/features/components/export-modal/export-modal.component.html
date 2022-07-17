@@ -7,8 +7,8 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
-          <div class="col-options" *ngFor="let item of modalBodyData;">
+        <div class="modal-body grid-container">
+          <div class="col-options grid-item" *ngFor="let item of modalBodyData;">
             <input type="checkbox" name="columns" [id]="item?.field"
                    [checked]="item?.selected" (change)="onColumnSelect(item?.columnName)">
             <label [for]="item?.field">{{ item?.columnName }}</label>
