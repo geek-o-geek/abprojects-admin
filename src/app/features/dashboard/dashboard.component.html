@@ -102,7 +102,7 @@
                                         <tr>
                                             <th scope="col">SA ID</th>
                                             <th scope="col">Initials</th>
-                                            <th scope="col">Surname</th>
+                                            <th scope="col">Full name</th>
                                             <th scope="col">Ward</th>
                                             <th scope="col">Job Title</th>
                                             <th scope="col">Supervisors</th>
@@ -119,10 +119,8 @@
                                                 <a (click)="goto('/dashboard/profile', item)"
                                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
 
-                                                    <button
-                                                        class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
-                                                        {{ item.lastname | titlecase }}
-                                                    </button>
+                                                        {{ item.fullname | titlecase }}
+                                                    
                                                 </a>
                                             </td>
                                             <td>{{ item.ward | titlecase }}</td>
