@@ -196,7 +196,6 @@ input[type=text]:focus {
 }
 
 // Sidebar CSS End Here
-
 // Dashboard CSS Start Here
 .dashboard-data{
   position: relative;
@@ -250,4 +249,38 @@ img{
   margin: 0 auto;
 }
 }
+.dashboard-card{
+  div{
+    padding: 15px 5px !important;
+    a:nth-child(1){
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    a:nth-child(2){
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+
+}
+.dashboard-card.bg-card1{
+  background-color:  #007fea !important ;
+}
+.dashboard-card.bg-card1.border-success-dark {
+  border-color:  #043660  !important ;
+}
+.dashboard-card.bg-card2{
+  background-color: #00d3c5 !important;
+}
+.dashboard-card.bg-card2.border-success-dark {
+  border-color:  #01877ecc  !important ;
+}
+.dashboard-card.bg-card3{
+  background-color: #003b6d !important;
+}
+.dashboard-card.bg-card3.border-success-dark {
+  border-color:  #001222 !important ;
+}
+
 // Dashboard CSS End Here

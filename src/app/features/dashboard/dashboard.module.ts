@@ -30,6 +30,7 @@ import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSc
 import { ExportModalComponent } from '../components/export-modal/export.modal.component';
 import { AsideNavComponent } from './components/asideNav/asideNav.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from '../components/loader/loader.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -49,7 +50,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     PaymentScheduleComponent,
     ExportModalComponent,
     AsideNavComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

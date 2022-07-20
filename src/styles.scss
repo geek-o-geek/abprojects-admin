@@ -59995,20 +59995,65 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   .table{
     margin-top: 10px;
+    min-height: 300px;
   }
   .table thead th, .table tbody td{
     vertical-align: inherit !important;
     font-size: 14px;
-    font-weight: 300;
-    text-align : center;
+    text-align: center;
     padding: 10px 10px !important;
+    color: #000;
+    font-weight: 600;
+    font-family: unset;
+    a{
+      color: #000;
+      font-weight: 600;
+      font-family: unset;
+    }
 }
 .action-btn-wrap{
+  a{
+    background-color: transparent;
+    color: #000 !important;
+    i.fas.fa-eye{
+      color: #007fea;
+    }
+  }
     width: 120px;
     .delete-btn{
       i{
         color: red;
       }
+   
     }
 }
+.export-btn{
+  position : relative;
+  top : -4px;
+  button{
+    height: 30px !important;
+    line-height: 15px;
+  }
+}
+.overseer-wrap{
+  p{
+    margin-top: 14px;
+  }
+}
+.add-master-wrap{
+  justify-content: center;
+}
  // NEW CSS End Here
+
+  // Common CSS Start Here
+button{
+  background-color: #2b6cb0 !important;
+  color : #fff !important;
+  font-size : 16px !important;
+  min-width: 120px !important;
+  height: 36px ;
+  font-weight : normal !important;
+  border-radius : 4px !important;
+  line-height: 18px;
+}
+  // Common CSS End Here

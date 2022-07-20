@@ -41,7 +41,8 @@
     top: 7px;
     .dropdown{
       button{
-        position: relative;
+        position: relative; 
+        background-color: transparent !important;
         img{
           display: inline-block;
           width: 35px;

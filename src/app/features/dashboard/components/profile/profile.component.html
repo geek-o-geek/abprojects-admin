@@ -24,11 +24,11 @@
 
                     
                     <!--Profile Tabs-->
-                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between">
+                    <div class="user-profile-wrap flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between">
                         <!--Top user 1-->
                         
                         <div class="rounded rounded-t-lg overflow-hidden shadow my-3">
-                            <div class="flex justify-center">
+                            <div class="flex justify-center profile-pic-wrap">
                                 <img width="80" height="80" [src]="profileImage || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
                                      class="rounded-full border-solid border-white border-2 ">
                                      <input type="file" id="file" style="display:none;" (change)="thisFileUploadchange($event)" />
@@ -135,26 +135,28 @@
                         </div>
                         <!--Top user 2-->
                         
-                       <div class="rounded rounded-t-lg overflow-hidden shadow my-3" style="width: 50%;">
-                           
-                            
-                            <div class="flex justify-center">
+                       <div class="document-section-wrap rounded rounded-t-lg overflow-hidden shadow my-3">
+                              <div class="document-head flex justify-center">
                                 <!--
                                 <img src="https://i.imgur.com/8Km9tLL.jpg" alt=""
                                      class="rounded-full border-solid border-white border-2 "> -->
                                 Documents
                             </div>
-                            <div class="text-center px-3 pb-6 pt-2">
-                                <h3>ID Card</h3>
-                                <img width="80" height="80" [src]="idCard || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
-                                     class="rounded-full border-solid border-white border-2 ">
+                            <div class="row">
+                                <div class="col-md-6">  <div class="text-center px-3">
+                                    <h3>ID Card</h3>
+                                    <img width="80" height="80" [src]="idCard || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
+                                         class="rounded-full border-solid border-white border-2 ">
+                                </div> </div>
+                                <div class="col-md-6"><div class="text-center px-3">
+                                    <h3>Contract</h3>
+                                    <img width="80" height="80" [src]="contract || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
+                                         class="rounded-full border-solid border-white border-2 ">
+                                </div> </div>
                             </div>
+                          
                             
-                            <div class="p-3">
-                                <h3>Contract</h3>
-                                <img width="80" height="80" [src]="contract || 'https://i.imgur.com/8Km9tLL.jpg'" alt=""
-                                     class="rounded-full border-solid border-white border-2 ">
-                            </div>
+                            
                             
                         
                         </div>

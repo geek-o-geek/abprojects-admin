@@ -5,7 +5,7 @@
     position: fixed;
     background-color: #e9f3f5;
     height: 100vh;
-    padding-left: 80px;
+    padding-left: 65px;
     padding-top: 70px;
     top: 65px;
     bottom: 0;
@@ -13,11 +13,11 @@
   
   
     .side-strip-bar{
-       position: absolute;
-       left: 0;
-       top: 0;
-       bottom: 0;
-      width : 80px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width : 65px;
       background: rgb(0,59,109);
       background: linear-gradient(180deg, rgba(0,59,109,1) 0%, rgba(0,154,182,1) 100%);
     }
@@ -33,7 +33,7 @@
         span{
          position: absolute;
           left: -80px;
-          top: 8px;
+          top: 2px;
           display: block;
           height: 50px;
           width: 80px;
@@ -43,13 +43,13 @@
           transition: all 400ms linear;
           i{
             color: #fff;
-            font-size: 25px;
+            font-size: 22px;
           }
         }
         a{
           position: relative;
           top: 0px;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 700;
           color: #646e84;
           text-decoration: none;
