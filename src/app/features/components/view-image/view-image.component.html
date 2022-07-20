@@ -1,0 +1,22 @@
+<div class="modal" id="modalElem1" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">View Image</h5>
+        </div>
+        <div class="modal-body grid-container">
+          <div class="col-options grid-item">
+            <ng-template #noimage><p>
+              No image found
+            </p></ng-template>
+            <img *ngIf="imageSrc; else noimage" class="responsive_img" [src]="'https://abprojects-bucket1.s3.amazonaws.com/'+imageSrc"  alt="inspection image" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="openModalButton1" #openModalButton1 [hidden]="true" data-toggle="modal" data-target="#modalElem1">Open Modal</button>

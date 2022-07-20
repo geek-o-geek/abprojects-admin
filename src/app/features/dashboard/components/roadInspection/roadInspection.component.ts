@@ -13,8 +13,10 @@ export class RoadInspectionComponent implements OnInit {
   databackup: any = []
   tableContent: any = []
   openModal: boolean = false;
+  openImageModal: boolean = false;
   modalBodyData: any = []
   exportData: any = []
+  imageSrc: string = '';
   constructor(private http: HttpClient, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
@@ -73,6 +75,10 @@ export class RoadInspectionComponent implements OnInit {
 
   toggleModal() {
     this.openModal = !this.openModal;
+  }
+
+  toggleImageModal() {
+    this.openImageModal = !this.openImageModal;
   }
   
 
