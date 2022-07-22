@@ -12,7 +12,11 @@
             <img *ngIf="imageSrc; else noimage" class="responsive_img" [src]="'https://abprojects-bucket1.s3.amazonaws.com/'+imageSrc"  alt="inspection image" />
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="display: flex; justify-content: space-between;">
+          <div class="image-pagination" style="display: flex; gap: 5px;">
+            <p style="font-size: 1.5rem; cursor: pointer;">&#8592;</p>
+            <p style="font-size: 1.5rem; cursor: pointer;">&#8594;</p>
+          </div>
           <button (click)="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>

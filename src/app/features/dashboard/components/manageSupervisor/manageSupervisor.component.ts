@@ -82,8 +82,13 @@ export class ManageSupervisorComponent implements OnInit {
     this.http.post(endpoint, payload, headers)
     .subscribe((res: any): void => {
       this.submitted = false;
+      this.form.reset();
+      this.form.get('password')?.setValue(this.autoPassword);
       alert("Supervisor added successfully")
-    }, err => this.submitted = false)
+    }, err => {
+      this.submitted = false;
+      alert('Some error while adding')
+    })
   }
 
   get f(): { [key: string]: AbstractControl } {

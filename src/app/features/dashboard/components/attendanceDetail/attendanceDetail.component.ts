@@ -59,7 +59,7 @@ export class AttendanceDetailComponent {
     this.lat = +this.attendanceDetailData?.startLocation;
     this.lng = +this.attendanceDetailData?.endLocation;
 
-    const [lat, lng] = this.attendanceDetailData?.location.split(",");
+    const [lat, lng] = this.attendanceDetailData?.location?.split(",") || [ this.lat, this.lng ];
     this.latEnd = +lat;
     this.lngEnd = +lng;
     this.getPolygonMapPoints();
