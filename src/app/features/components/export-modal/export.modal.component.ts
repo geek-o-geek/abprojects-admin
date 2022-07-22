@@ -7,6 +7,8 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./export-modal.component.scss']
 })
 export class ExportModalComponent implements AfterViewInit, OnChanges {
+  public fromDt: string = '';
+  public toDt: string = '';
   @Input() openModal: boolean = false;
   @Input() modalBodyData: Array<{ [columnName: string]: string; }> = [];
   @Input() exportData: Array<{ [key: string]: string; }> = [];

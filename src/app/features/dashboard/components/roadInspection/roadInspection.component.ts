@@ -16,7 +16,7 @@ export class RoadInspectionComponent implements OnInit {
   openImageModal: boolean = false;
   modalBodyData: any = []
   exportData: any = []
-  imageSrc: string = '';
+  imageSrc: string[] = [];
   constructor(private http: HttpClient, private location: Location, private router: Router) { }
 
   ngOnInit(): void {
