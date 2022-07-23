@@ -43,15 +43,35 @@ export class ExportModalComponent implements AfterViewInit, OnChanges {
 
   onExport() {
     const filteredData: any = [];
+
     this.exportData.filter((item) => {
       const object: any = {}
-      Object.keys(item || {}).forEach(fieldKey => {
-        const ob: any = this.modalBodyData.find(obj => obj.field === fieldKey) || {};
-        if (ob.selected) {
-          object[fieldKey] = item[fieldKey];
+
+      const createdAt = new Date(item.created_at);
+    
+      const minDate = new Date(this.fromDt);
+      const maxDate =  new Date(this.toDt);
+  
+      let flag: boolean = false;
+      if (minDate && maxDate) {
+        if (createdAt > minDate && createdAt < maxDate ){
+            flag = true;
         }
-      });
-      filteredData.push(object);
+      } else {
+        flag = true;
+      }
+
+      if (flag) {
+        // row iteration
+        Object.keys(item || {}).forEach(fieldKey => {
+          const ob: any = this.modalBodyData.find(obj => obj.field === fieldKey) || {};
+          
+          if (ob.selected) {
+            object[fieldKey] = item[fieldKey];
+          }
+        });
+        filteredData.push(object);
+      }
     });
     
     import("xlsx").then(xlsx => {
