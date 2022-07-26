@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.isLogging = true;
     const { phone, password } = this.form.value;
 
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/login";
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//login";
 
     this.http.post(endpoint, {
       phone,

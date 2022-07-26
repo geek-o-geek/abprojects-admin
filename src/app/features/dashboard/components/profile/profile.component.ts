@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name;
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/upload/profile`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//upload/profile`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     try {

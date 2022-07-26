@@ -15,7 +15,7 @@ export class WardComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get?type=all";
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//master/get?type=all";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
