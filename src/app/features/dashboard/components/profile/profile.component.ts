@@ -1,46 +1,58 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent implements OnInit {
   uploadedFiles: any;
   profiledata: any = {};
-  profileImage: string = '';
-  idCard: string = '';
-  contract: string = '';
-  constructor(private http: HttpClient, private router: Router) { }
+  profileImage: string = "";
+  idCard: string = "";
+  contract: string = "";
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
-    this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
-    this.idCard = this.profiledata?.idCard ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`: ''
-    this.contract = this.profiledata?.contract ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`: ''
+    this.profiledata = JSON.parse(
+      localStorage.getItem("profileabworker") || "{}"
+    );
+    this.profileImage = this.profiledata?.profileImage
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`
+      : "";
+    this.idCard = this.profiledata?.idCard
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`
+      : "";
+    this.contract = this.profiledata?.contract
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`
+      : "";
   }
 
   thisFileUploadchange(element: any) {
     this.uploadedFiles = element.target.files[0];
-    this.upload()
+    this.upload();
   }
-  
+
   upload() {
     if (!this.uploadedFiles) {
-      alert('file is mandatory');
+      alert("file is mandatory");
       return;
     }
     const filename = this.uploadedFiles.name;
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-type": "application/json",
+        Authorization: localStorage.getItem("abprojectsToken") || "",
+      }),
+    };
 
-    this.http.get(endpoint, headers)
-      .subscribe((response) => {
+    this.http.get(endpoint, headers).subscribe((response) => {
       this.uploadS3(response);
-    })
+    });
   }
 
   uploadS3(data: any) {
@@ -59,45 +71,51 @@ export class ProfileComponent implements OnInit {
 
     xhr.onload = () => {
       if (xhr.status === 200) {
-        this.uploadMasterApi(data?.filePath)
+        this.uploadMasterApi(data?.filePath);
       }
     };
     xhr.onerror = () => {
-      alert('some error while uploading')
+      alert("some error while uploading");
     };
     xhr.send(this.uploadedFiles);
   }
 
-  uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`; 
-    const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
+  uploadMasterApi(filename: string = "") {
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-type": "application/json",
+        Authorization: localStorage.getItem("abprojectsToken") || "",
+      }),
+    };
 
     try {
-      this.http.post(endpoint, {
-        filename,
-        id: this.profiledata?.id
-      }, headers)
-      .subscribe((response) => {
-        
-    })
-      alert('Successfully uploaded');
+      this.http
+        .post(
+          endpoint,
+          {
+            filename,
+            id: this.profiledata?.id,
+          },
+          headers
+        )
+        .subscribe((response) => {});
+      alert("Successfully uploaded");
     } catch (error) {
-      alert('Something went wrong');
+      alert("Something went wrong");
     }
-  };
+  }
 
   thisFileUpload() {
     document.getElementById("file")?.click();
-  };
+  }
 
-  goto(route: string = '') {
-    this.router.navigateByUrl(route)
+  goto(route: string = "") {
+    this.router.navigateByUrl(route);
   }
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl("/login");
   }
-  
-
 }
