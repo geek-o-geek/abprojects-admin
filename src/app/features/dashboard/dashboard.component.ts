@@ -11,11 +11,14 @@ export class DashboardComponent implements OnInit {
   data: any = {}
   databackup: any = {}
   openModal: boolean = false;
+  openDateModal: boolean = false;
   modalBodyData: any = []
   exportData: any = []
+  loader: boolean | null = false;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.loader = true;
     this.modalBodyData = [
       { 'columnName': 'SA ID', field: 'said', 'selected': true },
       { 'columnName': 'Initials', field: 'initials', 'selected': true },
@@ -26,18 +29,31 @@ export class DashboardComponent implements OnInit {
       { 'columnName': 'No. of Days worked', field: 'payableDays', 'selected': true },
       { 'columnName': 'Amount to be paid', field: 'amountPaid', 'selected': true }
     ]
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//master/get?type=all";
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/master/get?type=all";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
     .subscribe((res: any): void => {
-     this.data = res.data
-     this.databackup = res.data
-    })
+      this.loader = false;
+      this.data = res.data
+      this.databackup = res.data
+    }, err => this.loader = false)
+  }
+
+  dateFilter(data: any) {
+    if(!data) return;
+   
+    this.data = {
+      worker: data
+    }
   }
 
   toggleModal() {
     this.openModal = !this.openModal;
+  }
+
+  toggleDateModal() {
+    this.openDateModal = !this.openDateModal;
   }
 
   goto(route: string = '', item: any = {}) {

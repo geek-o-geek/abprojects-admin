@@ -1,0 +1,25 @@
+.modal {
+    top: 40% !important;
+    .modal-title {
+        font-size: 20px;
+    }
+    label {
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.grid-item {
+  display: flex;
+  gap: 5px;
+}
+
+.date-container {
+  display: flex;
+  gap: 1rem;
+}

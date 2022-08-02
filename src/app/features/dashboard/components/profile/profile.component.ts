@@ -17,9 +17,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profiledata = JSON.parse(localStorage.getItem('profileabworker') || '{}');
-    this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
-    this.idCard = this.profiledata?.idCard ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.idCard}`: ''
-    this.contract = this.profiledata?.contract ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.contract}`: ''
+    this.profileImage = this.profiledata?.profileImage ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`: ''
+    this.idCard = this.profiledata?.idCard ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`: ''
+    this.contract = this.profiledata?.contract ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`: ''
   }
 
   thisFileUploadchange(element: any) {
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name;
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = '') {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//upload/profile`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`; 
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     try {

@@ -13,14 +13,30 @@ export class AllAttendanceComponent implements OnInit {
   data: any = {}
   databackup: any = {};
   dt: any;
+  openModal: boolean = false;
+  modalBodyData: any = []
+  exportData: any = []
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.modalBodyData = [
+      { 'columnName': 'Beneficiary Name', field: 'fullname', 'selected': true },
+      { 'columnName': 'SA ID', field: 'said', 'selected': true },
+      { 'columnName': 'Created At', field: 'created_at', 'selected': true },
+      { 'columnName': 'Comment', field: 'comment', 'selected': true },
+      { 'columnName': 'Attendance Date', field: 'attendanceDate', 'selected': true },
+      { 'columnName': 'Work Hours', field: 'workHours', 'selected': true },
+      { 'columnName': 'Title', field: 'title', 'selected': true },
+    ]
     this.hitApi()
   }
 
+  toggleModal() {
+    this.openModal = !this.openModal;
+  }
+
   hitApi() {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//attendancenWorkerByDate?dt=${this.dt || new Date().toISOString().split("T")[0]}`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com//attendancenWorkerByDate?dt=${this.dt || new Date().toISOString().split("T")[0]}`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)

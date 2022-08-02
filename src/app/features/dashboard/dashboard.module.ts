@@ -32,6 +32,8 @@ import { AsideNavComponent } from './components/asideNav/asideNav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from '../components/loader/loader.component';
 import { ViewImageComponent } from '../components/view-image/view-image.component';
+import { DateFilterComponent } from '../components/date-filter/date-filter.component';
+import { GeneralModalComponent } from '../components/general-modal/general.modal.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -53,7 +55,9 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AsideNavComponent,
     HeaderComponent,
     LoaderComponent,
-    ViewImageComponent
+    ViewImageComponent,
+    DateFilterComponent,
+    GeneralModalComponent
   ],
   imports: [
     CommonModule,

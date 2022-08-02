@@ -30,6 +30,9 @@
                                     <span style="float: right; border: 2px solid #e2e8f0;">
                                         
                                         <input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
+                                        <span class="export-btn" *ngIf="databackup?.length > 0" style="float: right; border: 2px solid #e2e8f0; margin: 0 0 20px 10px">
+                                            <button (click)="toggleModal()" style="padding: 5px; font-size: 16px">Export</button>
+                                        </span>
                                 </div>
                             </div> 
                             <div class="table-responsive">
@@ -68,14 +71,14 @@
 
                 </div>
             </main>
-          
-                
-                 
-
-                
-           
             <!--/Main-->
         </div>
     </div>
 
 </div>
+<app-export-modal
+[openModal]="openModal"
+[exportData]="databackup"
+[modalBodyData]="modalBodyData"
+(onCloseEvent)="toggleModal()">
+</app-export-modal>

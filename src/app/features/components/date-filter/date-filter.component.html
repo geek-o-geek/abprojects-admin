@@ -1,0 +1,27 @@
+<div class="modal" id="modalDateElem" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Select Date</h5>
+          <button (click)="onClose()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+          <div class="date-container">
+            <label for="d1">From</label>
+            <input type="date" [(ngModel)]="fromDt" style="border: 2px solid #000; opacity: 0.4;" name="d1" id="d1">
+
+            <label for="d2">To</label>
+            <input type="date" [(ngModel)]="toDt" style="border: 2px solid #000; opacity: 0.4;" name="d2" id="d2">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Filter</button>
+          <button (click)="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="openDateModalButton" #openDateModalButton [hidden]="true" data-toggle="modal" data-target="#modalDateElem">Open Modal</button>

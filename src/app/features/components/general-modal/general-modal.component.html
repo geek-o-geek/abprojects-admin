@@ -1,0 +1,46 @@
+<div class="modal" id="modalElemPin" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change PIN</h5>
+          <button (click)="onClose()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+            <div class="grid-container">
+
+                              <form class="w-full" [formGroup]="form" (ngSubmit)="submitForm()">
+                                  
+                                  
+                                   <div class="flex flex-wrap -mx-3 mb-6 overseer-wrap">
+                                
+
+                                      <div class="w-full md:w-1/2 px-3">
+                                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                 for="grid-last-name">
+                                              pin
+                                          </label>
+                                          <input
+                                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                          formControlName="password" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                 id="grid-last-name" type="text" placeholder="0000">
+                                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                  <div *ngIf="f.password.errors.required">Please fill out this field.</div>
+                                              </div>
+                                      </div>
+                                  </div>
+                                  
+                              </form>
+                         
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" (click)="onExport()">Submit</button>
+          <button (click)="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="openModalButtonPin" #openModalButtonPin [hidden]="true" data-toggle="modal" data-target="#modalElemPin">Open Modal</button>
