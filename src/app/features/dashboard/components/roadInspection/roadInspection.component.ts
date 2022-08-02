@@ -65,7 +65,7 @@ export class RoadInspectionComponent implements OnInit {
   }
 
   goto(route: string = '', item: any = {}) {
-    this.router.navigateByUrl(route)
+    this.router.navigate([route, item.location])
   }
 
   logout() {

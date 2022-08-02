@@ -34,6 +34,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 import { ViewImageComponent } from '../components/view-image/view-image.component';
 import { DateFilterComponent } from '../components/date-filter/date-filter.component';
 import { GeneralModalComponent } from '../components/general-modal/general.modal.component';
+import { MapNewComponent } from '../components/mapnew/mapnew.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -57,7 +58,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     LoaderComponent,
     ViewImageComponent,
     DateFilterComponent,
-    GeneralModalComponent
+    GeneralModalComponent,
+    MapNewComponent
   ],
   imports: [
     CommonModule,

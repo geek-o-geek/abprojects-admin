@@ -1,0 +1,28 @@
+<div class="mx-auto bg-grey-400">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <app-header></app-header>
+  
+        <div class="flex flex-1">
+            <app-aside-nav></app-aside-nav>
+            <!--Main-->
+            <main class="middle-content-wrapper bg-white-300 flex-1 p-3 overflow-hidden">
+                
+                 <div class="bg-gray-200 px-2 py-3 border-solid border-gray-300 border-b">
+                    Road Inspection Map
+                </div>
+  
+                <div class="container" >
+                    <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker  [latitude]="lat" [longitude]="lng">
+                        </agm-marker>
+                      </agm-map>
+                </div>
+                
+            </main>
+            <!--/Main-->
+        </div>
+    </div>
+  
+  </div>
+  

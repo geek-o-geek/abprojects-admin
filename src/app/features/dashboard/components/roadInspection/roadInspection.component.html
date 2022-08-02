@@ -43,6 +43,7 @@
                                         <td scope="col">Comment</td>
                                         <td scope="col">Created At</td>
                                         <td scope="col">View Image</td>
+                                        <td scope="col">View Location</td>
 
                                         <!-- comment: "ereree"
                                         created_at: "2022-06-06T04:31:04.000Z"
@@ -83,6 +84,15 @@
                                             <td scope="row">{{ item?.created_at | date: 'yyyy-mm-dd' }}</td>
                                             <td class="border">
                                                 <div class="action-btn-wrap" (click)="imageSrc = [item?.inspectionImage1, item?.inspectionImage2, item?.inspectionImage3, item?.inspectionImage4]; toggleImageModal();">
+                                                    <a 
+                                                        class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                   
+                                                </div>
+                                            </td>
+                                            <td class="border">
+                                                <div class="action-btn-wrap" (click)="goto('/dashboard/mapnew', item)">
                                                     <a 
                                                         class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                         <i class="fas fa-eye"></i>

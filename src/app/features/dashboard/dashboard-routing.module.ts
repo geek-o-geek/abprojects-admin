@@ -12,6 +12,7 @@ import { AllAttendanceComponent } from './components/allAttendance/allattendance
 import { RoadInspectionComponent } from './components/roadInspection/roadInspection.component';
 import { ManageSupervisorComponent } from './components/manageSupervisor/manageSupervisor.component';
 import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSchedule.component';
+import { MapNewComponent } from '../components/mapnew/mapnew.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'attendance', component: AttendanceComponent },
 { path: 'ward', component: WardComponent },
 { path: 'map', component: MapComponent },
+{ path: 'mapnew/:location', component: MapNewComponent },
 { path: 'attendanceDetail', component: AttendanceDetailComponent },
 { path: 'allAttendance', component: AllAttendanceComponent },
 { path: 'roadInspection', component: RoadInspectionComponent },
