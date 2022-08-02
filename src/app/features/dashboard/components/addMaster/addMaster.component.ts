@@ -25,7 +25,7 @@ export class AddMasterComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name.split('.xlsx')[0];
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://istreet-env.eba-hwzzxpcr.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
