@@ -35,8 +35,8 @@
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let item of data.wards" (click)="goto('/dashboard/supervisor', item)">
-                                        <th scope="row">{{ item?.ward }}</th>
-                                        <th scope="row">{{ item?.region }}</th>
+                                        <td scope="row">{{ item?.ward }}</td>
+                                        <td scope="row">{{ item?.region }}</td>
                                         
                                         <!--
                                         <td>
