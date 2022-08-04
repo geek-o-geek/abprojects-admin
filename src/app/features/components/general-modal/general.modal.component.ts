@@ -70,6 +70,7 @@ export class GeneralModalComponent implements AfterViewInit, OnChanges, OnInit {
           this.form.reset();
           this.isSuccess = true;
           this.onCloseEvent.emit();
+          alert("Updated successfully");
         },
         _ => {
           this.submitted = false;
