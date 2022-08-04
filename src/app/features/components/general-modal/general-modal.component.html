@@ -7,11 +7,12 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
+        <form class="w-full" [formGroup]="form" (ngSubmit)="submitForm()">
+                                
         <div class="modal-body ">
             <div class="grid-container">
 
-                              <form class="w-full" [formGroup]="form" (ngSubmit)="submitForm()">
-                                  
+                               
                                   
                                    <div class="flex flex-wrap -mx-3 mb-6 overseer-wrap">
                                 
@@ -22,6 +23,7 @@
                                               pin
                                           </label>
                                           <input
+                                          maxlength="4"
                                           [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                                           formControlName="password" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
                                                  id="grid-last-name" type="text" placeholder="0000">
@@ -29,16 +31,35 @@
                                                   <div *ngIf="f.password.errors.required">Please fill out this field.</div>
                                               </div>
                                       </div>
+
+                                      <div class="w-full md:w-1/2 px-3">
+                                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                               for="grid-last-name">
+                                            mobile
+                                        </label>
+                                        <input
+                                        maxlength="15"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                                        formControlName="mobile" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                               id="grid-mobile" type="text" placeholder="9999988888">
+                                            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                                <div *ngIf="f.mobile.errors.required">Please fill out this field.</div>
+                                            </div>
+                                    </div>
+                                    <div *ngIf="isSuccess" class="invalid-feedback">
+                                      <div>Successfully updated</div>
+                                    </div>
                                   </div>
                                   
-                              </form>
+                             
                          
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="buttonCls btn btn-primary" (click)="onExport()">Submit</button>
+          <button type="submit" class="buttonCls btn btn-primary" >Submit</button>
           <button (click)="onClose()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
+      </form>
       </div>
     </div>
   </div>

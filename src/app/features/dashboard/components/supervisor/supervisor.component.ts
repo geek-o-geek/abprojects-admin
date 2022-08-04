@@ -73,8 +73,11 @@ export class SupervisorComponent implements OnInit {
     this.router.navigateByUrl("/login");
   }
 
+  openModalFunction() {
+    this.openModal = true;
+  }
+
   changePin(item: any) {
-    console.log(item);
-    this.toggleModal();
+    this.openModalFunction();
   }
 }

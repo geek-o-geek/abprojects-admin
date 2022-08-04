@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -7,26 +8,29 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   templateUrl: './general-modal.component.html',
   styleUrls: ['./general-modal.component.scss']
 })
-export class GeneralModalComponent implements AfterViewInit, OnChanges {
+export class GeneralModalComponent implements AfterViewInit, OnChanges, OnInit {
   form!: FormGroup;
+  isSuccess: boolean = false;
   submitted: boolean = false;
   @Input() openModal: boolean = false;
   @Input() modalBodyData: Array<{ [columnName: string]: string; }> = [];
   @Input() exportData: Array<{ [key: string]: string; }> = [];
   @Output() onCloseEvent: EventEmitter<any> = new EventEmitter();
   @ViewChild('openModalButtonPin') openModalButtonPin!: ElementRef<HTMLButtonElement>;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   ngAfterViewInit(): void {
-    if(this.openModal) {
-      this.createForm();
-      this.openModalButtonPin?.nativeElement?.click();
-    }
+   
+  }
+
+  ngOnInit(): void {
+    this.openModalButtonPin?.nativeElement?.click();
+    this.createForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.openModal?.currentValue && (changes.openModal?.currentValue !== changes.openModal?.previousValue)) {
-        this.openModalButtonPin?.nativeElement?.click();
+      this.openModalButtonPin?.nativeElement?.click();
     }
   }
 
@@ -34,27 +38,49 @@ export class GeneralModalComponent implements AfterViewInit, OnChanges {
     this.onCloseEvent.emit();
   }
 
-  onExport() {
-   
-  }
-
   submitForm() {
-    this.submitted = true;
+    this.isSuccess = false;
+      this.submitted = true;
+      if (this.form.invalid) {
+        return;
+      }
+  
+      const formValues: any = this.form.value;
+  
+      const payload = {
+        mobile: formValues.mobile,
+        password: formValues.password
+      };
+  
+      const endpoint =
+        "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/changePin";
+      
+      const headers = {
+        headers: new HttpHeaders({
+          "Content-type": "application/json",
+          Authorization: localStorage.getItem("abprojectsToken") || "",
+        }),
+      };
+  
+      this.http.post(endpoint, payload, headers)
+      .subscribe(
+        (res: any): void => {
+          this.submitted = false;
+          this.form.reset();
+          this.isSuccess = true;
+          this.onCloseEvent.emit();
+        },
+        _ => {
+          this.submitted = false;
+          alert("Some error while updating");
+      });
   }
 
   createForm() {
     this.form = this.fb.group({
-      password: [this.autoPassword, Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+      mobile: ['', Validators.compose([Validators.required])],
     })
-  }
-  
-  get autoPassword() {
-    var digits = '0123456789';
-    let password = '';
-    for (let i = 0; i < 4; i++ ) {
-      password += digits[Math.floor(Math.random() * 10)];
-    }
-    return password; 
   }
 
   get f(): { [key: string]: AbstractControl } {
