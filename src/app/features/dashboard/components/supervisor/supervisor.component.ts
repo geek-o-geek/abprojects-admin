@@ -14,6 +14,7 @@ export class SupervisorComponent implements OnInit {
   data: any = {};
   databackup: any = {};
   openModal: boolean = false;
+  itemObject: any = {}
   constructor(
     private http: HttpClient,
     private location: Location,
@@ -78,6 +79,7 @@ export class SupervisorComponent implements OnInit {
   }
 
   changePin(item: any) {
+    this.itemObject = item;
     this.openModalFunction();
   }
 }

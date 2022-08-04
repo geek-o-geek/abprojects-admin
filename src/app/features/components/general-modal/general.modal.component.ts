@@ -14,7 +14,7 @@ export class GeneralModalComponent implements AfterViewInit, OnChanges, OnInit {
   submitted: boolean = false;
   @Input() openModal: boolean = false;
   @Input() modalBodyData: Array<{ [columnName: string]: string; }> = [];
-  @Input() exportData: Array<{ [key: string]: string; }> = [];
+  @Input() exportData: any = {};
   @Output() onCloseEvent: EventEmitter<any> = new EventEmitter();
   @ViewChild('openModalButtonPin') openModalButtonPin!: ElementRef<HTMLButtonElement>;
   constructor(private fb: FormBuilder, private http: HttpClient) { }
@@ -49,7 +49,8 @@ export class GeneralModalComponent implements AfterViewInit, OnChanges, OnInit {
   
       const payload = {
         mobile: formValues.mobile,
-        password: formValues.password
+        password: formValues.password,
+        id: this.exportData.id
       };
   
       const endpoint =
