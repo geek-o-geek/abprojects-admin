@@ -14,6 +14,7 @@ export class RoadInspectionComponent implements OnInit {
   tableContent: any = [];
   openModal: boolean = false;
   openImageModal: boolean = false;
+  openDateModal: boolean = false;
   modalBodyData: any = [];
   exportData: any = [];
   imageSrc: string[] = [];
@@ -88,6 +89,16 @@ export class RoadInspectionComponent implements OnInit {
 
   goto(route: string = "", item: any = {}) {
     this.router.navigate([route, item.location]);
+  }
+
+  toggleDateModal() {
+    this.openDateModal = !this.openDateModal;
+  }
+
+  dateFilter(data: any) {
+    if (!data) return;
+
+    this.tableContent = data;
   }
 
   logout() {
