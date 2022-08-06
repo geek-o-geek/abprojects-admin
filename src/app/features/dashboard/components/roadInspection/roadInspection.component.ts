@@ -88,7 +88,8 @@ export class RoadInspectionComponent implements OnInit {
   }
 
   goto(route: string = "", item: any = {}) {
-    this.router.navigate([route, item.location]);
+    const loc: string = item?.startLocation + ":_:" + item?.location;
+    this.router.navigate([route, loc]);
   }
 
   toggleDateModal() {

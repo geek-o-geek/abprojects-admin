@@ -14,6 +14,11 @@ export class MapNewComponent implements OnInit {
   myDetails: any = [];
   dt: string = '';
   wards: any[] = []
+  latEnd!: number;
+  lngEnd!: number;
+  origin!: any;
+  destination!: any;
+  travelMode: any = "WALKING";
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
@@ -30,12 +35,29 @@ export class MapNewComponent implements OnInit {
   }
 
   updateLocation() {
-    const splitLocation = this.route.snapshot.paramMap.get('location')?.split(",") || [];
+    try {
+      let splitLocation = this.route.snapshot.paramMap.get('location')?.split(":_:") || [];
 
-    if (splitLocation?.length < 1) return;
+      if (splitLocation?.length < 1) return;
+  
+      const splitLocationA = splitLocation[0]?.split(",") || [];
+      const splitLocationB = splitLocation[1]?.split(",") || [];
 
-    this.lat = +splitLocation[0];
-    this.lng = +splitLocation[1];
+      this.lat = +splitLocationA[0];
+      this.lng = +splitLocationA[1];
+      
+      this.latEnd = +splitLocationB[0];
+      this.lngEnd = +splitLocationB[1];
+
+      this.getPolygonMapPoints(); 
+    } catch (error) {
+      
+    }
+  }
+
+  getPolygonMapPoints() {
+    this.origin = { lat: this.lat, lng: this.lng };
+    this.destination = { lat: this.latEnd, lng: this.lngEnd };
   }
 
   goto(route: string = '') {
