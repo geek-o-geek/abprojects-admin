@@ -22,11 +22,11 @@
                                 <div class="font-bold text-xl">Payment Schedule
                                    
                                 </div>
-                                <div class="font-bold text-xl" style="display: flex; gap: 1.9rem;">
+                                <div class="font-bold text-xl">
                                     <span style="border: 2px solid grey;">
                                         <input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" >
                                     </span>
-                                    <select name="setMonth" [ngModel]="selectedMonth" (ngModelChange)="setMonth($event)">
+                                    <select name="setMonth" [ngModel]="selectedMonth" (ngModelChange)="setMonth($event)" style="margin: 0 20px;">
                                         <option value=1>Jan</option>
                                         <option value=2>Feb</option>
                                         <option value=3>Mar</option>
