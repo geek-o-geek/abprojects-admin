@@ -65,7 +65,7 @@
                                             <td scope="row">{{ item?.drain }}</td>
                                             <td scope="row">{{ item?.erosion }}</td>
                                             <td scope="row">{{ item?.comment }}</td>
-                                            <td scope="row">{{ item?.created_at | date: 'yyyy-mm-dd' }}</td>
+                                            <td scope="row">{{ item?.created_at | date: 'yyyy-MM-dd' }}</td>
                                             <td class="border">
                                                 <div class="action-btn-wrap" (click)="imageSrc = [item?.inspectionImage1, item?.inspectionImage2, item?.inspectionImage3, item?.inspectionImage4]; toggleImageModal();">
                                                     <a 
