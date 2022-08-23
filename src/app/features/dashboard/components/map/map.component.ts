@@ -18,6 +18,7 @@ export class MapComponent implements OnInit {
   dt: string = "";
   form!: FormGroup;
   wards: any[] = [];
+  openedWindow : number = 0;
 
   constructor(
     private http: HttpClient,
@@ -79,6 +80,14 @@ export class MapComponent implements OnInit {
       this.attendanceDetailDataBackup = res?.result || [];
       this.updateLocation();
     });
+  }
+
+  isInfoWindowOpen(data: any) {
+    return this.openedWindow === data?.id;
+  }
+
+  openWindow(data: any) { console.log(data)
+    this.openedWindow = data?.id || null; 
   }
 
   updateLocation() {
