@@ -86,7 +86,7 @@ export class MapComponent implements OnInit {
     return this.openedWindow === data?.id;
   }
 
-  openWindow(data: any) { console.log(data)
+  openWindow(data: any) {
     this.openedWindow = data?.id || null; 
   }
 

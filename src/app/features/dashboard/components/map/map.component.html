@@ -32,14 +32,14 @@
                             [isOpen]="isInfoWindowOpen(data)"
                             [latitude]="+data?.startLocation" 
                             [longitude]="+data?.endLocation">
-                            <div>
+                            <div style="display: flex; flex-direction: column; gap: 5px;">
                                 <img 
                                     width="100" 
                                     height="100" 
                                     [src]="'https://abprojects-bucket1.s3.amazonaws.com/'+data?.photo"
                                     alt="worker image"
                                 />
-                                <p>{{ data?.workerId }}</p>
+                                <p>{{ data?.initials}} {{ data?.lastname }}</p>
                             </div>
                         </agm-info-window>
                         </agm-marker>
