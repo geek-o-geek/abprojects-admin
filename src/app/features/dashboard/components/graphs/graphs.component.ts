@@ -43,11 +43,13 @@ export class GraphsComponent {
   showYAxisLabel = true;
   yAxisLabel = 'Age';
 
+  yAxisLabelA = 'Wards';
+  yAxisLabelB = 'Educational Levels';
+  educationResult: any[] = []
+
  
 
-  constructor(private http: HttpClient) {
-    
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/graphs";
@@ -65,10 +67,12 @@ export class GraphsComponent {
 
      this.ageResult = data?.ageDemographic || []
      this.wardsResult = data?.wardsDemographic || []
+     this.educationResult = data?.educationDemographic || []
 
      Object.assign(this, { single: this.single });
      Object.assign(this, { ageResult: this.ageResult });
      Object.assign(this, { wardsResult: this.wardsResult });
+     Object.assign(this, { educationResult: this.educationResult })
     })
   }
 

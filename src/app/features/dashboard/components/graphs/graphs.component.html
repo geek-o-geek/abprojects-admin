@@ -75,7 +75,29 @@
                                                 [showXAxisLabel]="showXAxisLabel"
                                                 [showYAxisLabel]="showYAxisLabel"
                                                 [xAxisLabel]="xAxisLabel"
-                                                [yAxisLabel]="yAxisLabel"
+                                                [yAxisLabel]="yAxisLabelA"
+                                                (select)="onSelect($event)">
+                                            </ngx-charts-bar-vertical>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="graph-container">
+                                <div class="graph-block">
+                                        <div class="graph-box-2">
+                                            <ngx-charts-bar-vertical
+                                                [view]="view"
+                                                [scheme]="colorScheme"
+                                                [results]="educationResult"
+                                                [gradient]="gradient"
+                                                [xAxis]="showXAxis"
+                                                [yAxis]="showYAxis"
+                                                [legend]="showLegend"
+                                                [showXAxisLabel]="showXAxisLabel"
+                                                [showYAxisLabel]="showYAxisLabel"
+                                                [xAxisLabel]="xAxisLabel"
+                                                [yAxisLabel]="yAxisLabelB"
                                                 (select)="onSelect($event)">
                                             </ngx-charts-bar-vertical>
                                         </div>
