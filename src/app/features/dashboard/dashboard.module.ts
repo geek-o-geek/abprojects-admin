@@ -35,6 +35,8 @@ import { ViewImageComponent } from '../components/view-image/view-image.componen
 import { DateFilterComponent } from '../components/date-filter/date-filter.component';
 import { GeneralModalComponent } from '../components/general-modal/general.modal.component';
 import { MapNewComponent } from '../components/mapnew/mapnew.component';
+import { GraphsComponent } from './components/graphs/graphs.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -59,7 +61,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     ViewImageComponent,
     DateFilterComponent,
     GeneralModalComponent,
-    MapNewComponent
+    MapNewComponent,
+    GraphsComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +80,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     }),
     AgmDirectionModule,
     MatSelectModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    NgxChartsModule
   ]
 })
 export class DashboardModule { }

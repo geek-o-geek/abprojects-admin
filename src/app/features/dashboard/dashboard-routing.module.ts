@@ -13,6 +13,7 @@ import { RoadInspectionComponent } from './components/roadInspection/roadInspect
 import { ManageSupervisorComponent } from './components/manageSupervisor/manageSupervisor.component';
 import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSchedule.component';
 import { MapNewComponent } from '../components/mapnew/mapnew.component';
+import { GraphsComponent } from './components/graphs/graphs.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'roadInspection', component: RoadInspectionComponent },
 { path: 'manageSupervisor', component: ManageSupervisorComponent },
 { path: 'paymentSchedule', component: PaymentScheduleComponent },
+{ path: 'graphs', component: GraphsComponent },
 ];
 
 @NgModule({

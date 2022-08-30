@@ -1,0 +1,65 @@
+
+<div class="mx-auto bg-grey-400">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <app-header></app-header>
+
+        <div class="flex flex-1">
+            <app-aside-nav></app-aside-nav>
+            <!--Main-->
+            
+            <main class="middle-content-wrapper bg-white-300 flex-1 p-3 overflow-hidden">
+
+                <div class="flex flex-col">
+                   
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+                                Graphs
+                            </div>
+                            <div class="p-3">
+                                <ngx-charts-pie-chart
+                                    [view]="view"
+                                    [scheme]="colorScheme"
+                                    [results]="single"
+                                    [gradient]="gradient"
+                                    [legend]="showLegend"
+                                    [legendPosition]="legendPosition"
+                                    [labels]="showLabels"
+                                    [doughnut]="isDoughnut"
+                                    (select)="onSelect($event)"
+                                    (activate)="onActivate($event)"
+                                    (deactivate)="onDeactivate($event)"
+                                    >
+                                    </ngx-charts-pie-chart>
+
+                                    <!-- <ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+          
+                
+                 
+
+                
+           
+            <!--/Main-->
+        </div>
+    </div>
+
+</div>

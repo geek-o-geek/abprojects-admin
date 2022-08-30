@@ -10,6 +10,12 @@
                 Dashboard
             </a>
         </li>
+        <li [class.active]="(activeMenuItem == 'graphs')" (click)="goto('/dashboard/graphs', 'graphs')">
+            <span><i class="fas fa-chart-pie"></i></span>
+            <a href="javascript:void(0);">
+                Demographics
+            </a>
+        </li>
         <li [class.active]="(activeMenuItem == 'roadInspection')" (click)="goto('/dashboard/roadInspection', 'roadInspection')">
             <span><i class="fas fa-envelope"></i></span>
             <a href="javascript:void(0);">
