@@ -11,7 +11,8 @@ import { take } from 'rxjs/operators';
 })
 export class GraphsComponent {
   single: any[] = []
-  view: [number, number] = [700, 400];
+  view: [number, number] = [1150, 400];
+  ageResult: any[] = []
 
   // options
   gradient: boolean = true;
@@ -24,6 +25,16 @@ export class GraphsComponent {
     domain: ['#5AA454', '#A10A28']
   };
 
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Count';
+  showYAxisLabel = true;
+  yAxisLabel = 'Age';
+
+ 
+
   constructor(private http: HttpClient) {
     
   }
@@ -35,14 +46,17 @@ export class GraphsComponent {
     this.http.get(endpoint, headers)
     .pipe(take(1))
     .subscribe((res: any): void => {
-     console.log(res)
      const { data = {} } = res || {};
 
      this.single = [
       { name: 'female', value: data.femaleCount },
       { name: 'male', value: data.maleCount }
      ]
+
+     this.ageResult = data?.ageDemographic || []
+
      Object.assign(this, { single: this.single });
+     Object.assign(this, { ageResult: this.ageResult });
     })
   }
 
@@ -57,4 +71,5 @@ export class GraphsComponent {
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
 }

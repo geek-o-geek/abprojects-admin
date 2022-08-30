@@ -1,0 +1,15 @@
+.graph-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 10px;
+}
+
+.graph-block {
+    display: flex !important;
+    gap: 10px !important;
+}
+
+.graph-box-1 {
+    flex-grow: 1;
+}
