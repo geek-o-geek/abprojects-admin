@@ -60,6 +60,28 @@
                                    
                                 </div>
                             </div>
+
+                            <div class="graph-container">
+                                <div class="graph-block">
+                                        <div class="graph-box-2">
+                                            <ngx-charts-bar-vertical
+                                                [view]="view"
+                                                [scheme]="colorScheme"
+                                                [results]="wardsResult"
+                                                [gradient]="gradient"
+                                                [xAxis]="showXAxis"
+                                                [yAxis]="showYAxis"
+                                                [legend]="showLegend"
+                                                [showXAxisLabel]="showXAxisLabel"
+                                                [showYAxisLabel]="showYAxisLabel"
+                                                [xAxisLabel]="xAxisLabel"
+                                                [yAxisLabel]="yAxisLabel"
+                                                (select)="onSelect($event)">
+                                            </ngx-charts-bar-vertical>
+                                        </div>
+                                   
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
