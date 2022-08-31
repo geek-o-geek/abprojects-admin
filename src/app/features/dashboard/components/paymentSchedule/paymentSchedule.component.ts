@@ -28,6 +28,13 @@ export class PaymentScheduleComponent implements OnInit {
       { columnName: "Worker Name", field: "fullname", selected: true },
       { columnName: "Worker ID", field: "said", selected: true },
       { columnName: "Amount", field: "cnt", selected: true },
+      { columnName: "Last Name", field: "lastname", selected: true },
+      { columnName: "Initials", field: "initials", selected: true },
+      { columnName: "ID Number", field: "said", selected: true },
+      { columnName: "First-Second Name", field: "fullname", selected: true },
+      { columnName: "Level", field: "jobTitle", selected: true },
+      { columnName: "Rate Of Pay", field: "amountPaid", selected: true },
+      { columnName: "NO OF DAYS WORKED IN CYLE", field: "payableDays", selected: true },
     ];
     this.selectedMonth = new Date().getMonth() + 1;
     this.getData();
