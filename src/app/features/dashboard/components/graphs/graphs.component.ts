@@ -46,6 +46,8 @@ export class GraphsComponent {
   xAxisLabelA = 'Wards';
   yAxisLabelB = 'Educational Levels';
   educationResult: any[] = []
+  dependantsResult: any[] = [];
+  xAxisLabelDependants: string = 'Dependants'
 
  
 
@@ -68,13 +70,13 @@ export class GraphsComponent {
      this.ageResult = (data?.ageDemographic || []).filter((obj: any) => obj.name != null)
      this.wardsResult = (data?.wardsDemographic || []).filter((obj: any) => obj.name != null)
      this.educationResult = (data?.educationDemographic || []).filter((obj: any) => obj.name != null)
-
-     console.log(this.educationResult);
+     this.dependantsResult = (data?.dependantsDemographic || []).filter((obj: any) => obj.name != null)
 
      Object.assign(this, { single: this.single });
      Object.assign(this, { ageResult: this.ageResult });
      Object.assign(this, { wardsResult: this.wardsResult });
      Object.assign(this, { educationResult: this.educationResult })
+     Object.assign(this, { dependantsResult: this.dependantsResult })
     })
   }
 
