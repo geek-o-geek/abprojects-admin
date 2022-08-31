@@ -17,7 +17,7 @@ export class GraphsComponent {
 
   // options
   gradient: boolean = true;
-  showLegend: boolean = true;
+  showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
   legendPosition: any = 'below';
@@ -39,11 +39,11 @@ export class GraphsComponent {
   showXAxis = true;
   showYAxis = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Count';
+  xAxisLabel = 'Age';
   showYAxisLabel = true;
-  yAxisLabel = 'Age';
+  yAxisLabel = 'Count';
 
-  yAxisLabelA = 'Wards';
+  xAxisLabelA = 'Wards';
   yAxisLabelB = 'Educational Levels';
   educationResult: any[] = []
 
@@ -65,9 +65,11 @@ export class GraphsComponent {
       { name: 'male', value: data.maleCount }
      ]
 
-     this.ageResult = data?.ageDemographic || []
-     this.wardsResult = data?.wardsDemographic || []
-     this.educationResult = data?.educationDemographic || []
+     this.ageResult = (data?.ageDemographic || []).filter((obj: any) => obj.name != null)
+     this.wardsResult = (data?.wardsDemographic || []).filter((obj: any) => obj.name != null)
+     this.educationResult = (data?.educationDemographic || []).filter((obj: any) => obj.name != null)
+
+     console.log(this.educationResult);
 
      Object.assign(this, { single: this.single });
      Object.assign(this, { ageResult: this.ageResult });
