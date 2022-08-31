@@ -77,6 +77,13 @@ export class GraphsComponent {
 
      const nameList = Array.from(new Set(data.roadInspection.map((item: any) => item.name)));
 
+     const keyObject: any = {
+      "Satisfactory": 1,
+      "Needs Improvement": 2,
+      "Not Satisfactory": 3,
+      "Not Applicable": 4
+    }
+
      nameList.forEach((name: any) => {
   
       const all = data.roadInspection
@@ -85,10 +92,18 @@ export class GraphsComponent {
                       let list: any = []
                       Object.keys(item).forEach(key => {
                         if (key != 'name') {
-                          list.push({
+                          const value = item[key]?.split(",").reduce((acc:any, elem:any) => {
+                            if (keyObject[elem]) {
+                              acc += keyObject[elem]
+                            }
+                            return acc
+                          }, 0) / item[key]?.split(",").length;
+                         
+                         list.push({
                             name: key, 
-                            value: item[key]
+                            value
                           })
+                          
                         }
                       })
 
@@ -101,8 +116,6 @@ export class GraphsComponent {
         series: all[0]
       })
      });
-
-     console.log(this.roadInspection, "this.roadInspection")
 
      Object.assign(this, { single: this.single });
      Object.assign(this, { ageResult: this.ageResult });
