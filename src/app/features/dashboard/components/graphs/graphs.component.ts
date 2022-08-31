@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Component } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -49,7 +47,12 @@ export class GraphsComponent {
   dependantsResult: any[] = [];
   xAxisLabelDependants: string = 'Dependants'
 
- 
+  legendTitle: string = 'Years';
+
+
+  roadInspection: any = []
+  xAxisLabelRoad: string = "Ward";
+  yAxisLabelRoad: string = "Satisfactory Rating";
 
   constructor(private http: HttpClient) {}
 
@@ -72,11 +75,41 @@ export class GraphsComponent {
      this.educationResult = (data?.educationDemographic || []).filter((obj: any) => obj.name != null)
      this.dependantsResult = (data?.dependantsDemographic || []).filter((obj: any) => obj.name != null)
 
+     const nameList = Array.from(new Set(data.roadInspection.map((item: any) => item.name)));
+
+     nameList.forEach((name: any) => {
+  
+      const all = data.roadInspection
+                  .filter((item: any) => name === item.name )
+                  .map((item: any) => { 
+                      let list: any = []
+                      Object.keys(item).forEach(key => {
+                        if (key != 'name') {
+                          list.push({
+                            name: key, 
+                            value: item[key]
+                          })
+                        }
+                      })
+
+                    if(list.length)
+                      return list
+                   });
+
+      this.roadInspection.push({
+        name,
+        series: all[0]
+      })
+     });
+
+     console.log(this.roadInspection, "this.roadInspection")
+
      Object.assign(this, { single: this.single });
      Object.assign(this, { ageResult: this.ageResult });
      Object.assign(this, { wardsResult: this.wardsResult });
      Object.assign(this, { educationResult: this.educationResult })
      Object.assign(this, { dependantsResult: this.dependantsResult })
+     Object.assign(this, { roadInspection: JSON.parse(JSON.stringify(this.roadInspection)) })
     })
   }
 
@@ -91,5 +124,4 @@ export class GraphsComponent {
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
-
 }

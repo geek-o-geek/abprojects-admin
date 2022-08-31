@@ -126,6 +126,30 @@
                                    
                                 </div>
                             </div>
+                            <div class="graph-container">
+                                <div class="graph-block">
+                                        <div class="graph-box-2">
+                                            <ngx-charts-bar-vertical-2d
+                                            [view]="view"
+                                            [scheme]="colorScheme"
+                                            [results]="roadInspection"
+                                            [gradient]="gradient"
+                                            [xAxis]="showXAxis"
+                                            [yAxis]="showYAxis"
+                                            [legend]="showLegend"
+                                            [showXAxisLabel]="showXAxisLabel"
+                                            [showYAxisLabel]="showYAxisLabel"
+                                            [xAxisLabel]="xAxisLabelRoad"
+                                            [yAxisLabel]="yAxisLabelRoad"
+                                            [legendTitle]="legendTitle"
+                                            (select)="onSelect($event)"
+                                            (activate)="onActivate($event)"
+                                            (deactivate)="onDeactivate($event)">
+                                          </ngx-charts-bar-vertical-2d>
+                                        </div>
+                                   
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
