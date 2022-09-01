@@ -67,7 +67,6 @@ export class ExportModalComponent implements AfterViewInit, OnChanges {
           const ob: any = this.modalBodyData.find(obj => obj.field === fieldKey) || {};
           
           if (ob.selected) {
-            console.log(fieldKey)
             object[fieldKey] = fieldKey === 'amountPaid'? (400 * +item['cnt']) : item[fieldKey];
           }
         });
