@@ -55,6 +55,7 @@ export class DateFilterComponent implements AfterViewInit, OnChanges {
       if (flag) {
         // row iteration
         Object.keys(item || {}).forEach(fieldKey => {
+          
           const ob: any = this.modalBodyData.find(obj => obj.field === fieldKey) || {};
           
           if (ob.selected) {
