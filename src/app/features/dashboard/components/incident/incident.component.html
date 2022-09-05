@@ -1,0 +1,131 @@
+
+<div class="mx-auto bg-grey-400">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <app-header></app-header>
+
+        <div class="flex flex-1">
+            <app-aside-nav></app-aside-nav>
+            <!--Main-->
+            
+            <main class="middle-content-wrapper bg-white-300 flex-1 p-3 overflow-hidden">
+
+                <div class="flex flex-col">
+                   
+                    <!-- Card Sextion Starts Here -->
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+
+                        <!-- card -->
+
+                        <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+                            <div class="px-6 py-2 border-b border-light-grey">
+                                <div class="font-bold text-xl">Incident Report
+                                    <span class="export-btn" *ngIf="tableContent?.length > 0"  style="float: right; border: 2px solid #e2e8f0; margin: 0 0 20px 10px">
+                                        <button class="buttonCls" (click)="toggleModal()" style="padding: 5px; font-size: 16px">Export</button>
+                                    </span>
+                                    <span class="export-btn" *ngIf="tableContent?.length > 0" style="float: right; border: 2px solid #e2e8f0; margin: 0 0 20px 10px">
+                                        <button class="buttonCls" (click)="toggleDateModal()" style="padding: 5px; font-size: 16px">Filter</button>
+                                    </span>
+                                    <span style="float: right; border: 2px solid #e2e8f0;"><input (input)="search($event)" type="text" placeholder="Search.." name="search" id="search" value="" ></span>
+                                </div>
+                            </div> 
+                            <div class="table-responsive">
+                                <table class="table text-grey-darkest">
+                                    <thead class="bg-grey-dark text-white text-normal">
+                                    <tr>
+                                        <td scope="col">Supervisor Name</td>
+                                        <td scope="col">Identity Id</td>
+                                        <td scope="col">Phone Number</td>
+                                       
+                                        <td scope="col">Region</td>
+                                        <td scope="col">Ward</td>
+                                        <td scope="col">Incident Date</td>
+                                        <td scope="col">Incident Time</td>
+                                        <td scope="col">Location</td>
+                                        <td scope="col">Description</td>
+                                        <td scope="col">Precaution</td>
+                                        <td scope="col">First Aid</td>
+                                        <td scope="col">Treatment</td>
+                                        <td scope="col">Medical Problem</td>
+
+            
+                                    </tr>
+                                    </thead>
+                                    <tbody>  
+                                        <ng-container *ngIf="tableContent?.length; else newDeb" >
+                                        <tr *ngFor="let item of tableContent;">
+                                            <td scope="row">{{ item?.supervisorName }}</td>
+                                            <td scope="row">{{ item?.id }}</td>
+                                            <td scope="row">{{ item?.phone }}</td>
+                                            
+                                            <td scope="row">{{ item?.region }}</td>
+                                            <td scope="row">{{ item?.ward }}</td>
+                                            <td scope="row">{{ item?.dateOfIncident| date: 'yyyy-MM-dd' }}</td>
+                                            <td scope="row">{{ item?.timeOfIncident }}</td>
+                                            <td scope="row">{{ item?.locationIncident }}</td>
+                                            <td scope="row">{{ item?.descriptionIncident }}</td>
+                                            <td scope="row">{{ item?.isNecessaryPrecaution }}</td>
+                                            <td scope="row">{{ item?.isFirstAid  }}</td>
+                                            <td scope="row">{{ item?.isMedicalTreatment  }}</td>
+                                             <td scope="row">{{ item?.medicalProblemText  }}</td>
+                                            <td class="border">
+                                                <div class="action-btn-wrap" (click)="imageSrc = [item?.inspectionImage1, item?.inspectionImage2, item?.inspectionImage3, item?.inspectionImage4]; toggleImageModal();">
+                                                    <a 
+                                                        class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                   
+                                                </div>
+                                            </td>
+                                            <td class="border">
+                                                <div class="action-btn-wrap" (click)="goto('/dashboard/mapnew', item)">
+                                                    <a 
+                                                        class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                   
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-template #newDeb>
+                                        <loader></loader>
+                                    </ng-template>
+                                  
+                                    </tbody>
+                                </table>
+                               
+                            </div>
+                        </div>
+                        <!-- /card -->
+
+                    </div>
+                    <!-- /Cards Section Ends Here -->
+
+                </div>
+            </main>
+            <!--/Main-->
+        </div>
+    </div>
+
+</div>
+<app-export-modal
+[openModal]="openModal"
+[exportData]="tableContent"
+[modalBodyData]="modalBodyData"
+(onCloseEvent)="toggleModal()">
+</app-export-modal>
+
+<app-date-filter
+[openModal]="openDateModal"
+[exportData]="tableContent"
+[modalBodyData]="modalBodyData"
+(onCloseEvent)="toggleDateModal()"
+(onDateFilter)="dateFilter($event)">
+</app-date-filter>
+
+<app-view-image
+[openModal]="openImageModal"
+[imageSrc]="imageSrc"
+(onCloseEvent)="toggleImageModal()">
+</app-view-image>
