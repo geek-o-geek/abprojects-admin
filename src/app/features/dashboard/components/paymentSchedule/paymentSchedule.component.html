@@ -52,20 +52,30 @@
                                 <table class="table text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
                                     <tr>
-                                        <td scope="col">Worker Name</td>
-                                        <td scope="col">Worker ID</td>
-                                        <td scope="col">Amount</td>
+                                         <td scope="col">No.</td>
+                                        <td scope="col">Last Name</td>
+                                        <td scope="col">Initials</td>
+                                        <td scope="col">ID Number</td>
+                                        <td scope="col">Full Name</td>
+                                        <td scope="col">Rate of Pay</td>
+                                        <td scope="col">No. of days worked in cycle</td>
+                                        <td scope="col">Gross Amt to be paid</td>
 
                                     </tr>
                                     </thead>
                                     <tbody>  
                                         <tr *ngFor="let item of tableContent;">
+                                            <td scope="row">{{ item?.id }}</td>
+                                            <td scope="row">{{ item?.lastname }}</td>
+                                            <td scope="row">{{ item?.initials }}</td>
+                                            <td scope="row">{{ item?.said }}</td>
                                             <td scope="row" (click)="goto('/dashboard/profile', item)">
                                                 
                                                     {{ item?.fullname | titlecase }}
                                                 
                                             </td>
-                                            <td scope="row">{{ item?.said }}</td>
+                                            <td scope="row">400</td>
+                                            <td scope="row">{{ item?.cnt }}</td>
                                             <td scope="row">{{ item?.cnt * 400 }}</td>
                                         </tr>
                                     </tbody>
