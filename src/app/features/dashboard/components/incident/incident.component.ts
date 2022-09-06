@@ -13,11 +13,9 @@ export class IncidentComponent implements OnInit {
   databackup: any = [];
   tableContent: any = [];
   openModal: boolean = false;
-  openImageModal: boolean = false;
   openDateModal: boolean = false;
   modalBodyData: any = [];
   exportData: any = [];
-  imageSrc: string[] = [];
   constructor(
     private http: HttpClient,
     private location: Location,
@@ -31,27 +29,24 @@ export class IncidentComponent implements OnInit {
         field: "supervisorName",
         selected: true,
       },
-      { columnName: "Worker Name", field: "workerName", selected: true },
-      { columnName: "Worker ID", field: "said", selected: true },
+      { columnName: "Phone", field: "phone", selected: true },
+      { columnName: "Region", field: "region", selected: true },
       {
-        columnName: "Inspection Time",
-        field: "inspectionTime",
+        columnName: "Ward",
+        field: "ward",
         selected: true,
       },
-      { columnName: "Litter", field: "litter", selected: true },
-      { columnName: "Road", field: "road", selected: true },
-      { columnName: "Safety", field: "safety", selected: true },
-      { columnName: "Verge", field: "verge", selected: true },
-      { columnName: "Drain", field: "drain", selected: true },
-      { columnName: "Erosion", field: "erosion", selected: true },
-      { columnName: "Comment", field: "comment", selected: true },
-      { columnName: "Created At", field: "created_at", selected: true },
+      { columnName: "Incident Date", field: "dateOfIncident", selected: true },
+      { columnName: "Incident time", field: "timeOfIncident", selected: true },
+      { columnName: "Incident Location", field: "locationIncident", selected: true },
+      { columnName: "Incident Description", field: "descriptionIncident", selected: true },
+      { columnName: "Medical Problem Text", field: "medicalProblemText", selected: true },
     ];
 
     const { id = 0 }: any = this.location.getState() || {};
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/roadInspection";
+      "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/incidents";
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -81,7 +76,7 @@ export class IncidentComponent implements OnInit {
     }
     const roadInspection = this.databackup?.filter(
       (obj: any, index: number) =>
-        obj.workerName?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0
+        obj.supervisorName?.toLowerCase().indexOf(e.target.value.toLowerCase()) >= 0
     );
 
     this.tableContent = [...roadInspection];
@@ -109,9 +104,5 @@ export class IncidentComponent implements OnInit {
 
   toggleModal() {
     this.openModal = !this.openModal;
-  }
-
-  toggleImageModal() {
-    this.openImageModal = !this.openImageModal;
   }
 }

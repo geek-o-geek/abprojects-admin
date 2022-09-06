@@ -37,6 +37,7 @@ import { GeneralModalComponent } from '../components/general-modal/general.modal
 import { MapNewComponent } from '../components/mapnew/mapnew.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { IncidentComponent } from './components/incident/incident.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -62,7 +63,8 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     DateFilterComponent,
     GeneralModalComponent,
     MapNewComponent,
-    GraphsComponent
+    GraphsComponent,
+    IncidentComponent
   ],
   imports: [
     CommonModule,
