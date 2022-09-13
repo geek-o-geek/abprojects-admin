@@ -14,82 +14,41 @@ import { Router } from "@angular/router";
   styleUrls: ["./addAttendance.component.scss"],
 })
 export class AddAttendanceComponent implements OnInit {
-  form!: FormGroup;
-  submitted: boolean = false;
-  wards: any[] = [];
-
-  constructor(
-    private http: HttpClient,
-    private fb: FormBuilder,
-    private router: Router
-  ) {
-    this.createForm();
-  }
+  uploadedFiles: any;
+  profiledata: any = {};
+  profileImage: string = "";
+  idCard: string = "";
+  contract: string = "";
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/get/wards";
-    const headers = {
-      headers: new HttpHeaders({
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("abprojectsToken") || "",
-      }),
-    };
-
-    this.http.get(endpoint, headers).subscribe((res: any) => {
-      this.wards = res?.data || [];
-    });
+    this.profiledata = JSON.parse(
+      localStorage.getItem("profileabworker") || "{}"
+    );
+    this.profileImage = this.profiledata?.profileImage
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`
+      : "";
+    this.idCard = this.profiledata?.idCard
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`
+      : "";
+    this.contract = this.profiledata?.contract
+      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`
+      : "";
   }
 
-  createForm() {
-    this.form = this.fb.group({
-      member_no: ["", Validators.compose([Validators.required])],
-      surname: ["", Validators.compose([Validators.required])],
-      first_name: ["", Validators.compose([Validators.required])],
-      initials: ["", Validators.compose([Validators.required])],
-      area: ["", Validators.compose([Validators.required])],
-      phone_no: ["", Validators.compose([Validators.required])],
-      safety_boots: [""],
-      education: [""],
-      dependants: ["", Validators.compose([Validators.required])],
-      overseer_verified: [false],
-      date_verified: [null, Validators.compose([Validators.required])],
-      bank_name: [""],
-      account_no: [""],
-      branch_code: [""],
-      branch_name: [""],
-      password: [this.autoPassword, Validators.compose([Validators.required])],
-      wardId: [""],
-      wardFilter: [""],
-    });
+  thisFileUploadchange(element: any) {
+    this.uploadedFiles = element.target.files[0];
+    this.upload();
   }
 
-  get autoPassword() {
-    var digits = "0123456789";
-    let password = "";
-    for (let i = 0; i < 4; i++) {
-      password += digits[Math.floor(Math.random() * 10)];
-    }
-    return password;
-  }
-
-  submitForm() {
-    this.submitted = true;
-    if (this.form.invalid) {
+  upload() {
+    if (!this.uploadedFiles) {
+      alert("file is mandatory");
       return;
     }
+    const filename = this.uploadedFiles.name;
 
-    const formValues: any = this.form.value;
-
-    const payload = {
-      mobile: formValues.phone_no,
-      password: formValues.password,
-      username: formValues.first_name,
-      wardId: formValues.wardId,
-    };
-
-    const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/add/supervisor";
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -97,31 +56,68 @@ export class AddAttendanceComponent implements OnInit {
       }),
     };
 
-    this.http.post(endpoint, payload, headers).subscribe(
-      (res: any): void => {
-        this.submitted = false;
-        this.form.reset();
-        this.form.get("password")?.setValue(this.autoPassword);
-        alert("Supervisor added successfully");
-      },
-      (err) => {
-        this.submitted = false;
-        alert("Some error while adding");
+    this.http.get(endpoint, headers).subscribe((response) => {
+      this.uploadS3(response);
+    });
+  }
+
+  uploadS3(data: any) {
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
       }
-    );
+    });
+
+    xhr.open("PUT", data?.uploadUrl);
+    xhr.setRequestHeader("content-type", "image/jpeg");
+    xhr.setRequestHeader("key", data?.filePath);
+    xhr.setRequestHeader("cache-control", "no-cache");
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        this.uploadMasterApi(data?.filePath);
+      }
+    };
+    xhr.onerror = () => {
+      alert("some error while uploading");
+    };
+    xhr.send(this.uploadedFiles);
   }
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+  uploadMasterApi(filename: string = "") {
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-type": "application/json",
+        Authorization: localStorage.getItem("abprojectsToken") || "",
+      }),
+    };
+
+    try {
+      this.http
+        .post(
+          endpoint,
+          {
+            filename,
+            id: this.profiledata?.id,
+          },
+          headers
+        )
+        .subscribe((response) => {});
+      alert("Successfully uploaded");
+    } catch (error) {
+      alert("Something went wrong");
+    }
   }
 
-  onReset(): void {
-    this.submitted = false;
-    this.form.reset();
+  thisFileUpload() {
+    document.getElementById("file")?.click();
   }
 
-  goto(route: string = "", item: any = {}) {
-    this.router.navigateByUrl(route, { state: item });
+  goto(route: string = "") {
+    this.router.navigateByUrl(route);
   }
 
   logout() {

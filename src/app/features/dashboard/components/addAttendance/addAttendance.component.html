@@ -24,7 +24,7 @@
                                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-first-name">
-                                                Member No.
+                                                Name
                                             </label>
                                             <input
                                                 [ngClass]="{ 'is-invalid': submitted && f.member_no.errors }"
@@ -32,7 +32,7 @@
                                                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
                                                 id="grid-first-name"
                                                 type="text"
-                                                placeholder="Jane"
+                                                placeholder="Jane" value="{{ profiledata?.fullname }}"
                                             >
                                             <div *ngIf="submitted && f.member_no.errors" class="invalid-feedback">
                                                 <div *ngIf="f.member_no.errors.required">Please fill out this field.</div>
@@ -41,12 +41,12 @@
                                         <div class="w-full md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
-                                                Surname
+                                                Gender
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.surname.errors }"
                                             formControlName="surname" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Doe">
+                                                   id="grid-last-name" type="text" value="{{ profiledata?.gender }}">
                                                 <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
                                                     <div *ngIf="f.surname.errors?.required">Please fill out this field.</div>
                                                 </div>
@@ -56,12 +56,12 @@
                                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-first-name">
-                                                First Name
+                                                Age
                                             </label>
                                             <input 
                                             [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"
                                             formControlName="first_name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
-                                                   id="grid-first-name" type="text" placeholder="Jane">
+                                                   id="grid-first-name" type="text" value="{{ profiledata?.age }}">
                                                 <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
                                                     <div *ngIf="f.first_name.errors.required">Please fill out this field.</div>
                                                 </div>
@@ -69,12 +69,12 @@
                                         <div class="w-full md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
-                                                Initials
+                                                ID
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.initials.errors }"
                                             formControlName="initials" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Doe">
+                                                   id="grid-last-name" type="text" text="{{ profiledata?.said }}">
 
                                                 <div *ngIf="submitted && f.initials.errors" class="invalid-feedback">
                                                     <div *ngIf="f.initials.errors.required">Please fill out this field.</div>
@@ -85,7 +85,7 @@
                                         <div class="w-full px-3">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                                    for="grid-password">
-                                                Area
+                                                Location
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.area.errors }"
@@ -98,7 +98,7 @@
                                         <div class="w-full px-3">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                                    for="grid-password">
-                                                Phone No.
+                                                Start Time
                                             </label>
                                             <input maxlength="15"
                                             [ngClass]="{ 'is-invalid': submitted && f.phone_no.errors }"
@@ -113,7 +113,7 @@
                                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                                    for="grid-city">
-                                                Safety Boots Size
+                                                Date
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.safety_boots.errors }"
@@ -126,17 +126,17 @@
                                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                                    for="grid-state">
-                                                Education
+                                                Comment
                                             </label>
                                             <div class="relative">
                                                 <select
                                                 [ngClass]="{ 'is-invalid': submitted && f.education.errors }"
                                                 formControlName="education" class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-state">
-                                                    <option>Primary</option>
-                                                    <option>High School</option>
-                                                    <option>Graduate</option>
-                                                    <option>None</option>
+                                                    <option>Absent</option>
+                                                    <option>Sick Leave</option>
+                                                    <option>Stand In</option>
+                                                    
                                                 </select>
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +152,7 @@
                                          <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                                    for="grid-zip">
-                                                Dependants
+                                                Upload Photo
                                             </label>
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.dependants.errors }"
@@ -164,135 +164,7 @@
                                         </div>
                          
                                     </div>
-                                    
-                                     <div class="flex flex-wrap -mx-3 mb-6 overseer-wrap">
-                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0"> 
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-first-name">
-                                                Overseer Verified?
-                                            </label>
-                                          <div style="display: flex; gap: 10px;">
-                                            <input formControlName="overseer_verified"
-                                                   id="grid-first-name" type="radio" placeholder="Jane" value="Yes" name="overseer_verified">
-                                            <p class="text-red-500 text-xs italic">Yes</p>
-                                            
-                                            <input formControlName="overseer_verified" 
-                                                   id="grid-first-name1" type="radio" placeholder="Jane" value="No" name="overseer_verified">
-                                             <p class="text-red-500 text-xs italic">No</p>
-                                          </div>  
-                                        </div>
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-last-name">
-                                                Date Verified?
-                                            </label>
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.date_verified.errors }"
-                                            formControlName="date_verified" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="date" placeholder="yyyy-mm-dd">
-                                                <div *ngIf="submitted && f.date_verified.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.date_verified.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-last-name">
-                                                pin
-                                            </label>
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                                            formControlName="password" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="0000">
-                                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.password.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                        <div class="flex flex-wrap -mx-3 mb-6">
-                                            <div class="w-full px-3">
-                                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
-                                                       for="grid-password">
-                                                    Bank Details
-                                                </label>
-                                                
-                                            </div>
-                                         </div>
-                                    
-                                    <div class="flex flex-wrap -mx-3 mb-6">
-                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-first-name">
-                                                Bank Name
-                                            </label>
-                                            
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.bank_name.errors }"
-                                            formControlName="bank_name" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Axis bank">
-                                          
-                                                <div *ngIf="submitted && f.bank_name.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.bank_name.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-last-name">
-                                                Account No.
-                                            </label>
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.account_no.errors }"
-                                            formControlName="account_no" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="76545676560000">
-                                                <div *ngIf="submitted && f.account_no.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.account_no.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-                                         
-                                          <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-last-name">
-                                                Branch Code
-                                            </label>
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.branch_code.errors }"
-                                            formControlName="branch_code" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="BB676">
-                                                <div *ngIf="submitted && f.branch_code.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.branch_code.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                   for="grid-last-name">
-                                                Branch Name
-                                            </label>
-                                            <input
-                                            [ngClass]="{ 'is-invalid': submitted && f.branch_name.errors }"
-                                            formControlName="branch_name" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Sun city">
-                                                <div *ngIf="submitted && f.branch_name.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.branch_name.errors.required">Please fill out this field.</div>
-                                                </div>
-                                        </div>
-
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <mat-form-field>
-                                                <mat-select formControlName="wardId" placeholder="Wards" #singleSelect>
-                                                <mat-option>
-                                                    <ngx-mat-select-search formControlName="wardFilter"></ngx-mat-select-search>
-                                                </mat-option>
-                                                <mat-option *ngFor="let item of wards" [value]="item?.id">
-                                                    {{item?.ward}}
-                                                </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                      
                                      <button type="submit" class="buttonCls bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                         Submit
                                      </button>
