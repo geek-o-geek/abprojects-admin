@@ -15,6 +15,7 @@ import { PaymentScheduleComponent } from './components/paymentSchedule/paymentSc
 import { MapNewComponent } from '../components/mapnew/mapnew.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { IncidentComponent } from './components/incident/incident.component';
+import { AddAttendanceComponent } from './components/addAttendance/addAttendance.component';
 
 const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'addmaster', component: AddMasterComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [{ path: '', component: DashboardComponent },
 { path: 'paymentSchedule', component: PaymentScheduleComponent },
 { path: 'graphs', component: GraphsComponent },
 { path: 'incident', component: IncidentComponent },
+{ path: 'addAttendance', component: AddAttendanceComponent },
 ];
 
 @NgModule({
