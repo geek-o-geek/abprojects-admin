@@ -74,7 +74,7 @@
                                             <input
                                             [ngClass]="{ 'is-invalid': submitted && f.initials.errors }"
                                             formControlName="initials" class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" text="{{ profiledata?.said }}">
+                                                   id="grid-last-name" type="text" value="{{ profiledata?.said }}">
 
                                                 <div *ngIf="submitted && f.initials.errors" class="invalid-feedback">
                                                     <div *ngIf="f.initials.errors.required">Please fill out this field.</div>
