@@ -36,7 +36,7 @@ export class AllAttendanceComponent implements OnInit {
   }
 
   hitApi() {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//attendancenWorkerByDate?dt=${this.dt || new Date().toISOString().split("T")[0]}`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendancenWorkerByDate?dt=${this.dt || new Date().toISOString().split("T")[0]}`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)

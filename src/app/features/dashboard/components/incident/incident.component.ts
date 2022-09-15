@@ -46,7 +46,7 @@ export class IncidentComponent implements OnInit {
     const { id = 0 }: any = this.location.getState() || {};
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//incidents";
+      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/incidents";
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

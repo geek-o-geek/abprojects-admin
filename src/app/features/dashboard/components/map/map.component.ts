@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
     });
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//get/wards";
+      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/get/wards";
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -65,7 +65,7 @@ export class MapComponent implements OnInit {
   ngAfterViewInit() {
     this.dt = new Date().toISOString().split("T")[0];
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//attendanceByDate?dt=${
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendanceByDate?dt=${
       new Date().toISOString().split("T")[0]
     }`;
     const headers = {

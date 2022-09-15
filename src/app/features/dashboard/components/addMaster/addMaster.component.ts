@@ -24,7 +24,7 @@ export class AddMasterComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name.split(".xlsx")[0];
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -66,7 +66,7 @@ export class AddMasterComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = "") {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//upload/master`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/upload/master`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

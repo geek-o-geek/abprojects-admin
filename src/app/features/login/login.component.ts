@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     const { phone, password } = this.form.value;
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//login";
+      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/login";
 
     this.http
       .post(endpoint, {
