@@ -57,7 +57,7 @@ export class GraphsComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/graphs";
+    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//graphs";
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)

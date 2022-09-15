@@ -54,7 +54,7 @@ export class PaymentScheduleComponent implements OnInit {
   }
 
   getData() {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendancenWorkerByMonth?month=${this.selectedMonth}`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//attendancenWorkerByMonth?month=${this.selectedMonth}`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

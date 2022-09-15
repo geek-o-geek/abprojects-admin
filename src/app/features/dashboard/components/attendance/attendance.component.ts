@@ -50,7 +50,7 @@ export class AttendanceComponent {
 
   attendanceListByWorker(workerId: any = "") {
     if (!workerId) return;
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/attendanceByUser?userId=${workerId}`;
+    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//attendanceByUser?userId=${workerId}`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

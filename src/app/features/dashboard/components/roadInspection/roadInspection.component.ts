@@ -51,7 +51,7 @@ export class RoadInspectionComponent implements OnInit {
     const { id = 0 }: any = this.location.getState() || {};
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsserver-env.eba-5pjjn569.us-east-1.elasticbeanstalk.com/roadInspection";
+      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com//roadInspection";
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
