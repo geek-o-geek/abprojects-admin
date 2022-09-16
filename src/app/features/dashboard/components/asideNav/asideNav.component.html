@@ -41,6 +41,12 @@
                 Payment Schedule
             </a>
         </li>
+        <li [class.active]="(activeMenuItem == 'addAttendance')" (click)="goto('/dashboard/addAttendance', 'addAttendance')">
+            <span><i class="fas fa-user"></i></span>
+            <a href="javascript:void(0);">
+                Add Attendance
+            </a>
+        </li>
         <li [class.active]="(activeMenuItem == 'addmaster')" (click)="goto('/dashboard/addmaster', 'addmaster')">
             <span><i class="fas fa-dollar-sign"></i></span>
             <a href="javascript:void(0);">

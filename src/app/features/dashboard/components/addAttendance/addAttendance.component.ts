@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-add-attendance",
@@ -21,56 +22,27 @@ export class AddAttendanceComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
-    this.profiledata = JSON.parse(
-      localStorage.getItem("profileabworker") || "{}"
-    );
-    this.profileImage = this.profiledata?.profileImage
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`
-      : "";
-    this.idCard = this.profiledata?.idCard
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`
-      : "";
-    this.contract = this.profiledata?.contract
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`
-      : "";
-
     this.createForm();
   }
 
   createForm() {
+    // const fileLocation: string = req['files']?.length? req['files'][0].originalname: ''; 
     this.form = this.fb.group({
-      member_no: ["", Validators.compose([Validators.required])],
-      surname: ["", Validators.compose([Validators.required])],
-      first_name: ["", Validators.compose([Validators.required])],
-      initials: ["", Validators.compose([Validators.required])],
-      area: ["", Validators.compose([Validators.required])],
-      phone_no: ["", Validators.compose([Validators.required])],
-      safety_boots: [""],
-      education: [""],
-      dependants: ["", Validators.compose([Validators.required])],
-      overseer_verified: [false],
-      date_verified: [null, Validators.compose([Validators.required])],
-      bank_name: [""],
-      account_no: [""],
-      branch_code: [""],
-      branch_name: [""],
-      password: [this.autoPassword, Validators.compose([Validators.required])],
-      wardId: [""],
-      wardFilter: [""],
+      startLocation: ["", Validators.compose([Validators.required])],
+      workHours: ["", Validators.compose([Validators.required])],
+      startTime: ["", Validators.compose([Validators.required])],
+      endTime: ["", Validators.compose([Validators.required])],
+      title: ["", Validators.compose([Validators.required])],
+      // allDay: ["", Validators.compose([Validators.required])],
+      attendanceDate: ["", Validators.compose([Validators.required])],
+      userId: ["", Validators.compose([Validators.required])],
+      workerId: ["", Validators.compose([Validators.required])],
+      comment: ["", Validators.compose([Validators.required])],
     });
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
-  }
-
-  get autoPassword() {
-    var digits = "0123456789";
-    let password = "";
-    for (let i = 0; i < 4; i++) {
-      password += digits[Math.floor(Math.random() * 10)];
-    }
-    return password;
   }
 
   thisFileUploadchange(element: any) {
@@ -149,7 +121,50 @@ export class AddAttendanceComponent implements OnInit {
     }
   }
 
-  submitForm() {}
+  submitForm() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+
+    const formValues: any = this.form.value;
+
+    const payload = {
+      startLocation: formValues.startLocation,
+      workHours: formValues.workHours,
+      startTime: formValues.startTime,
+      endTime: formValues.endTime,
+      title: formValues.title,
+      // allDay: formValues.allDay,
+      attendanceDate: formValues.attendanceDate,
+      userId: formValues.userId,
+      workerId: formValues.workerId,
+      comment: formValues.comment
+    };
+
+    const endpoint =
+      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendance";
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-type": "application/json",
+        Authorization: localStorage.getItem("abprojectsToken") || "",
+      }),
+    };
+
+    this.http.post(endpoint, payload, headers)
+    .pipe(take(1))
+    .subscribe(
+      (res: any): void => {
+        this.submitted = false;
+        this.form.reset();
+        alert("Attendance added successfully");
+      },
+      (err) => {
+        this.submitted = false;
+        alert("Some error while adding");
+      }
+    );
+  }
 
   thisFileUpload() {
     document.getElementById("file")?.click();
