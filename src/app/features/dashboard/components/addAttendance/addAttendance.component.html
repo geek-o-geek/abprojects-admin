@@ -11,7 +11,7 @@
 
                 <div class="flex flex-col">
 
-                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                    <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
                         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
                             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
                                 Add Attendance
@@ -51,21 +51,27 @@
                                         <p id="id">{{ params?.id }}</p>
                                     </div>
                                 </div>
+                                <div class="separtor my-4"></div>
                                 <form class="w-full" [formGroup]="form" (ngSubmit)="submitForm()">
 
                                     <div class="flex flex-wrap -mx-3 mb-6">
                                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                            <label
-                                                class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
-                                                for="title">
-                                                Title
-                                            </label>
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
-                                                formControlName="title"
-                                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
-                                                id="title" type="text" placeholder="title" value="">
-                                            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                                                <div *ngIf="f.title.errors.required">Please fill out this field.</div>
+                                            <label for="comment"
+                                                class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1">
+                                                Comment </label>
+                                            <div style="display: flex; gap: 10px;"><input
+                                                formControlName="comment"
+                                                    id="comment" type="radio" value="Absent"
+                                                    name="comment">
+                                                <p class="text-red-500 text-xs italic">Absent</p>
+                                                <input formControlName="comment"
+                                                    id="comment" type="radio" value="Sick Leave"
+                                                    name="comment" >
+                                                <p class="text-red-500 text-xs italic">Sick Leave</p>
+                                                <input formControlName="comment"
+                                                    id="comment" type="radio" value="Stand In"
+                                                    name="comment" >
+                                                <p class="text-red-500 text-xs italic">Stand In</p>
                                             </div>
                                         </div>
                                         <div class="w-full md:w-1/2 px-3">
@@ -84,47 +90,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                    <!-- <div class="flex flex-wrap -mx-3 mb-6">
                                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                            <label for="comment"
+                                            <label for="allDay"
                                                 class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1">
                                                 All Day? </label>
                                             <div style="display: flex; gap: 10px;"><input
-                                                formControlName="comment"
-                                                    id="comment" type="radio" value="1"
-                                                    name="comment" class="ng-untouched ng-pristine ng-valid">
+                                                formControlName="allDay"
+                                                    id="allDay" type="radio" value="1"
+                                                    name="allDay" class="ng-untouched ng-pristine ng-valid">
                                                 <p class="text-red-500 text-xs italic">Yes</p>
-                                                <input formControlName="comment"
-                                                    id="comment" type="radio" value="0"
-                                                    name="comment" class="ng-untouched ng-pristine ng-valid">
+                                                <input formControlName="allDay"
+                                                    id="allDay" type="radio" value="0"
+                                                    name="allDay" class="ng-untouched ng-pristine ng-valid">
                                                 <p class="text-red-500 text-xs italic">No</p>
                                             </div>
                                         </div>
                                 
                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
-                                                   for="workerId">
-                                                   Worker
-                                            </label>
-                                            <div class="relative" *ngIf="workers?.length">
-                                                <select
-                                                [ngClass]="{ 'is-invalid': submitted && f.workerId.errors }"
-                                                formControlName="workerId" class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                        id="workerId">
-                                                    <option *ngFor="let item of workers" value="{{ item?.id }}">{{ item?.fullname }}</option>
-                                                </select>
-                                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
-                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                                         viewBox="0 0 20 20">
-                                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                                    </svg>
-                                                </div>
-                                                <div *ngIf="submitted && f.workerId.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.workerId.errors.required">Please fill out this field.</div>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="flex flex-wrap -mx-3 mb-6">
                                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                             <label
@@ -174,7 +160,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="w-full md:w-1/2 px-3">
+                                        <!-- <div class="w-full md:w-1/2 px-3">
                                             <label
                                                 class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                 for="startTime">
@@ -187,28 +173,7 @@
                                             <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
                                                 <div *ngIf="f.endTime.errors.required">Please fill out this field.</div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-wrap -mx-3 mb-6">
-                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                            <label for="comment"
-                                                class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1">
-                                                Comment </label>
-                                            <div style="display: flex; gap: 10px;"><input
-                                                formControlName="comment"
-                                                    id="comment" type="radio" value="Absent"
-                                                    name="comment">
-                                                <p class="text-red-500 text-xs italic">Absent</p>
-                                                <input formControlName="comment"
-                                                    id="comment" type="radio" value="Sick Leave"
-                                                    name="comment" >
-                                                <p class="text-red-500 text-xs italic">Sick Leave</p>
-                                                <input formControlName="comment"
-                                                    id="comment" type="radio" value="Stand In"
-                                                    name="comment" >
-                                                <p class="text-red-500 text-xs italic">Stand In</p>
-                                            </div>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <button type="submit"

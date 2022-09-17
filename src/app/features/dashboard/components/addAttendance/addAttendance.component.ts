@@ -24,7 +24,7 @@ export class AddAttendanceComponent implements OnInit {
       .subscribe(params => {
         this.params = params;
       })
-      this.api();
+     // this.api();
     }
 
   ngOnInit(): void {
@@ -54,11 +54,7 @@ export class AddAttendanceComponent implements OnInit {
       startLocation: ["", Validators.compose([Validators.required])],
       workHours: ["", Validators.compose([Validators.required])],
       startTime: ["", Validators.compose([Validators.required])],
-      endTime: ["", Validators.compose([Validators.required])],
-      title: ["", Validators.compose([Validators.required])],
       attendanceDate: ["", Validators.compose([Validators.required])],
-      allDay: ["", Validators.compose([Validators.required])],
-      workerId: ["", Validators.compose([Validators.required])],
       comment: ["", Validators.compose([Validators.required])],
     });
   }
@@ -69,6 +65,7 @@ export class AddAttendanceComponent implements OnInit {
 
   submitForm() {
     this.submitted = true;
+    console.log(this.form.value)
   
     if (this.form.invalid) {
       return;
@@ -80,12 +77,12 @@ export class AddAttendanceComponent implements OnInit {
       startLocation: formValues.startLocation,
       workHours: formValues.workHours,
       startTime: formValues.startTime,
-      endTime: formValues.endTime,
-      title: formValues.title,
-      allDay: formValues.allDay,
+      endTime: formValues.startTime,
+      title: 'Attendance',
+      allDay: 1,
       attendanceDate: formValues.attendanceDate,
       userId: 1,
-      workerId: formValues.workerId,
+      workerId: this.params?.id,
       comment: formValues.comment
     };
 
