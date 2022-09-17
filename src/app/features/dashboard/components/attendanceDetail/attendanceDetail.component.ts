@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 var google: any;
 
@@ -36,7 +37,7 @@ export class AttendanceDetailComponent {
     this.dt = dt || new Date().toISOString().split("T")[0];
 
     if (workerId) {
-      const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendanceByUserDate?userId=${workerId}&dt=${this.dt}`;
+      const endpoint = `${environment.baseUrl}/attendanceByUserDate?userId=${workerId}&dt=${this.dt}`;
       const headers = {
         headers: new HttpHeaders({
           "Content-type": "application/json",

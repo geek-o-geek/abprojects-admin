@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class GeneralModalComponent implements AfterViewInit, OnChanges, OnInit {
       };
   
       const endpoint =
-        "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/changePin";
+      `${environment.baseUrl}/changePin`;
       
       const headers = {
         headers: new HttpHeaders({

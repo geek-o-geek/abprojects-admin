@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,10 +31,11 @@ export class DashboardComponent implements OnInit {
       { 'columnName': 'No. of Days worked', field: 'payableDays', 'selected': true },
       { 'columnName': 'Amount to be paid', field: 'amountPaid', 'selected': true }
     ]
-    const endpoint = "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/master/get?type=all";
+    const endpoint = `${environment.baseUrl}/master/get?type=all`;
     const headers = {headers: new HttpHeaders({ "Content-type": "application/json", "Authorization": localStorage.getItem("abprojectsToken") || '' })}
 
     this.http.get(endpoint, headers)
+    .pipe(take(1))
     .subscribe((res: any): void => {
       this.loader = false;
       this.data = res.data

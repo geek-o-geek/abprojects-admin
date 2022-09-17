@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-add-master",
@@ -24,7 +26,7 @@ export class AddMasterComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name.split(".xlsx")[0];
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -32,7 +34,9 @@ export class AddMasterComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((response) => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((response) => {
       this.uploadS3(response);
     });
   }
@@ -66,7 +70,7 @@ export class AddMasterComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = "") {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/upload/master`;
+    const endpoint = `${environment.baseUrl}/upload/master`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -83,7 +87,8 @@ export class AddMasterComponent implements OnInit {
           },
           headers
         )
-        .subscribe((response) => {});
+        .pipe(take(1))
+        .subscribe(_ => {});
       alert("Successfully uploaded Master Data");
     } catch (error) {
       alert("Something went wrong");

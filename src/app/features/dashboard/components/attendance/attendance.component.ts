@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CalendarOptions } from "@fullcalendar/angular";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-attendance",
@@ -50,7 +52,7 @@ export class AttendanceComponent {
 
   attendanceListByWorker(workerId: any = "") {
     if (!workerId) return;
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendanceByUser?userId=${workerId}`;
+    const endpoint = `${environment.baseUrl}/attendanceByUser?userId=${workerId}`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -58,7 +60,9 @@ export class AttendanceComponent {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((res: any): void => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((res: any): void => {
       const arr: any = [];
       this.data = res.result;
       res.result.forEach((obj: any) => {

@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-add-attendance",
@@ -11,15 +12,26 @@ import { take } from "rxjs/operators";
 })
 export class AddAttendanceComponent implements OnInit {
   form!: FormGroup;
-  uploadedFiles: any;
-  profiledata: any = {};
-  profileImage: string = "";
-  idCard: string = "";
-  contract: string = "";
   submitted: boolean = false;
+  workers: any = [];
   constructor(private http: HttpClient, 
     private fb: FormBuilder,
-    private router: Router) {}
+    private router: Router) {
+      const endpoint =
+      `${environment.baseUrl}/master/get?type=all`;
+      const headers = {
+        headers: new HttpHeaders({
+          "Content-type": "application/json",
+          Authorization: localStorage.getItem("abprojectsToken") || "",
+        }),
+      };
+
+      this.http.get(endpoint, headers)
+      .pipe(take(1))
+      .subscribe((res: any): void => {
+        this.workers = res.data?.worker;
+      });
+    }
 
   ngOnInit(): void {
     this.createForm();
@@ -67,7 +79,7 @@ export class AddAttendanceComponent implements OnInit {
     };
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendance";
+    `${environment.baseUrl}/attendance`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

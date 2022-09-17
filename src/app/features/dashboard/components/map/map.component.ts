@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-map",
@@ -49,7 +51,7 @@ export class MapComponent implements OnInit {
     });
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/get/wards";
+    `${environment.baseUrl}/get/wards`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -57,7 +59,9 @@ export class MapComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((res: any) => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((res: any) => {
       this.wards = [{ id: "all", ward: "All" }, ...(res?.data || [])];
     });
   }
@@ -65,7 +69,7 @@ export class MapComponent implements OnInit {
   ngAfterViewInit() {
     this.dt = new Date().toISOString().split("T")[0];
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendanceByDate?dt=${
+    const endpoint = `${environment.baseUrl}/attendanceByDate?dt=${
       new Date().toISOString().split("T")[0]
     }`;
     const headers = {
@@ -75,7 +79,9 @@ export class MapComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((res: any): void => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((res: any): void => {
       this.attendanceDetailData = res?.result || [];
       this.attendanceDetailDataBackup = res?.result || [];
       this.updateLocation();

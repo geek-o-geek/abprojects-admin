@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-profile",
@@ -42,7 +44,7 @@ export class ProfileComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name;
 
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -50,7 +52,9 @@ export class ProfileComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((response) => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((response) => {
       this.uploadS3(response);
     });
   }
@@ -81,7 +85,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = "") {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -99,6 +103,7 @@ export class ProfileComponent implements OnInit {
           },
           headers
         )
+        .pipe(take(1))
         .subscribe((response) => {});
       alert("Successfully uploaded");
     } catch (error) {

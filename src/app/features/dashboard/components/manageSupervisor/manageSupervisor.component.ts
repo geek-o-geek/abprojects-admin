@@ -7,6 +7,8 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-manage-supervisor",
@@ -28,7 +30,7 @@ export class ManageSupervisorComponent implements OnInit {
 
   ngOnInit(): void {
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/get/wards";
+    `${environment.baseUrl}/get/wards`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -36,7 +38,9 @@ export class ManageSupervisorComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((res: any) => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((res: any) => {
       this.wards = res?.data || [];
     });
   }
@@ -89,7 +93,7 @@ export class ManageSupervisorComponent implements OnInit {
     };
 
     const endpoint =
-      "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/add/supervisor";
+    `${environment.baseUrl}/add/supervisor`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -97,7 +101,9 @@ export class ManageSupervisorComponent implements OnInit {
       }),
     };
 
-    this.http.post(endpoint, payload, headers).subscribe(
+    this.http.post(endpoint, payload, headers)
+    .pipe(take(1))
+    .subscribe(
       (res: any): void => {
         this.submitted = false;
         this.form.reset();

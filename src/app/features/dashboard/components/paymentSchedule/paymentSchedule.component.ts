@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
+import { take } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-payment-schedule",
@@ -54,7 +56,7 @@ export class PaymentScheduleComponent implements OnInit {
   }
 
   getData() {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/attendancenWorkerByMonth?month=${this.selectedMonth}`;
+    const endpoint = `${environment.baseUrl}/attendancenWorkerByMonth?month=${this.selectedMonth}`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -62,7 +64,9 @@ export class PaymentScheduleComponent implements OnInit {
       }),
     };
 
-    this.http.get(endpoint, headers).subscribe((res: any): void => {
+    this.http.get(endpoint, headers)
+    .pipe(take(1))
+    .subscribe((res: any): void => {
       let data = res.result || [];
       data = data.filter(
         (item: any) => item.fullname != "" || item.fullname != null
