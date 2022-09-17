@@ -33,9 +33,8 @@ export class AddAttendanceComponent implements OnInit {
       startTime: ["", Validators.compose([Validators.required])],
       endTime: ["", Validators.compose([Validators.required])],
       title: ["", Validators.compose([Validators.required])],
-      // allDay: ["", Validators.compose([Validators.required])],
       attendanceDate: ["", Validators.compose([Validators.required])],
-      userId: ["", Validators.compose([Validators.required])],
+      allDay: ["", Validators.compose([Validators.required])],
       workerId: ["", Validators.compose([Validators.required])],
       comment: ["", Validators.compose([Validators.required])],
     });
@@ -45,84 +44,9 @@ export class AddAttendanceComponent implements OnInit {
     return this.form.controls;
   }
 
-  thisFileUploadchange(element: any) {
-    this.uploadedFiles = element.target.files[0];
-    this.upload();
-  }
-
-  upload() {
-    if (!this.uploadedFiles) {
-      alert("file is mandatory");
-      return;
-    }
-    const filename = this.uploadedFiles.name;
-
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
-    const headers = {
-      headers: new HttpHeaders({
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("abprojectsToken") || "",
-      }),
-    };
-
-    this.http.get(endpoint, headers).subscribe((response) => {
-      this.uploadS3(response);
-    });
-  }
-
-  uploadS3(data: any) {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-      }
-    });
-
-    xhr.open("PUT", data?.uploadUrl);
-    xhr.setRequestHeader("content-type", "image/jpeg");
-    xhr.setRequestHeader("key", data?.filePath);
-    xhr.setRequestHeader("cache-control", "no-cache");
-
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        this.uploadMasterApi(data?.filePath);
-      }
-    };
-    xhr.onerror = () => {
-      alert("some error while uploading");
-    };
-    xhr.send(this.uploadedFiles);
-  }
-
-  uploadMasterApi(filename: string = "") {
-    const endpoint = `https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
-    const headers = {
-      headers: new HttpHeaders({
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("abprojectsToken") || "",
-      }),
-    };
-
-    try {
-      this.http
-        .post(
-          endpoint,
-          {
-            filename,
-            id: this.profiledata?.id,
-          },
-          headers
-        )
-        .subscribe((response) => {});
-      alert("Successfully uploaded");
-    } catch (error) {
-      alert("Something went wrong");
-    }
-  }
-
   submitForm() {
     this.submitted = true;
+    console.log(this.form.value)
     if (this.form.invalid) {
       return;
     }
@@ -135,9 +59,9 @@ export class AddAttendanceComponent implements OnInit {
       startTime: formValues.startTime,
       endTime: formValues.endTime,
       title: formValues.title,
-      // allDay: formValues.allDay,
+      allDay: formValues.allDay,
       attendanceDate: formValues.attendanceDate,
-      userId: formValues.userId,
+      userId: 1,
       workerId: formValues.workerId,
       comment: formValues.comment
     };
