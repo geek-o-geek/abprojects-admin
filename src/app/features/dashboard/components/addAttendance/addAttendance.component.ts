@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { take } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
@@ -14,10 +14,25 @@ export class AddAttendanceComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
   workers: any = [];
+  params: any = {};
+  
   constructor(private http: HttpClient, 
     private fb: FormBuilder,
-    private router: Router) {
-      const endpoint =
+    private router: Router,
+    private route: ActivatedRoute) {
+      this.route.params
+      .subscribe(params => {
+        this.params = params;
+      })
+      this.api();
+    }
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  api() {
+    const endpoint =
       `${environment.baseUrl}/master/get?type=all`;
       const headers = {
         headers: new HttpHeaders({
@@ -31,10 +46,6 @@ export class AddAttendanceComponent implements OnInit {
       .subscribe((res: any): void => {
         this.workers = res.data?.worker;
       });
-    }
-
-  ngOnInit(): void {
-    this.createForm();
   }
 
   createForm() {
@@ -58,7 +69,7 @@ export class AddAttendanceComponent implements OnInit {
 
   submitForm() {
     this.submitted = true;
-    console.log(this.form.value)
+  
     if (this.form.invalid) {
       return;
     }

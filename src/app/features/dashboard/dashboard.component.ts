@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
     if(route === "/dashboard/profile") {
       localStorage.setItem('profileabworker', JSON.stringify(item));
     }
-    this.router.navigateByUrl(route);
+    this.router.navigate([route, item]);
   }
 
   logout() {
