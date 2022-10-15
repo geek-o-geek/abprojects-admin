@@ -3,5 +3,6 @@ export const environment = {
   firebaseConfig: {
 
   },
-  baseUrl: "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com"
+  baseUrl: "https://zims.co.za"
+  //baseUrl: "https://cors-everywhere.herokuapp.com/http://abprojectsservernew-env.eba-pgmbgh3j.us-east-1.elasticbeanstalk.com",
 };
