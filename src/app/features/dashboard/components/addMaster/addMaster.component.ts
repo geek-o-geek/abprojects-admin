@@ -26,7 +26,7 @@ export class AddMasterComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name.split(".xlsx")[0];
 
-    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",

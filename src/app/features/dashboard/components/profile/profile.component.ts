@@ -22,13 +22,13 @@ export class ProfileComponent implements OnInit {
       localStorage.getItem("profileabworker") || "{}"
     );
     this.profileImage = this.profiledata?.profileImage
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.profileImage}`
+      ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.profileImage}`
       : "";
     this.idCard = this.profiledata?.idCard
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.idCard}`
+      ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.idCard}`
       : "";
     this.contract = this.profiledata?.contract
-      ? `https://abprojects-bucket1.s3.amazonaws.com/${this.profiledata?.contract}`
+      ? `https://abprojects-bucket11.s3.amazonaws.com/${this.profiledata?.contract}`
       : "";
   }
 
@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name;
 
-    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
@@ -85,7 +85,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadMasterApi(filename: string = "") {
-    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket1`;
+    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
     const headers = {
       headers: new HttpHeaders({
         "Content-type": "application/json",
