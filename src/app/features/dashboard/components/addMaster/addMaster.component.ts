@@ -26,18 +26,24 @@ export class AddMasterComponent implements OnInit {
     }
     const filename = this.uploadedFiles.name.split(".xlsx")[0];
 
-    const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
+    //const endpoint = `${environment.baseUrl}/presignedURL?fileName=${filename}&folderName=mastersheets&bucketName=abprojects-bucket11`;
+    
+    const endpoint = `${environment.baseUrl}/testFile`;
     const headers = {
       headers: new HttpHeaders({
-        "Content-type": "application/json",
         Authorization: localStorage.getItem("abprojectsToken") || "",
       }),
     };
 
-    this.http.get(endpoint, headers)
+    const fd = new FormData();
+    fd.append("file", this.uploadedFiles);
+
+    this.http.post(endpoint, fd, headers)
     .pipe(take(1))
-    .subscribe((response) => {
-      this.uploadS3(response);
+    .subscribe((response: any) => {
+      if (response?.fileLocation) {
+        this.uploadMasterApi(response?.fileLocation);
+      }
     });
   }
 
