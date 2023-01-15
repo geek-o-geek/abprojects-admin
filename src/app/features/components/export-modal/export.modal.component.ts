@@ -48,13 +48,12 @@ export class ExportModalComponent implements AfterViewInit, OnChanges {
       const object: any = {}
 
       const createdAt = new Date(item.created_at);
-    
       const minDate = new Date(this.fromDt);
-      const maxDate =  new Date(this.toDt);
+      const maxDate =  new Date(`${this.toDt} 23:59:59`);
   
       let flag: boolean = false;
       if (minDate && maxDate) {
-        if (createdAt > minDate && createdAt < maxDate ){
+        if (createdAt > minDate && createdAt <= maxDate ){
             flag = true;
         }
       } else {
